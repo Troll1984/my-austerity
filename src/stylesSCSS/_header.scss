@@ -48,8 +48,11 @@ header {
             background: vars.$bg-color-button-hover;
         }
         @media(max-width: 470px) {
-           font-size: 1.0;
-          width: 70px;
+           font-size: 1rem;
+            width: 70px;
+            width: 70px;
+            height: 35px;
+            line-height: 35px;
         }      
     }  
 }

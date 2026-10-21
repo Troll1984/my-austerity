@@ -1,2 +1,2 @@
 import './ascetic.scss';
-import './components/openAscetic';
+import './components/ascetica';

@@ -1,9 +1,12 @@
 import { getElement, getForm } from '../components/dom';
+import { supabase } from '../supabase';
+import { signOut } from '../auth';
+
 
 // Код для сохранения
 const formAscetic = getForm('#form-ascetic');
 const menu = getElement('#menu');
-formAscetic.addEventListener('submit', (event) => {
+formAscetic.addEventListener('submit', async (event) => {
     event.preventDefault();
 
     let formData = new FormData(formAscetic);
@@ -59,25 +62,41 @@ formAscetic.addEventListener('submit', (event) => {
     }
 
     // Создаём аскезу только после успешных проверок
-    let newAscetic = {
-        nameAscetic,
-        timeAscetic,
-        resultAscetic,
-        completedDays: [],
-        status: 'active'
-    };
+   const { data: userData, error: userError } = await supabase.auth.getUser();
 
-    let ascetics = JSON.parse(
-        localStorage.getItem('key') || '[]'
+if (userError || !userData.user) {
+    alert('Сначала войди в свой аккаунт!');
+    return;
+}
+
+const { error: insertError } = await supabase
+    .from('ascetics')
+    .insert({
+        user_id: userData.user.id,
+        name: nameAscetic,
+        duration: timeAscetic,
+        expected_result: resultAscetic,
+        completed_days: [],
+        status: 'active'
+    });
+
+if (insertError) {
+    console.error('Ошибка сохранения аскезы:', insertError);
+    alert('Не удалось сохранить аскезу. Попробуй ещё раз.');
+    return;
+}
+
+window.location.href = './ascetic.html';
+});
+menu.addEventListener('click', async () => {
+    const choice = confirm(
+        'Нажми OK, чтобы открыть страницу аскез.\n' +
+        'Нажми Отмена, чтобы выйти из аккаунта.'
     );
 
-    ascetics.push(newAscetic);
-
-    localStorage.setItem('key', JSON.stringify(ascetics));
-
-    window.location.href = './ascetic.html';
+    if (choice) {
+        window.location.href = './ascetic.html';
+    } else {
+        await signOut();
+    }
 });
-menu.addEventListener('click', () => {
-   window.location.href = './ascetic.html';
-    
-})

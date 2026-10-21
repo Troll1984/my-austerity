@@ -1,18 +1,40 @@
-import { getElement } from '../components/dom';
+import { getElement } from './dom';
+import { supabase } from '../supabase';
 
 const saveAscetic = getElement('.save-ascetic');
 const back = getElement('.btn');
 interface Ascetic {
+    id: string;
     nameAscetic: string;
     timeAscetic: string;
     resultAscetic: string;
     completedDays: string[];
     status: 'active' | 'failed' | 'completed' | 'planned';
 }
-let ascetics = JSON.parse(localStorage.getItem('key') || '[]');
+let ascetics: Ascetic[] = [];
 
-function saveData() {
-    localStorage.setItem('key', JSON.stringify(ascetics));
+async function loadAscetics() {
+    const { data, error } = await supabase
+        .from('ascetics')
+        .select('*')
+        .order('created_at', { ascending: false });
+
+    if (error) {
+        console.error('Ошибка загрузки аскез:', error);
+        alert('Не удалось загрузить аскезы. Попробуй обновить страницу.');
+        return;
+    }
+
+    ascetics = (data ?? []).map((row) => ({
+        id: row.id,
+        nameAscetic: row.name,
+        timeAscetic: row.duration,
+        resultAscetic: row.expected_result,
+        completedDays: row.completed_days ?? [],
+        status: row.status
+    }));
+
+    renderAscetics();
 }
 back.addEventListener('click', () => {
      window.location.href = './index.html';
@@ -213,7 +235,7 @@ function renderAscetics() {
                 String(isCompleted)
             );
 
-            dayButton.addEventListener('click', () => {
+           dayButton.addEventListener('click', async () => {
                 // Повторная проверка непосредственно при клике
                 let actualToday = getToday();
 
@@ -228,14 +250,34 @@ function renderAscetics() {
                 let dayIndex =
                     element.completedDays.indexOf(dateString);
 
-                if (dayIndex === -1) {
+               if (dayIndex === -1) {
                     element.completedDays.push(dateString);
                 } else {
                     // Сегодняшнюю отметку можно снять до полуночи
                     element.completedDays.splice(dayIndex, 1);
                 }
 
-                saveData();
+                const { error } = await supabase
+                    .from('ascetics')
+                    .update({
+                        completed_days: element.completedDays
+                    })
+                    .eq('id', element.id);
+
+                if (error) {
+                    console.error('Ошибка сохранения отметки:', error);
+                    alert('Не удалось сохранить отметку. Попробуй ещё раз.');
+
+                    // Возвращаем предыдущий список отметок при ошибке
+                    if (dayIndex === -1) {
+                        element.completedDays.pop();
+                    } else {
+                        element.completedDays.splice(dayIndex, 0, dateString);
+                    }
+
+                    return;
+                }
+
                 renderAscetics();
             });
 
@@ -250,12 +292,27 @@ function renderAscetics() {
         deleteButton.textContent = 'Delete';
         
 
-        deleteButton.addEventListener('click', () => {
-            ascetics.splice(index, 1);
-            saveData();
-            renderAscetics();
-           
-        });        
+        deleteButton.addEventListener('click', async () => {
+    const confirmed = confirm('Ты действительно хочешь удалить эту аскезу?');
+
+    if (!confirmed) {
+        return;
+    }
+
+    const { error } = await supabase
+        .from('ascetics')
+        .delete()
+        .eq('id', element.id);
+
+    if (error) {
+        console.error('Ошибка удаления аскезы:', error);
+        alert('Не удалось удалить аскезу. Попробуй ещё раз.');
+        return;
+    }
+
+    ascetics.splice(index, 1);
+    renderAscetics();
+});
         
 
         updateStatus();
@@ -274,22 +331,19 @@ function renderAscetics() {
         );
        
        
-        saveAscetic.append(card);
-        
-        updateProgress();
-    });
- 
-    saveData();
-   
+      saveAscetic.append(card);
+updateProgress();
+});
 }
+   
+
 
 // Перерисовываем карточки и проверяем пропущенные дни
 function checkAllAscetics() {
     renderAscetics();
 }
 
-// Запускаем проверку в начале
-checkAllAscetics();
+void loadAscetics();
 
 // Планируем следующую проверку на местную полночь
 function scheduleMidnightCheck() {

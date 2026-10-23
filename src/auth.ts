@@ -121,31 +121,27 @@ authForm.addEventListener('submit', async (event) => {
 });
 
 supabase.auth.onAuthStateChange((event, session) => {
-  const isAuthenticated = Boolean(session);
-
-  authContainer.style.display = isAuthenticated ? 'none' : 'flex';
-
-  const appContainer = document.querySelector<HTMLElement>('.container');
-
-  if (appContainer) {
-    appContainer.style.display = isAuthenticated ? '' : 'none';
-  }
-
   if (event === 'SIGNED_IN' && session) {
+    authContainer.style.display = 'none';
     authMessage.textContent = '';
+
+    const appContainer = document.querySelector<HTMLElement>('.container');
+
+    if (appContainer) {
+      appContainer.style.display = '';
+    }
   }
 });
-
 // Проверяем текущую сессию при загрузке приложения.
 async function initializeAuth() {
-  const { data, error } = await supabase.auth.getSession();
+  const { error } = await supabase.auth.getSession();
 
   if (error) {
     authMessage.textContent = 'Не удалось проверить авторизацию.';
     return;
   }
 
-  const isAuthenticated = Boolean(data.session);
+  
 
   authContainer.style.display = 'none';
 

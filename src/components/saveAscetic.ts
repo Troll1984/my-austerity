@@ -1,6 +1,6 @@
 import { getElement, getForm } from '../components/dom';
 import { supabase } from '../supabase';
-import { signOut } from '../auth';
+import './lang';
 
 
 // Код для сохранения
@@ -89,14 +89,7 @@ if (insertError) {
 window.location.href = './ascetic.html';
 });
 menu.addEventListener('click', async () => {
-    const choice = confirm(
-        'Нажми OK, чтобы открыть страницу аскез.\n' +
-        'Нажми Отмена, чтобы выйти из аккаунта.'
-    );
-
-    if (choice) {
+   
         window.location.href = './ascetic.html';
-    } else {
-        await signOut();
-    }
+    
 });

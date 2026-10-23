@@ -14,22 +14,22 @@
             <header>
                 <div class="logo">
                   <img src="./src/assets/img/logo.jpg" alt="logo">
-                  <h1>My Askesis</h1>            
+                  <h1  data-translate="titleAscetic">My Askesis</h1>            
                 </div>
                 <div class="menu">
-                  <button>Reg/Open</button><button>EN</button>
+                  <button id="reg" data-translate='RegOpen'>Sign In</button><button id="language-button" data-translate="language">EN</button>
                 </div>
             </header>
             <main>
               <div class="blockForm">
                 <form  id="form-ascetic">
-                  <label for="name">Austerity Description</label>
-                  <textarea type="text" id="name" name="name"></textarea>
-                  <label for="time">Duration</label>
+                  <label for="name"  data-translate="Description">Austerity Description</label>
+                  <textarea type="text" id="name"  ></textarea>
+                  <label for="time" data-translate="Duration">Duration</label>
                   <input type="text" id="time" name="time">
-                  <label for="result">Expected Result</label>
+                  <label for="result" data-translate='Result'>Expected Result</label>
                   <textarea id="result" name="result" rows="3"></textarea>
-                  <button type="submit">Begin Austerity</button>
+                  <button type="submit" data-translate='BeginBtn'>Begin Austerity</button>
                 </form>
               </div>
             </main>
@@ -37,9 +37,9 @@
             <footer>
               <div class="bottom-navigation">
                 <ul class="nav">
-                  <li>Main</li>
-                  <li>Example Askesises</li>
-                  <li id="menu">My Ascesa</li>
+                  <li data-translate='Main'>Main</li>
+                  <li data-translate='Example'>Example Askesises</li>
+                  <li id="menu" data-translate='Sesiy'>My Ascesa</li>
                 </ul>
               </div>
 

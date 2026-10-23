@@ -1,5 +1,6 @@
 import { getElement } from './dom';
 import { supabase } from '../supabase';
+import './lang';
 
 const saveAscetic = getElement('.save-ascetic');
 const back = getElement('.btn');

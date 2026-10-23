@@ -1,5 +1,5 @@
 import { supabase } from './supabase';
-
+import './components/lang';
 const authContainer = document.createElement('div');
 authContainer.id = 'auth-container';
 
@@ -10,39 +10,16 @@ authContainer.innerHTML = `
 
     <form id="auth-form">
       <label for="auth-email">Электронная почта</label>
-      <input
-        id="auth-email"
-        type="email"
-        placeholder="you@example.com"
-        autocomplete="email"
-        required
-      />
-
+      <input id="auth-email" type="email" placeholder="you@example.com" autocomplete="email" required/>
       <label for="auth-password">Пароль</label>
-      <input
-        id="auth-password"
-        type="password"
-        placeholder="Минимум 8 символов"
-        autocomplete="current-password"
-        minlength="8"
-        required
-      />
-
+      <input id="auth-password" type="password" placeholder="Минимум 8 символов" autocomplete="current-password" minlength="8" required/>
       <button id="auth-submit" type="submit">Войти</button>
     </form>
-
-    <button id="auth-toggle" type="button">
-      Нет аккаунта? Зарегистрироваться
-    </button>
-
+    <button id="auth-toggle" type="button">Зареуструватись</button>
     <p id="auth-message" role="status"></p>
-  </div>
-`;
+  </div>`;
 
 document.body.prepend(authContainer);
-
-
-
 
 const authForm = document.querySelector<HTMLFormElement>('#auth-form')!;
 const emailInput = document.querySelector<HTMLInputElement>('#auth-email')!;
@@ -59,46 +36,33 @@ authToggle.addEventListener('click', () => {
   isSignUp = !isSignUp;
 
   authTitle.textContent = isSignUp ? 'Создать аккаунт' : 'My Askesis';
-  authSubtitle.textContent = isSignUp
-    ? 'Зарегистрируйся, чтобы сохранять свои аскезы'
-    : 'Войди в свой аккаунт';
-
+  authSubtitle.textContent = isSignUp ? 'Зарегистрируйся, чтобы сохранять свои аскезы' : 'Войди в свой аккаунт';
   authSubmit.textContent = isSignUp ? 'Зарегистрироваться' : 'Войти';
+  authToggle.textContent = isSignUp ? 'Уже есть аккаунт? Войти' : 'Нет аккаунта? Зарегистрироваться';
 
-  authToggle.textContent = isSignUp
-    ? 'Уже есть аккаунт? Войти'
-    : 'Нет аккаунта? Зарегистрироваться';
-
-  passwordInput.autocomplete = isSignUp
-    ? 'new-password'
-    : 'current-password';
-
+  passwordInput.autocomplete = isSignUp ? 'new-password' : 'current-password';
   authMessage.textContent = '';
 });
 
 authForm.addEventListener('submit', async (event) => {
   event.preventDefault();
-
   const email = emailInput.value.trim();
   const password = passwordInput.value;
 
   authSubmit.disabled = true;
   authMessage.textContent = 'Подожди...';
-
   try {
     if (isSignUp) {
       const { data, error } = await supabase.auth.signUp({
         email,
         password,
       });
-
       if (error) throw error;
-
       if (data.session) {
-        authMessage.textContent = 'Регистрация успешна!';
+        authMessage.textContent = 'Рєстрація успішна!';
       } else {
         authMessage.textContent =
-          'Проверь почту и подтверди регистрацию, если потребуется.';
+          'Підтвердіть реєстрацію. Зайдіть на вашу пошту';
       }
     } else {
       const { error } = await supabase.auth.signInWithPassword({
@@ -108,13 +72,13 @@ authForm.addEventListener('submit', async (event) => {
 
       if (error) throw error;
 
-      authMessage.textContent = 'Вход выполнен!';
+      authMessage.textContent = 'Вхід виконано!';
     }
   } catch (error) {
     authMessage.textContent =
       error instanceof Error
         ? error.message
-        : 'Не удалось выполнить операцию. Попробуй ещё раз.';
+        : 'Операція не вдала. Спробуйте ще раз.';
   } finally {
     authSubmit.disabled = false;
   }
@@ -137,14 +101,10 @@ async function initializeAuth() {
   const { error } = await supabase.auth.getSession();
 
   if (error) {
-    authMessage.textContent = 'Не удалось проверить авторизацию.';
+    authMessage.textContent = 'Не вдлося перевірити реєстрацію .';
     return;
   }
-
-  
-
   authContainer.style.display = 'none';
-
   const appContainer = document.querySelector<HTMLElement>('.container');
 
   if (appContainer) {
@@ -154,6 +114,10 @@ async function initializeAuth() {
 
 void initializeAuth();
 
+export function openAuth() {
+   authContainer.style.display = 'flex'; 
+   authMessage.textContent = ''; }
+
 export async function signOut() {
   const { error } = await supabase.auth.signOut();
 
@@ -161,3 +125,20 @@ export async function signOut() {
     alert('Не удалось выйти из аккаунта: ' + error.message);
   }
 }
+
+const reg = document.querySelector<HTMLButtonElement>('#reg'); 
+
+reg?.addEventListener('click', async () => {  
+   const { data, error } = await supabase.auth.getSession();
+    if (error) { alert('Не удалось проверить авторизацию.');
+       return; 
+      } 
+    if (data.session) {
+      const wantToSignOut = confirm( 'Ви вже увійшли в свій акаунт, бажаєте вийти?');
+    if (wantToSignOut) {
+         await signOut(); 
+        } 
+        return; 
+      }
+         openAuth(); 
+  });

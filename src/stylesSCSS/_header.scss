@@ -1,7 +1,7 @@
 @use './variables' as vars;
 header {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center; 
          
 }
@@ -20,7 +20,7 @@ header {
     }
     h1 {
      
-      font-size: 4rem;
+      font-size: 3.5rem;
       color: vars.$color-text;
        @media(max-width: 470px) {
             font-size: 2.5rem;
@@ -32,20 +32,20 @@ header {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 15px;
-    button {              
-        width: 100px;        
+    margin-top: 5px;
+    button {         
         border-radius: 8px;
-        font-size: 1.4rem;
+        font-size: 0.7rem;
         background: vars.$bg-color-button;                       
         color: vars.$color-text;
-        padding: 15px 20px;        
-        background: vars.$bg-color-button;
-        color: vars.$color-text;
+        padding: 10px 7px;      
         border: none;        
         font-weight: bold;
-        margin-top: 10px;
+        margin-top: 15px;
         box-shadow: 0px 0px 12px -1px rgba(49, 48, 48, 0.75);
+         &:hover { 
+           background: vars.$bg-color-button-inh;
+        }
         cursor: pointer;
         &:active{
             transform: scale(1.0);

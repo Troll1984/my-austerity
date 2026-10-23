@@ -1,5 +1,5 @@
 import { supabase } from './supabase';
-console.log('AUTH.TS ЗАПУСТИЛСЯ');
+
 const authContainer = document.createElement('div');
 authContainer.id = 'auth-container';
 
@@ -40,6 +40,9 @@ authContainer.innerHTML = `
 `;
 
 document.body.prepend(authContainer);
+
+
+
 
 const authForm = document.querySelector<HTMLFormElement>('#auth-form')!;
 const emailInput = document.querySelector<HTMLInputElement>('#auth-email')!;
@@ -144,12 +147,12 @@ async function initializeAuth() {
 
   const isAuthenticated = Boolean(data.session);
 
-  authContainer.style.display = isAuthenticated ? 'none' : 'flex';
+  authContainer.style.display = 'none';
 
   const appContainer = document.querySelector<HTMLElement>('.container');
 
   if (appContainer) {
-    appContainer.style.display = isAuthenticated ? '' : 'none';
+    appContainer.style.display =  '';
   }
 }
 

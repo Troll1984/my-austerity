@@ -28,13 +28,10 @@ header {
     }
 }
 .menu {    
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    display: flex;   
     margin-top: 5px;
-    button {         
-        border-radius: 8px;
+    > button:first-of-type,
+    > button:last-of-type {    
         font-size: 0.7rem;
         background: vars.$bg-color-button;                       
         color: vars.$color-text;
@@ -60,4 +57,15 @@ header {
             
         }      
     }  
+}
+.menu {
+    > button:first-of-type {
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    }
+     > button:last-of-type {
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    }
+   
 }

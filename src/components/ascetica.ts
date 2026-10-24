@@ -313,11 +313,9 @@ function renderAscetics() {
 
     ascetics.splice(index, 1);
     renderAscetics();
-});
-        
+});        
 
-        updateStatus();
-         
+        updateStatus();         
         card.append(
             name,
             time,
@@ -329,12 +327,11 @@ function renderAscetics() {
             calendarTitle,
             calendar,
             deleteButton
-        );
-       
+        );        
        
       saveAscetic.append(card);
-updateProgress();
-});
+        updateProgress();
+    });
 }
    
 

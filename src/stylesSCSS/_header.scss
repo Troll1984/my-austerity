@@ -7,19 +7,19 @@ header {
 }
 .logo {
     display: flex;
-    align-items: center;
-    gap: 10px;
+    align-items: center;   
     margin-top: 20px;   
     img {
         width: 200px;
         height: auto;
         border-radius: 50%;
         @media(max-width: 670px) {
-            display: none;
+            width: 70px;
+            
         }   
     }
     h1 {
-     
+     margin-left: 10px;
       font-size: 3.5rem;
       color: vars.$color-text;
        @media(max-width: 470px) {
@@ -29,7 +29,7 @@ header {
 }
 .menu {    
     display: flex;   
-    margin-top: 5px;
+   
     > button:first-of-type,
     > button:last-of-type {    
         font-size: 1.0rem;
@@ -50,7 +50,7 @@ header {
         }        
         @media(max-width: 470px) {
            font-size: 1rem;
-          padding: 15px 15px;;  
+           padding: 15px 15px;;  
         }      
     }  
 }

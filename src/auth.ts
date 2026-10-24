@@ -6,17 +6,18 @@ authContainer.id = 'auth-container';
 authContainer.innerHTML = `
   <div class="auth-card">
     <h2 id="auth-title">My Askesis</h2>
-    <p id="auth-subtitle">Войди в свой аккаунт или создай новый</p>
+    <p id="auth-subtitle">Увійдіть у свій акаунт або створіть новий.</p>
 
     <form id="auth-form">
-      <label for="auth-email">Электронная почта</label>
-      <input id="auth-email" type="email" placeholder="you@example.com" autocomplete="email" required/>
+      <label for="auth-email">Електронна пошта</label>
+      <input id="auth-email" type="email" placeholder="you@example.com"  />
       <label for="auth-password">Пароль</label>
-      <input id="auth-password" type="password" placeholder="Минимум 8 символов" autocomplete="current-password" minlength="8" required/>
-      <button id="auth-submit" type="submit">Войти</button>
+      <input id="auth-password" type="password" placeholder="Мінімум 8 символів" autocomplete="current-password" minlength="8" required/>
+      <button id="auth-submit" type="submit">Увійти</button>
     </form>
     <button id="auth-toggle" type="button">Зареуструватись</button>
     <p id="auth-message" role="status"></p>
+    <span id="close"><i class="fa-solid fa-xmark"></i></span>
   </div>`;
 
 document.body.prepend(authContainer);
@@ -35,10 +36,10 @@ let isSignUp = false;
 authToggle.addEventListener('click', () => {
   isSignUp = !isSignUp;
 
-  authTitle.textContent = isSignUp ? 'Создать аккаунт' : 'My Askesis';
-  authSubtitle.textContent = isSignUp ? 'Зарегистрируйся, чтобы сохранять свои аскезы' : 'Войди в свой аккаунт';
-  authSubmit.textContent = isSignUp ? 'Зарегистрироваться' : 'Войти';
-  authToggle.textContent = isSignUp ? 'Уже есть аккаунт? Войти' : 'Нет аккаунта? Зарегистрироваться';
+  authTitle.textContent = isSignUp ? 'Створіть акаунт' : 'My Askesis';
+  authSubtitle.textContent = isSignUp ? 'Зареєструватися, щоб зберігати свої аскези' : 'Увійдіть у свій акаунт';
+  authSubmit.textContent = isSignUp ? 'Зареєструватися' : 'Увійти';
+  authToggle.textContent = isSignUp ? 'Вже є акаунт? Увійти' : 'Немає акаунта? Зареєструватися';
 
   passwordInput.autocomplete = isSignUp ? 'new-password' : 'current-password';
   authMessage.textContent = '';
@@ -127,6 +128,30 @@ export async function signOut() {
 }
 
 const reg = document.querySelector<HTMLButtonElement>('#reg'); 
+async function updateRegButton() {
+  if (!reg) return;
+
+  const { data: { session } } = await supabase.auth.getSession();
+
+  if (session) {
+    reg.dataset.translate = 'MyAccount';
+  } else {
+    reg.dataset.translate = 'RegOpen';
+  }
+    reg.textContent = '';
+  reg.removeAttribute('data-translate');
+
+  // Возвращаем ключ перевода
+  reg.dataset.translate = session ? 'MyAccount' : 'RegOpen';
+
+  // Обновляем текст согласно текущему языку
+  const language = document.querySelector<HTMLElement>('#language-button');
+  void language;
+
+  reg.textContent = session ? 'My Account' : 'Sign In';
+}
+
+
 
 reg?.addEventListener('click', async () => {  
    const { data, error } = await supabase.auth.getSession();
@@ -142,3 +167,32 @@ reg?.addEventListener('click', async () => {
       }
          openAuth(); 
   });
+  const menu = document.querySelector<HTMLElement>('#menu'); 
+   const main = document.querySelector<HTMLElement>('#main'); 
+    const close = document.querySelector<HTMLElement>('#close');
+  menu?.addEventListener('click', async (event) => { 
+    event.preventDefault(); 
+    const { data, error } = await supabase.auth.getSession(); 
+    if (error) { 
+      console.error('Ошибка проверки авторизации:', error); 
+      return; 
+    }
+     if (!data.session) { 
+      alert('Увійдіть у свій акаунт, щоб переглядати збережені аскези.') 
+      return;
+     } 
+     window.location.href = './ascetic.html'; 
+    });
+
+    supabase.auth.onAuthStateChange(() => {
+  void updateRegButton();
+});
+
+void updateRegButton();
+main?.addEventListener('click', () => {
+  window.location.href = './index.html';
+})
+
+close?.addEventListener('click', () => {
+  authContainer.style.display = 'none';
+})

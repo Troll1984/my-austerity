@@ -5,7 +5,7 @@ import './lang';
 
 // Код для сохранения
 const formAscetic = getForm('#form-ascetic');
-const menu = getElement('#menu');
+
 formAscetic.addEventListener('submit', async (event) => {
     event.preventDefault();
 
@@ -48,7 +48,7 @@ formAscetic.addEventListener('submit', async (event) => {
     let endDate = parseDate(dates[1]);
 
     if (!startDate || !endDate || endDate < startDate) {
-        alert('Выбери корректный период аскезы!');
+        alert('Виберіть коректний період аскези!');
         return;
     }
 
@@ -57,7 +57,7 @@ formAscetic.addEventListener('submit', async (event) => {
     today.setHours(0, 0, 0, 0);
 
     if (startDate < today) {
-        alert('Дата начала не может быть в прошлом!');
+        alert('Дата початку не може бути в минулому!');
         return;
     }
 
@@ -65,7 +65,9 @@ formAscetic.addEventListener('submit', async (event) => {
    const { data: userData, error: userError } = await supabase.auth.getUser();
 
 if (userError || !userData.user) {
-    alert('Сначала войди в свой аккаунт!');
+    alert('Спочатку увійдіть у свій акаунт!');
+    formAscetic.reset();
+    
     return;
 }
 
@@ -86,10 +88,6 @@ if (insertError) {
     return;
 }
 
+
 window.location.href = './ascetic.html';
-});
-menu.addEventListener('click', async () => {
-   
-        window.location.href = './ascetic.html';
-    
 });

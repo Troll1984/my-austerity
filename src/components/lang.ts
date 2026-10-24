@@ -1,6 +1,7 @@
 
 const translations = {
   uk: {
+   MyAccount: 'Мій акаунт',
    titleAscetic: 'Моя Аскеза',
    Description: 'Опис аскези',
    Duration: 'Тривалість',
@@ -14,15 +15,16 @@ const translations = {
    
   },
   en: {
+    MyAccount: 'MyAccount',
     titleAscetic: 'My Askesis',
     Description: 'Austerity Description',
     Duration: 'Duration',
-    Result: 'Result',
+    Result: 'Expected Result',
     BeginBtn: 'Begin Austerity',
     RegOpen: 'Sign In',
     Main: 'Main',
     Example: 'Example Askesises',
-    Sesiy: 'My Ascesa',
+    Sesiy: 'My Asceses',
     language: 'EN',
   },
 };
@@ -30,10 +32,10 @@ const translations = {
 
 type Language = 'uk' | 'en';
 
-let currentLanguage: Language = 'uk';
+let currentLanguage: Language = 'en';
 
 function toggleLanguage(): void {
-  currentLanguage = currentLanguage === 'uk' ? 'en' : 'uk';
+  currentLanguage = currentLanguage === 'en' ? 'uk' : 'en';
    updateLanguage();
 }
 

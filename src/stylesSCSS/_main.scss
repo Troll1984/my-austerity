@@ -2,7 +2,7 @@
 .blockForm {
     margin-top: 10px;
     @media(max-width: 600px) {
-        margin-top: 40px;
+        margin-top: 30px;
     }
 }
 form {
@@ -10,7 +10,7 @@ form {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 15px;
+    gap: 10px;
     width: 75%;
     margin: 0 auto;
     font-size: 2rem;

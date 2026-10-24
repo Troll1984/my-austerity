@@ -5,7 +5,6 @@ import "flatpickr/dist/flatpickr.css";
 flatpickr("#time", {
   mode: "range",
   dateFormat: "d.m.Y",
-  locale: Ukrainian, 
-  minDate: "today"  
+  locale: Ukrainian  
 });
 

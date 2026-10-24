@@ -123,7 +123,7 @@ export async function signOut() {
   const { error } = await supabase.auth.signOut();
 
   if (error) {
-    alert('Не удалось выйти из аккаунта: ' + error.message);
+    alert('Не вдалося вийти з акаунта: ' + error.message);
   }
 }
 

@@ -1,4 +1,4 @@
-import { getElement, getForm } from '../components/dom';
+import {  getForm } from '../components/dom';
 import { supabase } from '../supabase';
 import './lang';
 

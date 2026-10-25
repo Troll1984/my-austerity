@@ -24,7 +24,14 @@ export const translations = {
    signInTitle: 'Моя Аскеза',
    signInSubtitle: 'Увійдіть у свій акаунт',
    signInButton: 'Увійти',
-   signInToggle: 'Вже є акаунт? Увійти',
+   signInToggle: 'Вже є акаунт? Увійти',  
+   gotName: 'Опис Аскези',
+   duren: 'Тривалість Аскези',
+   gotRes: 'Очікуваний результат',
+   progressTitle: 'Прогрес',
+   btnBack: 'Назад',
+   btnLang: 'UK'
+   
    
   },
   en: {
@@ -51,7 +58,14 @@ export const translations = {
     signInTitle: 'My Askesis',
     signInSubtitle: 'Log in to your account',
     signInButton: 'Sign in',
-    signInToggle: "Already have an account? Sign in"
+    signInToggle: "Already have an account? Sign in",
+    gotName: 'Austerity Description',
+    duren: 'Austerity Duration',
+    gotRes: 'Expected Result',
+    progressTitle: 'Progress',
+    btnBack: 'Back',
+    btnLang: 'EN'
+   
   },
 };
 

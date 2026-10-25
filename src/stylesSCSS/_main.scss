@@ -46,7 +46,7 @@ form {
         font-size: 1.0rem;
         font-weight: bold;   
          &:hover { 
-           background: vars.$bg-color-button-inh;
+           background: vars.$bg-color-button-hover;
         }        
         &:active{
             transform: scale(1.0);

@@ -10,7 +10,7 @@
     justify-content:space-between;    
     align-items: center;
     list-style: none;
-    background: vars.$bg-color-button;
+    background: vars.$bg-nav;
     width: 100%;
     height: auto;
     min-height: 60px;
@@ -21,7 +21,7 @@
         text-align: center;
         padding: 10px;
         &:hover { 
-           background: vars.$bg-color-button-inh;
+           background: vars.$bg-color-button-hover;
         }
     }
 }

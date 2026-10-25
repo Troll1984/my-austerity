@@ -1,7 +1,8 @@
 import { getElement } from './dom';
 import { supabase } from '../supabase';
 import './lang';
-import { getToday, parseDate, formatDate, checkAscetic } from './verificationAsceses';
+import { getToday, parseDate, formatDate, checkAscetic, } from './verificationAsceses';
+import { toggleLanguage } from './lang';
 
 // Кнопка назад
 const back = getElement('.btn');
@@ -46,7 +47,7 @@ function renderAscetics() {
     saveAscetic.innerHTML = '';
     let count: number = 0;  
     ascetics.forEach((element: Ascetic , index: number) => {
-        if (!Array.isArray(element.completedDays)) {
+        if (!Array.isArray(element.completedDays)) {   
             element.completedDays = [];
         }    
         
@@ -55,24 +56,36 @@ function renderAscetics() {
         count++;
         card.dataset.id = String(count);                
         let titleCard = document.createElement('h5');
+       
         let gotName = document.createElement('h2');
+        gotName.setAttribute('data-translate', 'gotName');
         let gotRes  = document.createElement('h2');
+        gotRes.setAttribute('data-translate', 'gotRes');
         let duren  = document.createElement('h2');
+        duren.setAttribute('data-translate', 'duren');
         let name = document.createElement('h1');
         let time = document.createElement('h1');
         let result = document.createElement('h1');
         let status = document.createElement('h4');
+        let btnLang = document.createElement('button');
+        btnLang.id = 'btnLang';
         let resizeHandle = document.createElement('div'); 
         resizeHandle.classList.add('resize-handle');
 
-        titleCard.textContent = `Аскеза №${count}`;
-        gotName.textContent = `Опис Аскези`;       
+        titleCard.textContent = `Austerity №${count}`;
+        gotName.textContent = `Austerity Description`;       
         name.textContent = ` ${element.nameAscetic}`;
-        duren.textContent = `Тривалість Аскези`; 
+        duren.textContent = `Austerity Duration`;          
         time.textContent = element.timeAscetic;
-        gotRes.textContent = `Очікуваний результат`;
+        gotRes.textContent = `Expected Result`;
         result.textContent = ` ${element.resultAscetic}`;
+        btnLang.textContent = `EN`;
+        btnLang.setAttribute('data-translate', 'btnLang');
+             btnLang.addEventListener('click', () => {
+                toggleLanguage();
+             });
 
+       
         // Разбираем диапазон Flatpickr
         let dates = element.timeAscetic.split(' to ');
         let startDate = parseDate(dates[0]);
@@ -98,16 +111,16 @@ function renderAscetics() {
             status.className = '';
 
             if (element.status === 'failed') {
-                status.textContent = '❌ Аскеза не соблюдена';
+                status.textContent = '❌ Austerity not completed.';
                 status.classList.add('status-failed');
             } else if (element.status === 'completed') {
-                status.textContent = '✅ Аскеза завершена';
+                status.textContent = '✅ Austerity completed.';
                 status.classList.add('status-completed');
             } else if (element.status === 'planned') {
-                status.textContent = '⏳ Аскеза ещё не началась';
+                status.textContent = '⏳ The austerity has not started yet';
                 status.classList.add('status-active');
             } else {
-                status.textContent = '🟢 Аскеза в процессе';
+                status.textContent = '🟢 Austerity in progress.';
                 status.classList.add('status-active');
             }
         }
@@ -117,9 +130,11 @@ function renderAscetics() {
 
         let progressTitle = document.createElement('h3');
         progressTitle.textContent = 'Progress';
+        progressTitle.setAttribute('data-translate', 'progressTitle');
 
         let progressText = document.createElement('p');
         let progressBar = document.createElement('progress');
+        
 
         progressBar.max = totalDays;
 
@@ -267,6 +282,7 @@ function renderAscetics() {
             calendarTitle,
             calendar,
             deleteButton,
+            btnLang,
             resizeHandle
         );        
 

@@ -18,7 +18,7 @@
   padding: 36px 30px;
   border-radius: 20px;
   background: vars.$bg-reg;
-  box-shadow: 0 12px 40px rgba(199, 180, 180, 0.08);
+  box-shadow: -2px 0px 23px 8px rgba(160, 102, 41, 0.8);
   box-sizing: border-box;
   h2 {
     margin: 0 0 12px;    
@@ -117,12 +117,10 @@
   }
 }
 
-#language-button-auth {
-  position: absolute;
-  bottom: 5px;  
-  width: 50px;
-  font-size: 0.8rem;
-  left: 50%;
-  transform: translateX(-50%);
+button #language-button-auth {
+  display: block;    
+  font-size: 0.8rem; 
+ 
+  
   
 }

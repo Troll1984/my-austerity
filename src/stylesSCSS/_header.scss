@@ -40,7 +40,7 @@ header {
         font-weight: bold;
         margin-top: 15px;        
          &:hover { 
-           background: vars.$bg-color-button-inh;
+           background: vars.$bg-color-button-hover;
         }
         cursor: pointer;
         &:active{

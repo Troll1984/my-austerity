@@ -22,7 +22,7 @@ formAscetic.addEventListener('submit', async (event) => {
 
     // Проверяем, что выбраны обе даты
     let dates = timeAscetic.split(' to ');
-
+  
     if (dates.length !== 2 || !dates[0] || !dates[1]) {
         alert('Выбери дату начала и окончания аскезы!');
         return;

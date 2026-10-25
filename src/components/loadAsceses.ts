@@ -59,9 +59,9 @@ function renderAscetics() {
         let gotRes  = document.createElement('h2');
         let duren  = document.createElement('h2');
         let name = document.createElement('h1');
-        let time = document.createElement('p');
+        let time = document.createElement('h1');
         let result = document.createElement('h1');
-        let status = document.createElement('h1');
+        let status = document.createElement('h4');
         let resizeHandle = document.createElement('div'); 
         resizeHandle.classList.add('resize-handle');
 

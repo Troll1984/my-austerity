@@ -33,44 +33,31 @@ formAscetic.addEventListener('submit', async (event) => {
         let [day, month, year] = value.split('.').map(Number);
         let date = new Date(year, month - 1, day);
 
-        if (
-            date.getDate() !== day ||
-            date.getMonth() !== month - 1 ||
-            date.getFullYear() !== year
-        ) {
+        if (date.getDate() !== day || date.getMonth() !== month - 1 || date.getFullYear() !== year) {
             return null;
         }
-
         return date;
     }
-
     let startDate = parseDate(dates[0]);
     let endDate = parseDate(dates[1]);
-
     if (!startDate || !endDate || endDate < startDate) {
         alert('Виберіть коректний період аскези!');
         return;
     }
-
     // Запрещаем начинать аскезу в прошлом
     let today = new Date();
     today.setHours(0, 0, 0, 0);
-
     if (startDate < today) {
         alert('Дата початку не може бути в минулому!');
         return;
     }
-
     // Создаём аскезу только после успешных проверок
    const { data: userData, error: userError } = await supabase.auth.getUser();
-
 if (userError || !userData.user) {
     alert('Спочатку увійдіть у свій акаунт!');
-    formAscetic.reset();
-    
+    formAscetic.reset();    
     return;
 }
-
 const { error: insertError } = await supabase
     .from('ascetics')
     .insert({
@@ -81,13 +68,10 @@ const { error: insertError } = await supabase
         completed_days: [],
         status: 'active'
     });
-
 if (insertError) {
-    console.error('Ошибка сохранения аскезы:', insertError);
-    alert('Не удалось сохранить аскезу. Попробуй ещё раз.');
+    console.error('Помилка збереження аскези.:', insertError);
+    alert('Не вдалося зберегти аскезу. Спробуй ще раз.');
     return;
 }
-
-
 window.location.href = './ascetic.html';
 });

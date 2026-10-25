@@ -13,6 +13,7 @@
 .auth-card {
   position: relative;
   width: 100%;
+  height: 520px;
   max-width: 420px;
   padding: 36px 30px;
   border-radius: 20px;
@@ -114,4 +115,14 @@
   .auth-card {
     padding: 28px 22px;
   }
+}
+
+#language-button-auth {
+  position: absolute;
+  bottom: 5px;  
+  width: 50px;
+  font-size: 0.8rem;
+  left: 50%;
+  transform: translateX(-50%);
+  
 }

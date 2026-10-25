@@ -288,6 +288,7 @@ function renderAscetics() {
 
         resizeHandle.addEventListener('pointerdown', (event: PointerEvent) => { 
             event.preventDefault();            
+            console.log('нажал')
         const cards = document.querySelectorAll<HTMLElement>('.ascetic-card'); 
         const startY = event.clientY; 
         const initialSizes = Array.from(cards).map(card => { 
@@ -296,7 +297,7 @@ function renderAscetics() {
         });              
          const onMove = (moveEvent: PointerEvent) => { 
             console.log('Мышка движется!', moveEvent.clientY);
-        const delta = Math.max(0, moveEvent.clientY - startY); 
+        const delta = moveEvent.clientY - startY;
         initialSizes.forEach(item => {
              item.card.style.height = `${item.height + delta}px`; 
              if (item.calendar) { 

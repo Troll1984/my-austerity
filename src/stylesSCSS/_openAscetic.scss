@@ -26,10 +26,10 @@
 .save-ascetic {       
     box-sizing: border-box;
     width: 85%;
-    margin: 30px auto;
+    gap: 10px;
+    margin: 10px auto;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 10px;       
+    grid-template-columns: 1fr 1fr 1fr;          
     @media(max-width: 1000px) {
         grid-template-columns: 1fr 1fr;
     }
@@ -48,8 +48,8 @@
 .ascetic-card {
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    height: 550px;
+    gap: 5px;
+    height: 600px;
     box-sizing: border-box;
     width: 100%;
     min-width: 0;     

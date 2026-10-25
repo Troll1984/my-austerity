@@ -1,6 +1,8 @@
 import { getElement } from './dom';
 import { supabase } from '../supabase';
 import './lang';
+import './sliderAscetica';
+
 
 const saveAscetic = getElement('.save-ascetic');
 const back = getElement('.btn');
@@ -106,19 +108,29 @@ function renderAscetics() {
             element.completedDays = [];
         }
       
-      
-
-        let card = document.createElement('div');
+          
+     
+            
+        let card = document.createElement('div');       
         card.classList.add('ascetic-card');
-
+        let gotName = document.createElement('h2');
+        let gotRes  = document.createElement('h2');
+        let duren  = document.createElement('h2');
         let name = document.createElement('h1');
         let time = document.createElement('p');
         let result = document.createElement('h3');
         let status = document.createElement('h3');
 
-        name.textContent = element.nameAscetic;
+        let resizeHandle = document.createElement('div'); 
+        resizeHandle.classList.add('resize-handle');
+
+
+        gotName.textContent = `Опис Аскези`;       
+        name.textContent = ` ${element.nameAscetic}`;
+        duren.textContent = `Тривалість Аскези`; 
         time.textContent = element.timeAscetic;
-        result.textContent = element.resultAscetic;
+        gotRes.textContent = `Очікуваний результат`;
+        result.textContent = ` ${element.resultAscetic}`;
 
         // Разбираем диапазон Flatpickr
         let dates = element.timeAscetic.split(' to ');
@@ -316,9 +328,12 @@ function renderAscetics() {
 });        
 
         updateStatus();         
-        card.append(
+        card.append(           
+            gotName,
             name,
-            time,
+            duren,
+            time,           
+            gotRes,
             result,
             status,
             progressTitle,
@@ -326,8 +341,41 @@ function renderAscetics() {
             progressBar,
             calendarTitle,
             calendar,
-            deleteButton
+            deleteButton,
+            resizeHandle
         );        
+
+        resizeHandle.addEventListener('pointerdown', (event: PointerEvent) => { 
+            event.preventDefault();
+            console.log('Нажатие на ручку работает!');
+        const cards = document.querySelectorAll<HTMLElement>('.ascetic-card'); 
+        const startY = event.clientY; 
+        const initialSizes = Array.from(cards).map(card => { 
+        const calendar = card.querySelector<HTMLElement>('.ascetic-calendar');
+        return {card, height: card.getBoundingClientRect().height, calendar, calendarHeight: calendar ? parseFloat(getComputedStyle(calendar).maxHeight) : 0}; 
+        });       
+       
+         const onMove = (moveEvent: PointerEvent) => { 
+            console.log('Мышка движется!', moveEvent.clientY);
+        const delta = Math.max(0, moveEvent.clientY - startY); 
+        initialSizes.forEach(item => {
+             item.card.style.height = `${item.height + delta}px`; 
+             if (item.calendar) { 
+                item.calendar.style.maxHeight = `${item.calendarHeight + delta}px`; 
+            } 
+        });
+     }; 
+     
+    
+    const onUp = () => {
+         window.removeEventListener('pointermove', onMove); 
+         window.removeEventListener('pointerup', onUp);
+         window.removeEventListener('pointercancel', onUp); 
+        };
+         window.addEventListener('pointermove', onMove); 
+         window.addEventListener('pointerup', onUp); 
+         window.addEventListener('pointercancel', onUp);
+    });
        
       saveAscetic.append(card);
         updateProgress();

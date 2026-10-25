@@ -1,7 +1,7 @@
 
 @use './variables' as vars;
  body {
-    display: flex;
+  display: flex;
   position: relative;
   min-width: 320px;
   min-height: 100vh;
@@ -23,9 +23,7 @@
         border: none;
     }
 }
-
-
-.save-ascetic {    
+.save-ascetic {       
     box-sizing: border-box;
     width: 85%;
     margin: 30px auto;
@@ -36,57 +34,82 @@
         grid-template-columns: 1fr 1fr;
     }
     @media(max-width: 670px) {
-        grid-template-columns: 1fr ;
+       display: flex; ;
+       overflow-y: hidden;
+       overflow-x: auto;
+       flex-wrap: nowrap;    
+       scroll-snap-type: x mandatory; 
+       -webkit-overflow-scrolling: touch;
+       > * { 
+        flex: 0 0 100%; scroll-snap-align: start; 
+        }
     }
 }
 .ascetic-card {
-   display: flex;
-   flex-direction: column;
-   gap: 10px;
-    max-height: 500px;
+    display: flex;
+    flex-direction: column;
+    gap:5px;
+    height: 550px;
     box-sizing: border-box;
     width: 100%;
     min-width: 0;   
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 5px;
     padding: 10px;
     border-radius: 16px;
     background:vars.$bg-input;    
     box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.75);
     h1 {       
-        font-size: 2rem;        
+        font-size: 1.5rem;     
+        @media(max-width: 800px) {
+            font-size: 1rem;
+        }   
     }
     h3 {
         font-size: 1.3rem;
+        @media(max-width: 800px) {
+            font-size: 1rem;
+        }   
+    }
+    p {
+        font-size: 1rem;
+        @media(max-width: 800px) {
+            font-size: 0.8rem;
+        }   
+    }
+    h2 {
+        color: #1e831e;
+        @media(max-width: 800px) {
+            font-size: 1rem;
+        }   
     }
     progress {
-    width: 100%;
-    height: 12px;
-    appearance: none;
-    -webkit-appearance: none;
-    border-radius: 15px;
-    overflow: hidden;
-    background: #fff;
-    // Chrome, Edge, Safari
-    &::-webkit-progress-bar {
+        width: 100%;
+        height: 12px;
+        appearance: none;
+        -webkit-appearance: none;
+        border-radius: 15px;
+        overflow: hidden;
         background: #fff;
-        border-radius: 15px;
-    }
+        // Chrome, Edge, Safari
+        &::-webkit-progress-bar {
+            background: #fff;
+            border-radius: 15px;
+        }
 
-    &::-webkit-progress-value {
-        background: #1e831e;
-        border-radius: 15px;
-    }
+        &::-webkit-progress-value {
+            background: #1e831e;
+            border-radius: 15px;
+        }
 
-    // Firefox
-    &::-moz-progress-bar {
-        background: #569b36;
-        border-radius: 15px;
+        // Firefox
+        &::-moz-progress-bar {
+            background: #569b36;
+            border-radius: 15px;
+            }
+        }
     }
-}
-}
-
 .ascetic-calendar {
     width: 100%;
     box-sizing: border-box;
@@ -94,7 +117,7 @@
     grid-template-columns: repeat(7, minmax(0, 1fr));
     align-content: start;
     gap: clamp(2px, 0.5vw, 6px);
-    padding: 4px;
+    padding: 2px;
     max-height: 250px;
     overflow-y: auto;
     .calendar-day {
@@ -102,22 +125,20 @@
         min-width: 0;
         border: none;
         border-radius: 8px;
-        background: hsla(72, 70%, 31%, 0.996);
+        background: hsla(72, 25%, 30%, 0.996);
         cursor: pointer;
         transition: 0.2s;
         font-size: clamp(11px, 2vw, 16px);
         &.completed {
-            background:hsla(104, 72%, 38%, 0.493);
+            background:hsla(104, 72%, 38%, 0.993);
             color: vars.$color-text;
             border: none;
         }
     }
     .empty-day {
         aspect-ratio: 1;
-    }
-   
+    }   
 }
-
 .ascetic-card button:not(.calendar-day) {
     padding: 10px 16px;
     border: none;
@@ -128,6 +149,14 @@
         background:vars.$bg-color-button;
         color: vars.$color-text;
         margin-top: auto;
-      
-
     }
+
+    .resize-handle {
+        width: 50px;
+        height: 6px;
+        margin: 10px auto 0; 
+        border-radius: 10px;
+        background: #888;
+        cursor: ns-resize;
+        touch-action: none;
+        }

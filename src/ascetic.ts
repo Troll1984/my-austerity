@@ -1,2 +1,2 @@
 import './ascetic.scss';
-import './components/ascetica';
+import './components/loadAsceses';

@@ -102,29 +102,28 @@ while (day < today && day <= end) {
 // Создаём карточки
 function renderAscetics() {
     saveAscetic.innerHTML = '';
-
+    let count: number = 0;  
     ascetics.forEach((element: Ascetic , index: number) => {
         if (!Array.isArray(element.completedDays)) {
             element.completedDays = [];
-        }
-      
-          
-     
-            
+        }    
+        
         let card = document.createElement('div');       
         card.classList.add('ascetic-card');
+        count++;
+        card.dataset.id = String(count);                
+        let titleCard = document.createElement('h5');
         let gotName = document.createElement('h2');
         let gotRes  = document.createElement('h2');
         let duren  = document.createElement('h2');
         let name = document.createElement('h1');
         let time = document.createElement('p');
-        let result = document.createElement('h3');
-        let status = document.createElement('h3');
-
+        let result = document.createElement('h1');
+        let status = document.createElement('h1');
         let resizeHandle = document.createElement('div'); 
         resizeHandle.classList.add('resize-handle');
 
-
+        titleCard.textContent = `Аскеза №${count}`;
         gotName.textContent = `Опис Аскези`;       
         name.textContent = ` ${element.nameAscetic}`;
         duren.textContent = `Тривалість Аскези`; 
@@ -328,7 +327,8 @@ function renderAscetics() {
 });        
 
         updateStatus();         
-        card.append(           
+        card.append(              
+            titleCard,        
             gotName,
             name,
             duren,
@@ -382,6 +382,10 @@ function renderAscetics() {
     });
 }
    
+   
+
+
+
 
 
 // Перерисовываем карточки и проверяем пропущенные дни

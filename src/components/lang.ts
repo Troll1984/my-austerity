@@ -30,9 +30,13 @@ export const translations = {
    gotRes: 'Очікуваний результат',
    progressTitle: 'Прогрес',
    btnBack: 'Назад',
-   btnLang: 'UK'
-   
-   
+   btnLang: 'UK',  
+   calendarTitle: 'Позначай виконані дні',
+   deleteButton: 'Видалити',
+   statusFailed: '❌ Аскезу не виконано.',
+   statusCompleted: '✅ Аскезу виконано.',
+   statusPlanned: '⏳ Аскеза ще не розпочалася',
+   statusActive: '🟢 Аскеза триває.',  
   },
   en: {
     MyAccount: 'MyAccount',
@@ -64,37 +68,37 @@ export const translations = {
     gotRes: 'Expected Result',
     progressTitle: 'Progress',
     btnBack: 'Back',
-    btnLang: 'EN'
-   
+    btnLang: 'EN',
+    calendarTitle: 'Mark your days',
+    deleteButton: 'Delete',
+    statusFailed: '❌ Austerity not completed.',
+    statusCompleted: '✅ Austerity completed.',
+    statusPlanned: '⏳ The austerity has not started yet',
+    statusActive: '🟢 Austerity in progress.'   
   },
 };
 
+type Language = 'uk' | 'en'; 
+export let currentLanguage: Language = sessionStorage.getItem('language') === 'uk' ? 'uk' : 'en';
+export function toggleLanguage(): void { 
+  currentLanguage = currentLanguage === 'en' ? 'uk' : 'en'; sessionStorage.setItem('language', currentLanguage); 
+  updateLanguage(); 
+} 
 
-
-
-type Language = 'uk' | 'en';
-
-export let currentLanguage: Language = 'en';
-
-export function toggleLanguage(): void {
-  currentLanguage = currentLanguage === 'en' ? 'uk' : 'en';
-   updateLanguage();
+export function updateLanguage(): void { 
+  document.querySelectorAll<HTMLElement>('[data-translate]').forEach((element) => { 
+    const key = element.dataset.translate as keyof typeof translations.en; 
+    const translation = translations[currentLanguage][key]; 
+    if (translation !== undefined) {
+       element.textContent = translation;
+      } 
+  }); 
 }
-
-function updateLanguage(): void {
-  document.querySelectorAll<HTMLElement>('[data-translate]').forEach((element) => {
-    const key = element.dataset.translate as keyof typeof translations.en;
-
-    element.textContent = translations[currentLanguage][key];
-  });
-}
-
-const languageButton = document.querySelector<HTMLElement>('#language-button');
-languageButton?.addEventListener('click', () => { 
-      toggleLanguage();  
-});
-const BtnLangAuth = document.querySelector<HTMLFormElement>('#language-button-auth');
-BtnLangAuth?.addEventListener('click', () => {
+export const languageButton = document.querySelector<HTMLButtonElement>('#language-button');
+// Кнопка смены языка на главной стрпнице
+languageButton?.addEventListener('click', () => {
     toggleLanguage();
-})
+    window.dispatchEvent(new Event('languageChanged'));
+});
 
+updateLanguage();

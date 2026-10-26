@@ -1,14 +1,17 @@
 import { getElement } from './dom';
 import { supabase } from '../supabase';
-import './lang';
+
 import { getToday, parseDate, formatDate, checkAscetic, } from './verificationAsceses';
-import { toggleLanguage } from './lang';
+import { translations, currentLanguage, updateLanguage, toggleLanguage } from './lang';
+
+
 
 // Кнопка назад
 const back = getElement('.btn');
 back.addEventListener('click', () => {
      window.location.href = './index.html';
 });
+
 //Обозначения типа для Ts
 const saveAscetic = getElement('.save-ascetic');
 export interface Ascetic {
@@ -68,24 +71,26 @@ function renderAscetics() {
         let result = document.createElement('h1');
         let status = document.createElement('h4');
         let btnLang = document.createElement('button');
-        btnLang.id = 'btnLang';
+
         let resizeHandle = document.createElement('div'); 
         resizeHandle.classList.add('resize-handle');
 
-        titleCard.textContent = `Austerity №${count}`;
-        gotName.textContent = `Austerity Description`;       
+        btnLang.textContent = currentLanguage === 'uk' ? 'UK': 'EN' ;
+        titleCard.textContent = currentLanguage === 'uk' ? `Аскеза №${count}` : `Austerity №${count}`;
+        gotName.textContent = translations[currentLanguage].gotName;
         name.textContent = ` ${element.nameAscetic}`;
-        duren.textContent = `Austerity Duration`;          
-        time.textContent = element.timeAscetic;
-        gotRes.textContent = `Expected Result`;
-        result.textContent = ` ${element.resultAscetic}`;
-        btnLang.textContent = `EN`;
-        btnLang.setAttribute('data-translate', 'btnLang');
-             btnLang.addEventListener('click', () => {
-                toggleLanguage();
-             });
 
-       
+        duren.textContent = translations[currentLanguage].duren;
+        time.textContent = element.timeAscetic;
+
+        gotRes.textContent = translations[currentLanguage].gotRes;
+        result.textContent = ` ${element.resultAscetic}`;
+        // Кнопка смены языка в сохраненных аскезах
+         btnLang?.addEventListener('click', () => {
+            toggleLanguage();
+            window.dispatchEvent(new Event('languageChanged'));
+        });
+      
         // Разбираем диапазон Flatpickr
         let dates = element.timeAscetic.split(' to ');
         let startDate = parseDate(dates[0]);
@@ -109,28 +114,30 @@ function renderAscetics() {
         // Статус
         function updateStatus() {
             status.className = '';
+            const language = currentLanguage;
 
-            if (element.status === 'failed') {
-                status.textContent = '❌ Austerity not completed.';
-                status.classList.add('status-failed');
-            } else if (element.status === 'completed') {
-                status.textContent = '✅ Austerity completed.';
-                status.classList.add('status-completed');
-            } else if (element.status === 'planned') {
-                status.textContent = '⏳ The austerity has not started yet';
-                status.classList.add('status-active');
-            } else {
-                status.textContent = '🟢 Austerity in progress.';
-                status.classList.add('status-active');
-            }
+          if (element.status === 'failed') {
+            status.textContent = translations[language].statusFailed;
+            status.classList.add('status-failed');
+                } else if (element.status === 'completed') {
+            status.textContent = translations[language].statusCompleted;
+            status.classList.add('status-completed');
+                } else if (element.status === 'planned') {
+            status.textContent = translations[language].statusPlanned;
+            status.classList.add('status-active');
+                } else {
+            status.textContent = translations[language].statusActive;
+            status.classList.add('status-active');
+        }
         }
 
         // Прогресс
+        
         let totalDays = Math.round((endDate.getTime() - startDate.getTime()) / 86400000) + 1;
 
+         const language = currentLanguage;
         let progressTitle = document.createElement('h3');
-        progressTitle.textContent = 'Progress';
-        progressTitle.setAttribute('data-translate', 'progressTitle');
+        progressTitle.textContent = translations[language].progressTitle;
 
         let progressText = document.createElement('p');
         let progressBar = document.createElement('progress');
@@ -146,10 +153,10 @@ function renderAscetics() {
             progressText.textContent =
                 `${completed} / ${totalDays} days (${Math.round(completed / totalDays * 100)}%)`;
         }
-
+       
         // Календарь
         let calendarTitle = document.createElement('h3');
-        calendarTitle.textContent = 'Mark your days';
+        calendarTitle.textContent = translations[language].calendarTitle;
 
         let calendar = document.createElement('div');
         calendar.classList.add('ascetic-calendar');
@@ -236,13 +243,18 @@ function renderAscetics() {
 
             calendar.append(dayButton);
         }
+        window.addEventListener('languageChanged', () => {
+            updateLanguage();
+            renderAscetics();
+        });
+
 
         // Удаление карточки
         let deleteButton = document.createElement('button');
         
         
         deleteButton.type = 'button';
-        deleteButton.textContent = 'Delete';
+        deleteButton.textContent = translations[language].deleteButton;
         
 
         deleteButton.addEventListener('click', async () => {
@@ -281,8 +293,8 @@ function renderAscetics() {
             progressBar,
             calendarTitle,
             calendar,
-            deleteButton,
-            btnLang,
+            deleteButton, 
+            btnLang,          
             resizeHandle
         );        
 

@@ -1,5 +1,5 @@
 import { supabase } from './supabase';
-import { translations, currentLanguage, toggleLanguage } from './components/lang';
+import { translations, toggleLanguage, updateLanguage, currentLanguage } from './components/lang';
 
 const authContainer = document.createElement('div');
 authContainer.id = 'auth-container';
@@ -25,6 +25,7 @@ authContainer.innerHTML = `
 
 
 document.body.prepend(authContainer);
+updateLanguage();
 
 const authForm = document.querySelector<HTMLFormElement>('#auth-form')!;
 const emailInput = document.querySelector<HTMLInputElement>('#auth-email')!;
@@ -34,22 +35,35 @@ const authSubtitle = document.querySelector<HTMLParagraphElement>('#auth-subtitl
 const authSubmit = document.querySelector<HTMLButtonElement>('#auth-submit')!;
 const authToggle = document.querySelector<HTMLButtonElement>('#auth-toggle')!;
 const authMessage = document.querySelector<HTMLParagraphElement>('#auth-message')!;
+const languageBtn = document.querySelector<HTMLButtonElement>('#language-button-auth')!;
 
 let isSignUp = false;
-function updateAuthTexts(): void { 
-  const t = translations[currentLanguage]; 
-  authTitle.textContent = isSignUp ? t.signUpTitle : t.signInTitle; 
-  authSubtitle.textContent = isSignUp ? t.signUpSubtitle : t.signInSubtitle; 
-  authSubmit.textContent = isSignUp ? t.signUpButton : t.signInButton; 
-  authToggle.textContent = isSignUp ? t.signUpToggle : t.signInToggle; 
+function updateAuthTexts(): void {
+  updateLanguage();
+
+  const language = sessionStorage.getItem('language') === 'uk' ? 'uk' : 'en';
+  const t = translations[language];
+
+  authTitle.textContent = isSignUp ? t.signUpTitle : t.signInTitle;
+  authSubtitle.textContent = isSignUp ? t.signUpSubtitle : t.signInSubtitle;
+  authSubmit.textContent = isSignUp ? t.signUpButton : t.signInButton;
+  authToggle.textContent = isSignUp ? t.signUpToggle : t.signInToggle;
 }
+updateAuthTexts();
 
-const BtnLangAuth = document.querySelector<HTMLButtonElement>('#language-button-auth');
-
-BtnLangAuth?.addEventListener('click', () => {
-    toggleLanguage();
-    updateAuthTexts();
+ languageBtn.textContent = currentLanguage === 'uk' ? 'UK' : 'EN'; 
+ languageBtn.addEventListener('click', () => { 
+  toggleLanguage();
+  updateAuthTexts(); 
+  languageBtn.textContent = currentLanguage === 'uk' ? 'UK' : 'EN'; 
+  window.dispatchEvent(new Event('languageChanged')); 
 });
+
+
+
+
+
+
 
 authToggle.addEventListener('click', () => { 
   isSignUp = !isSignUp; updateAuthTexts(); 
@@ -144,27 +158,22 @@ export async function signOut() {
 }
 
 const reg = document.querySelector<HTMLButtonElement>('#reg'); 
-async function updateRegButton() {
-  if (!reg) return;
+const mainLanguageButton =
+  document.querySelector<HTMLButtonElement>('#language-button');
 
-  const { data: { session } } = await supabase.auth.getSession();
+mainLanguageButton?.addEventListener('click', () => {
+  setTimeout(() => {
+    void updateRegButton();
+  }, 0);
+});
 
-  if (session) {
-    reg.dataset.translate = 'MyAccount';
-  } else {
-    reg.dataset.translate = 'RegOpen';
-  }
-    reg.textContent = '';
-  reg.removeAttribute('data-translate');
 
-  // Возвращаем ключ перевода
-  reg.dataset.translate = session ? 'MyAccount' : 'RegOpen';
-
-  // Обновляем текст согласно текущему языку
-  const language = document.querySelector<HTMLElement>('#language-button');
-  void language;
-
-  reg.textContent = session ? 'My Account' : 'Sign In';
+async function updateRegButton() { 
+  if (!reg) return; 
+  const { data: { session } } = await supabase.auth.getSession(); 
+  const language = sessionStorage.getItem('language') === 'uk' ? 'uk' : 'en'; 
+  const t = translations[language]; const key = session ? 'MyAccount' : 'RegOpen'; 
+  reg.dataset.translate = key; reg.textContent = t[key]; 
 }
 
 

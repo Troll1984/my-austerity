@@ -10,6 +10,7 @@ export default defineConfig({
     input: {
     main: resolve(rootDir, 'index.html'),
     ascetic: resolve(rootDir, 'ascetic.html'),
+    example: resolve(rootDir, 'example.html'),
             },
         },
     },

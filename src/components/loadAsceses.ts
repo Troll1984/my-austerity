@@ -34,14 +34,19 @@ async function loadAscetics() {
         alert('Не вдалося завантажити аскези. Спробуй оновити сторінку.');
         return;
     }
+     console.log('Аскезы из Supabase:', data);
+        console.log('Ошибка загрузки:', error);
     ascetics = (data ?? []).map((row) => ({
+       
         id: row.id,
         nameAscetic: row.name,
         timeAscetic: row.duration,
         resultAscetic: row.expected_result,
         completedDays: row.completed_days ?? [],
         status: row.status
+        
     }));
+    
     renderAscetics();
 }
 

@@ -1,0 +1,29 @@
+header {
+    margin-top: 50px;
+    .info {
+        height: 700px;
+        overflow-y: auto;
+        overflow-x: hidden;
+        box-sizing: border-box;
+        padding: 20px;
+        scrollbar-width: thin;
+        scrollbar-color: #3b2308 transparent;
+     
+    }
+        h3 {
+        text-align: center;
+        margin-top: 20px;
+    }
+    p {
+        text-align:start;
+        margin-top: 10px;
+    }
+    .list {
+        list-style:decimal ;
+        text-align: start;
+    }
+    .list2 {
+        list-style: disc;
+        text-align: start;
+    }
+}

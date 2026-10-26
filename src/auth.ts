@@ -221,3 +221,4 @@ main?.addEventListener('click', () => {
 close?.addEventListener('click', () => {
   authContainer.style.display = 'none';
 })
+

@@ -17,3 +17,8 @@ export function getForm(selector: string): HTMLFormElement {
     return element;
 }
 
+ const exampleBtn = document.querySelector<HTMLElement>('#example');
+
+exampleBtn?.addEventListener('click', () => {
+    window.location.href = './example.html';
+});

@@ -17,6 +17,13 @@ form {
     @media(max-width: 600px) {
         width: 100%;
     }
+    label {
+        box-sizing: border-box;
+        width: 75%;
+        text-align: center;
+        line-height: 1;
+        font-weight: 500;
+    }
     > input {        
         width: 75%;
         height: 40px;
@@ -43,7 +50,7 @@ form {
         background: vars.$bg-color-button;
         color: vars.$color-text;
         border: none;
-        font-size: 1.0rem;
+        font-size: 1.1rem;
         font-weight: bold;   
          &:hover { 
            background: vars.$bg-color-button-hover;

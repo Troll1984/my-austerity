@@ -31,7 +31,7 @@ export const translations = {
    progressTitle: 'Прогрес',
    btnBack: 'Назад',
    btnLang: 'UK',  
-   calendarTitle: 'Позначай виконані дні',
+   calendarTitle: 'Позначайте виконані дні',
    deleteButton: 'Видалити',
    statusFailed: '❌ Аскезу не виконано.',
    statusCompleted: '✅ Аскезу виконано.',

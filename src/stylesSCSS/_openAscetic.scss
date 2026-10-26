@@ -56,14 +56,14 @@
     padding: 10px;
     border-radius: 16px;
     border: 1px solid hsla(23, 21%, 12%, 0.148);;
-    background:vars.$bg-input1;    
-    
+    background:vars.$bg-input1;        
     h1 {       
+        width: 100%;
         font-size: 1.5rem;  
         font-weight: 400; 
         border: 1px solid #fff; 
         padding: 10px; 
-        border-radius: 5px;
+        border-radius: 5px;      
         @media(max-width: 800px) {
             font-size: 1.0rem;
             

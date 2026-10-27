@@ -1,6 +1,6 @@
 
 @use './variables' as vars;
- body {
+ body {   
   display: flex;
   position: relative;
   min-width: 320px;
@@ -24,15 +24,12 @@
     }
 }
 .save-ascetic {       
-    box-sizing: border-box;
-    width: 85%;
-    gap: 10px;
-    margin: 10px auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;          
-    @media(max-width: 1000px) {
-        grid-template-columns: 1fr 1fr;
-    }
+   box-sizing: border-box; 
+   width: 85%;
+   height: auto;
+   gap: 10px;
+   margin: 10px auto;
+   display: flex;       
     @media(max-width: 670px) {
        display: flex; ;
        overflow-y: hidden;
@@ -48,15 +45,22 @@
 .ascetic-card {
     display: flex;
     flex-direction: column;
-    gap: 5px;
-    height: 600px;
+    gap: 5px;        
     box-sizing: border-box;
-    width: 100%;
+    width:100%;
+    min-height: 650px;
+    height: 550px;
     min-width: 0;     
     padding: 10px;
     border-radius: 16px;
     border: 1px solid hsla(23, 21%, 12%, 0.148);;
-    background:vars.$bg-input1;        
+    background:vars.$bg-input1;   
+    margin-top: 20px;   
+    box-sizing: border-box;  
+    @media(max-width: 670px) {
+        width: 100%;
+    }
+        
     h1 {       
         width: 100%;
         font-size: 1.5rem;  
@@ -170,7 +174,7 @@
     cursor: pointer;
 }
  button {
-        background:vars.$bg-color-button;
+        background:vars.$bg-color-button1;
         color: vars.$color-text;
         margin-top: auto;
         
@@ -200,6 +204,6 @@
         }
 
         #btnLang {
-            background: vars.$bg-color-button-other;
-            color: #000;
+            background: vars.$bg-color-button;
+            
         }

@@ -32,21 +32,22 @@ header {
    
     > button:first-of-type,
     > button:last-of-type {    
-        font-size: 1.3rem;
-        background: vars.$bg-color-button;                       
+        font-size: 1.0rem;
+        background: vars.$bg-color-button1;                       
         color: vars.$color-text;
-        padding: 8px 7px;      
+        padding: 12px 12px;      
         border: none;        
         font-weight: bold;
-        margin-top: 15px;        
-         &:hover { 
+        margin-top: 15px;     
+        box-shadow: 7px 3px 14px 1px rgba(0,0,0,0.75);   
+        &:hover { 
            background: vars.$bg-color-button-hover;
         }
         cursor: pointer;
         &:active{
-            transform: scale(1.0);
+            transform: scale(0.95);
             box-shadow: none;
-            background: vars.$bg-color-button;
+            
         }        
         @media(max-width: 470px) {
            font-size: 1rem;

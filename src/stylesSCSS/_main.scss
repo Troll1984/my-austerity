@@ -1,16 +1,13 @@
 @use './variables' as vars;
 .blockForm {
     margin-top: 10px;
-    @media(max-width: 600px) {
-        margin-top: 30px;
     }
-}
 form {
     box-sizing: border-box;    
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
+    gap: 15px;
     width: 75%;
     margin: 0 auto;
     font-size: 2rem;
@@ -52,11 +49,12 @@ form {
         border: none;
         font-size: 1.1rem;
         font-weight: bold;   
+        box-shadow: 7px 3px 14px 1px rgba(0,0,0,0.75); 
          &:hover { 
            background: vars.$bg-color-button-hover;
         }        
         &:active{
-            transform: scale(1.0);
+            transform: scale(0.95);
             box-shadow: none;
             background: vars.$bg-color-button;
         }

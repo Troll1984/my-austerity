@@ -248,10 +248,7 @@ function renderAscetics() {
 
             calendar.append(dayButton);
         }
-        window.addEventListener('languageChanged', () => {
-            updateLanguage();
-            renderAscetics();
-        });
+      
 
 
         // Удаление карточки
@@ -358,6 +355,11 @@ function scheduleMidnightCheck() {
         scheduleMidnightCheck();
     }, delay);
 }
+
+  window.addEventListener('languageChanged', () => {
+            updateLanguage();
+            renderAscetics();
+        });
 
 scheduleMidnightCheck();
 

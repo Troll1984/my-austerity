@@ -1,8 +1,12 @@
 
 @use './variables' as vars;
  body {   
+     position: relative;
+    width: 100%;
   display: flex;
+  flex-direction: column;
   position: relative;
+  align-items: center;
   min-width: 320px;
   min-height: 100vh;
   background: url('../assets/img/background.avif') no-repeat center / cover;
@@ -23,42 +27,100 @@
         border: none;
     }
 }
-.save-ascetic {       
+.buttons-arrow {
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    width: 100%;
+    padding: 10px;
+    font-size: 2.5rem;    
+    top: 40%;
+    @media(max-width: 600px) {
+        display: none;
+    }
+    > #left,
+      #right{
+        background: hsla(22, 15%, 54%, 0.448);
+        border: none;
+        border-radius: 8px;
+
+    }
+   }
+.save-ascetic {   
+   
+   min-width: 0;  
    box-sizing: border-box; 
-   width: 85%;
+   width: 90%;
    height: auto;
+   min-height: 650px;
    gap: 10px;
-   margin: 10px auto;
-   display: flex;       
+   margin: 0px auto;
+   display: flex;  
+   flex-wrap: nowrap;
+   overflow-x: scroll;
+   scrollbar-width: none;
+   padding: 0;       
+   scroll-behavior: smooth;  
+   @media(max-width: 1200px) {
+    min-height: 750px;
+    margin-top: 50px;
+   }
     @media(max-width: 670px) {
+        margin-top: 10px;
        display: flex; ;
        overflow-y: hidden;
        overflow-x: auto;
        flex-wrap: nowrap;    
        scroll-snap-type: x mandatory; 
-       -webkit-overflow-scrolling: touch;
+        scrollbar-width:auto;
+       -webkit-overflow-scrolling: touch;       
+       width: 95%;
        > * { 
         flex: 0 0 100%; scroll-snap-align: start; 
         }
     }
 }
 .ascetic-card {
+    position: relative;
+    flex: 0 0 400px;
+    width: 400px;
     display: flex;
     flex-direction: column;
     gap: 5px;        
-    box-sizing: border-box;
-    width:100%;
-    min-height: 650px;
-    height: 550px;
-    min-width: 0;     
+    box-sizing: border-box;   
+    height: 650px;        
     padding: 10px;
     border-radius: 16px;
     border: 1px solid hsla(23, 21%, 12%, 0.148);;
     background:vars.$bg-input1;   
-    margin-top: 20px;   
-    box-sizing: border-box;  
+    margin-top: 50px;   
+    overflow: hidden;
+    scroll-snap-type: x mandatory;
+    @media(max-width: 670px) {
+         margin-top: 20px;
+        flex: 0 0 100%;
+        height: 650px;
+        scroll-snap-align: start;
+        scroll-snap-stop: always;
+        
+    }
+      
+    .card-buttons {
+         display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+    width: 100%;
+    margin-top: auto;
+    margin-bottom: 25px;
+
+    flex-shrink: 0;
+    }
+
     @media(max-width: 670px) {
         width: 100%;
+        
     }
         
     h1 {       
@@ -206,4 +268,20 @@
         #btnLang {
             background: vars.$bg-color-button;
             
+        }
+
+        h1#title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            @media(max-width: 1200px) {
+                margin-top: 30px;
+            }
+            @media(max-width: 600px){
+                     margin-top: 10px;
+                      font-size: 2.0rem;
+            }
+          
+           
         }

@@ -280,54 +280,69 @@ function renderAscetics() {
     ascetics.splice(index, 1);
     renderAscetics();
 });        
-        updateStatus();         
-        card.append(              
-            titleCard,        
-            gotName,
-            name,
-            duren,
-            time,           
-            gotRes,
-            result,
-            status,
-            progressTitle,
-            progressText,
-            progressBar,
-            calendarTitle,
-            calendar,
-            deleteButton, 
-            btnLang,          
-            resizeHandle
-        );        
+const cardButtons = document.createElement('div');
+cardButtons.classList.add('card-buttons');
 
-        resizeHandle.addEventListener('pointerdown', (event: PointerEvent) => { 
-            event.preventDefault();            
-            console.log('нажал')
-        const cards = document.querySelectorAll<HTMLElement>('.ascetic-card'); 
-        const startY = event.clientY; 
-        const initialSizes = Array.from(cards).map(card => { 
-        const calendar = card.querySelector<HTMLElement>('.ascetic-calendar');
-        return {card, height: card.getBoundingClientRect().height, calendar, calendarHeight: calendar ? parseFloat(getComputedStyle(calendar).maxHeight) : 0}; 
-        });              
-         const onMove = (moveEvent: PointerEvent) => { 
-            console.log('Мышка движется!', moveEvent.clientY);
+
+
+
+cardButtons.append(deleteButton, btnLang);
+       updateStatus();
+
+card.append(    
+titleCard,
+gotName,
+name,
+duren,
+time,
+gotRes,
+result,
+status,
+progressTitle,
+progressText,
+progressBar,
+calendarTitle,
+calendar,
+cardButtons,
+resizeHandle
+);
+
+    resizeHandle.addEventListener('pointerdown', (event: PointerEvent) => {
+    event.preventDefault();
+
+    const card = resizeHandle.closest<HTMLElement>('.ascetic-card');
+
+    if (!card) return;
+
+    const calendar = card.querySelector<HTMLElement>('.ascetic-calendar');
+
+    const startY = event.clientY;
+    const initialHeight = card.getBoundingClientRect().height;
+
+    const calendarHeight = calendar
+        ? parseFloat(getComputedStyle(calendar).maxHeight)
+        : 0;
+
+    const onMove = (moveEvent: PointerEvent) => {
         const delta = moveEvent.clientY - startY;
-        initialSizes.forEach(item => {
-             item.card.style.height = `${item.height + delta}px`; 
-             if (item.calendar) { 
-                item.calendar.style.maxHeight = `${item.calendarHeight + delta}px`; 
-            } 
-        });
-     };     
+
+        card.style.height = `${initialHeight + delta}px`;
+
+        if (calendar) {
+            calendar.style.maxHeight = `${calendarHeight + delta}px`;
+        }
+    };
+
     const onUp = () => {
-         window.removeEventListener('pointermove', onMove); 
-         window.removeEventListener('pointerup', onUp);
-         window.removeEventListener('pointercancel', onUp); 
-        };
-         window.addEventListener('pointermove', onMove); 
-         window.addEventListener('pointerup', onUp); 
-         window.addEventListener('pointercancel', onUp);
-    });
+        window.removeEventListener('pointermove', onMove);
+        window.removeEventListener('pointerup', onUp);
+        window.removeEventListener('pointercancel', onUp);
+    };
+
+    window.addEventListener('pointermove', onMove);
+    window.addEventListener('pointerup', onUp);
+    window.addEventListener('pointercancel', onUp);
+});
        
       saveAscetic.append(card);
         updateProgress();

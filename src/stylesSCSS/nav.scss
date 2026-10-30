@@ -11,9 +11,7 @@
     align-items: center;
     list-style: none;    
     width: 100%;
-    height: auto;   
-    margin-top: 40px;   
-   
+    height: auto;     
     > li {
         background: vars.$bg-color-button;
         font-size: 1.0rem;
@@ -23,7 +21,11 @@
         text-align: center;
         padding: 12px 10px;
         border: 1px solid vars.$border-nav;    
-         box-shadow: -3px -9px 18px -5px rgba(0,0,0,0.66);  
+        box-shadow: -3px -9px 18px -5px rgba(0,0,0,0.66);  
+        cursor: pointer;
+        &:hover { 
+           background: vars.$bg-color-button-hover;
+        }  
         &:active {
             transform: scale(0.95);
             box-shadow: none;

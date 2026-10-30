@@ -24,6 +24,10 @@ form {
         margin-top: 50px;
         gap: 30px;
     }
+    @media(max-width: 800px) {
+        margin-top: 20px;
+        gap: 20px
+    }
     @media(max-width: 600px) {
         width: 100%;
          gap: 15px;
@@ -35,6 +39,11 @@ form {
         text-align: center;
         line-height: 1;
         font-weight: 500;
+         @media(max-width: 600px) {
+            width: 100%;
+            font-size: 1.7rem;
+           
+         }
     }
     > input {        
         width: 75%;
@@ -43,6 +52,9 @@ form {
         background: vars.$bg-input;
         color: vars.$color-text;
         font-size: 1.0rem;
+         @media(max-width: 600px) {
+            width: 85%;
+         }
     }
     textarea {
         box-sizing: border-box;       
@@ -55,9 +67,13 @@ form {
         font-size: 1.0rem;
         overflow: hidden;
         resize: none;
+        @media(max-width: 600px) {
+            width: 85%;
+            min-height: 80px;
+         }
     }
     button {
-        padding: 15px 15px;
+        padding: 10px 15px;
         border-radius: 8px;
         background: vars.$bg-color-button;
         color: vars.$color-text;

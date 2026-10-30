@@ -3,6 +3,7 @@ import { supabase } from '../supabase';
 
 import { getToday, parseDate, formatDate, checkAscetic, } from './verificationAsceses';
 import { translations, currentLanguage, updateLanguage, toggleLanguage } from './lang';
+import './slider';
 
 
 
@@ -281,7 +282,7 @@ function renderAscetics() {
     renderAscetics();
 });        
 const cardButtons = document.createElement('div');
-cardButtons.classList.add('card-buttons');
+cardButtons.classList.add('.card-buttons');
 
 
 

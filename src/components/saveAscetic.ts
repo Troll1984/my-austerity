@@ -3,6 +3,7 @@ import { supabase } from '../supabase';
 import './lang';
 
 
+
 // Код для сохранения
 const formAscetic = getForm('#form-ascetic');
 

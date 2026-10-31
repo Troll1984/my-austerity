@@ -3,8 +3,9 @@ import './style.scss'
 import { datePicker } from './components/calendar';
 import { asceticTemplates, templateStorageKey } from './components/templateAscesa';
 import './components/saveAscetic';
-import './auth';
+import './auth'; 
 
+// Вставка шаблонов в форму и клендарь
 
 const selectedTemplateId = sessionStorage.getItem(templateStorageKey);
 

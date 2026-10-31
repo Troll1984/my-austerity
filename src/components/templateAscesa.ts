@@ -1,3 +1,6 @@
+
+
+// Создание шаблонов 
 export interface AsceticTemplate {
   id: string;
   title: string;
@@ -27,6 +30,14 @@ export const asceticTemplates: AsceticTemplate[] = [
     durationDays: 14,
   },
   {
+    id: 'daily-reading',
+    title: 'Читати щодня',
+    icon: '📖',
+    description: 'Читати щонайменше 20 хвилин щодня.',
+    result: 'Сформувати звичку читати регулярно.',
+    durationDays: 21,
+  },
+   {
     id: 'daily-reading',
     title: 'Читати щодня',
     icon: '📖',

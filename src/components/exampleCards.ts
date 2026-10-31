@@ -57,7 +57,7 @@ btnClose1?.addEventListener('click', () => {
     logo1.style.display = 'none';
 })
 
-
+// Отправляет шаблоны в форму при нажатии на кнопки
 document.querySelectorAll<HTMLButtonElement>('.template-use').forEach((button) => {
   button.addEventListener('click', () => {
     const selectedCard = button.closest<HTMLElement>('.template-card');
@@ -66,9 +66,6 @@ document.querySelectorAll<HTMLButtonElement>('.template-use').forEach((button) =
     document.querySelectorAll('.template-card').forEach((card) => {
       card.classList.remove('selected');
       card.querySelector('.template-use')!.textContent = 'Обрати';
-    });
-
-    selectedCard.classList.add('selected');
-    button.textContent = 'Обрано ✓';
+    });   
   });
 });

@@ -4,7 +4,7 @@
     display: none;
     align-items: center;   
     margin-top: 20px;   
-    @media(max-width: 1400px) {
+    @media(max-width: 1200px) {
         display: flex;
         margin-top: 70px;
     }
@@ -52,7 +52,7 @@
     width:90%;
     overflow: hidden;    
     box-sizing: border-box;
-    scrollbar-width: none;
+    scrollbar-width:thin;
     @media(max-width: 670px) {
         width: 95%;
         overflow: visible;
@@ -62,14 +62,18 @@
         position: absolute;
         top: 10px;
         right: 10px;       
-        cursor: pointer;
+        cursor: pointer;       
         background: vars.$bg-color-button;
         color:vars.$color-text;;
         box-shadow: 0px 0px 12px -1px rgba(49, 48, 48, 0.75);
         border-radius: 8px;
         font-size: 1.0rem;
-        padding: 8px 15px;
+        padding: 20px 20px;
         border: none;
+        @media(max-width: 600px) {
+             padding: 10px 10px;
+             margin-top: 10px;
+        }
     }
 }
 .buttons-arrow {
@@ -92,22 +96,30 @@
     }
     
    }
-.save-ascetic {             
-   min-width: 0;  
-   box-sizing: border-box; 
-   width: 100%;
-   height: auto;   
-   min-height: 650px;
-   gap: 10px;  
-   display: flex; 
-   flex-wrap: nowrap; 
-   transition: transform 0.4s ease; 
+.save-ascetic {
+  min-width: 0;
+  box-sizing: border-box;
+  width: 100%;
+  height: auto;
+  min-height: 650px;
+  gap: 10px;
+  display: flex;
+  flex-wrap: nowrap;
+
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
     
    @media(max-width: 1200px) {
     min-height: 750px;
     margin-top: 70px;
+     
+        
+        
    }
-    @media(max-width: 670px) {
+    @media(max-width: 600px) {
         margin-top: 10px;
         overflow-x: auto;
         overflow-y: hidden;
@@ -262,7 +274,7 @@
     }   
 }
 .ascetic-card button:not(.calendar-day) {
-    padding: 10px 16px;
+    padding: 10px 15px;
     border: none;
     border-radius: 8px;
     cursor: pointer;
@@ -270,7 +282,8 @@
  button {
         background:vars.$bg-color-button1;
         color: vars.$color-text;  
-        margin-top: auto;      
+        margin-top: auto; 
+           
     }
     .resize-handle {
         width: 100px;

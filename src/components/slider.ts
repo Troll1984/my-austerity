@@ -1,33 +1,24 @@
 const left = document.querySelector<HTMLButtonElement>('#left');
 const right = document.querySelector<HTMLButtonElement>('#right');
- 
-const saveAscetic = document.querySelector<HTMLElement>('.save-ascetic');
-const wrapper = document.querySelector<HTMLElement>('.slider-wrapper');
+const slider = document.querySelector<HTMLElement>('.save-ascetic');
 
-let move = 0;
-const step = 410;
+function scrollByCard(direction: -1 | 1): void {
+  if (!slider) return;
 
-right?.addEventListener('click', () => {
+  const card = slider.querySelector<HTMLElement>('.ascetic-card');
+  if (!card) return;
 
-    if (!saveAscetic || !wrapper) return;
+  const gap = parseFloat(getComputedStyle(slider).gap) || 0;
+  const step = card.getBoundingClientRect().width + gap;
 
-    const maxMove = saveAscetic.scrollWidth - wrapper.clientWidth;
-    move = Math.min(move + step, maxMove);
+  slider.scrollBy({
+    left: direction * step,
+    behavior: 'smooth',
+  });
+}
 
-    saveAscetic.style.transform = `translateX(-${move}px)`;
-
-});
-
-left?.addEventListener('click', () => {
-
-    if (!saveAscetic) return;
-
-    move = Math.max(move - step, 0);
-
-    saveAscetic.style.transform = `translateX(-${move}px)`;
-
-});
-
+left?.addEventListener('click', () => scrollByCard(-1));
+right?.addEventListener('click', () => scrollByCard(1));
 
 
 

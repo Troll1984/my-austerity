@@ -1,16 +1,42 @@
-header {
+@use './variables' as vars;
+@use './header';
+main {
     margin-top: 50px;
     .info {
-        height: 700px;
+        display: none;
+        height: 600px;
         overflow-y: auto;
         overflow-x: hidden;
         box-sizing: border-box;
-        padding: 20px;
+        padding: 30px;
         scrollbar-width: thin;
         scrollbar-color: #3b2308 transparent;
+        background: vars.$bg-input;
+        border-radius: 10px;
+        @media(max-width: 1400px){
+            height: 500px;
+        }
+        @media(max-width: 1400px){
+            height: 500px;
+        }
+        @media(max-width: 1200px){
+            height: 1000px;
+            width: 90%;
+            margin: 0 auto;
+        }
+        @media(max-width: 800px){
+            height: 700px;
+            width: 90%;
+            margin: 0 auto;
+        }
+        @media(max-width: 600px){
+            height: 500px;
+            width: 100%;
+            margin: 0 auto;
+        }
      
     }
-        h3 {
+        h3, h2 {
         text-align: center;
         margin-top: 20px;
     }
@@ -26,4 +52,25 @@ header {
         list-style: disc;
         text-align: start;
     }
+}
+.img-background {      
+        width: 50%;           
+        margin: 0 auto;
+        object-fit: cover;  
+        @media(max-width: 1400px) {
+        width: 40%; 
+        }     
+        @media(max-width: 1200px) {
+        width: 60%; 
+        margin-top: 100px;
+        }     
+        img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        object-fit: cover;  
+        box-shadow: 0px 0px 32px 9px rgba(92, 57, 5, 0.79);  
+        
+        }
 }

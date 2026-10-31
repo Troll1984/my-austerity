@@ -13,6 +13,9 @@
         @media(max-width: 1200px) {
         width: 60%; 
         margin-top: 100px;
+        @media(max-width: 600px) {
+                width: 100%;
+        }
         }     
         img {
         display: block;

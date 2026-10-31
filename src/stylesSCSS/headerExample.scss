@@ -1,61 +1,11 @@
 @use './variables' as vars;
 @use './header';
-main {
-    margin-top: 50px;
-    .info {
-        display: none;
-        height: 600px;
-        overflow-y: auto;
-        overflow-x: hidden;
-        box-sizing: border-box;
-        padding: 30px;
-        scrollbar-width: thin;
-        scrollbar-color: #3b2308 transparent;
-        background: vars.$bg-input;
-        border-radius: 10px;
-        @media(max-width: 1400px){
-            height: 450px;
-        }
-        @media(max-width: 1400px){
-            height: 500px;
-        }
-        @media(max-width: 1200px){
-            height: 1000px;
-            width: 90%;
-            margin: 0 auto;
-        }
-        @media(max-width: 800px){
-            height: 750px;
-            width: 90%;
-            margin: 0 auto;
-        }
-        @media(max-width: 600px){
-            height: 500px;
-            width: 100%;
-            margin: 0 auto;
-        }
-     
-    }
-        h3, h2 {
-        text-align: center;
-        margin-top: 20px;
-    }
-    p {
-        text-align:start;
-        margin-top: 10px;
-    }
-    .list {
-        list-style:decimal ;
-        text-align: start;
-    }
-    .list2 {
-        list-style: disc;
-        text-align: start;
-    }
-}
+@use './mainExample.scss';
+
+   
 .img-background {      
         width: 50%;           
-        margin: 0 auto;
+        margin: 30px auto;
         object-fit: cover;  
         @media(max-width: 1400px) {
         width: 35%; 

@@ -1,0 +1,114 @@
+ @use './variables' as vars;
+ .info {
+    position: relative;
+        display: none;
+        height: 600px;
+        overflow-y: auto;
+        overflow-x: hidden;
+        box-sizing: border-box;
+        padding: 30px;
+        scrollbar-width: thin;
+        scrollbar-color: #3b2308 transparent;
+        background: vars.$bg-input;
+        border-radius: 10px;
+        margin-top: 20px;
+        @media(max-width: 1400px){
+            height: 450px;
+        }
+        @media(max-width: 1400px){
+            height: 500px;
+        }
+        @media(max-width: 1200px){
+            height: 1000px;
+            width: 90%;
+            margin: 0 auto;
+        }
+        @media(max-width: 800px){
+            height: 750px;
+            width: 90%;
+            margin: 0 auto;
+        }
+        @media(max-width: 600px){
+            height: 500px;
+            width: 100%;
+            margin: 0 auto;
+        }
+     
+    }
+        h3, h2 {
+        text-align: center;
+        margin-top: 20px;
+    }
+    p {
+        text-align:start;
+        margin-top: 10px;
+    }
+    .list {
+        list-style:decimal ;
+        text-align: start;
+    }
+    .list2 {
+        list-style: disc;
+        text-align: start;
+    }
+
+
+
+
+.section-two {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .card-ascetic {
+    position: relative;
+    width: 100%;
+    height: auto;
+    background:hsla(22, 15%, 54%, 0.148);
+    min-height: 500px;
+    display: none;
+    margin-top: 20px;
+     @media(max-width: 1400px){
+            height: 550px;
+        }       
+        @media(max-width: 1200px){
+            height: 900px;
+            width: 90%;
+            margin-top: 30px;
+           
+        }
+        @media(max-width: 800px){
+            height: 750px;
+            width: 90%;
+            
+        }
+        @media(max-width: 600px){
+            height: 600px;
+            width: 100%;
+            
+        }
+    }
+}
+
+.btn,
+.btn1 {
+        display: none;
+        position: absolute;
+        top: 10px;
+        right: 10px;       
+        cursor: pointer;       
+        background:  #30240f;
+        color:#ffffff;
+        box-shadow: 0px 0px 12px -1px rgba(49, 48, 48, 0.75);
+        border-radius: 8px;
+        font-size: 1.0rem;
+        padding: 20px 20px;
+        border: none;
+        @media(max-width: 600px) {
+             padding: 10px 10px;
+             margin-top: 10px;
+        }
+    }
+    .logo1 {
+        display: none;
+    }
+    

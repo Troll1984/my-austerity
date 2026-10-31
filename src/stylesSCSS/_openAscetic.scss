@@ -105,7 +105,8 @@
   gap: 10px;
   display: flex;
   flex-wrap: nowrap;
-
+  scrollbar-width: thin;
+  scrollbar-color: rgba(92, 57, 5, 0.75) rgba(255, 255, 255, 0.25);
   overflow-x: auto;
   overflow-y: hidden;
   scroll-snap-type: x mandatory;

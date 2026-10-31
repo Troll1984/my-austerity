@@ -2,6 +2,10 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 import './example.scss';
 import './auth';
 import './components/exampleCards';
+import './components/exempleSaveCards';
+
+
+
 
 
 const main = document.querySelector<HTMLElement>('#main');

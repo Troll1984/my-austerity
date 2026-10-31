@@ -1,5 +1,35 @@
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import './style.scss'
-import './components/calendar';
+import { datePicker } from './components/calendar';
+import { asceticTemplates, templateStorageKey } from './components/templateAscesa';
 import './components/saveAscetic';
 import './auth';
+
+
+const selectedTemplateId = sessionStorage.getItem(templateStorageKey);
+
+if (selectedTemplateId) {
+  const selectedTemplate = asceticTemplates.find(
+    (template) => template.id === selectedTemplateId
+  );
+
+  const nameInput = document.querySelector<HTMLTextAreaElement>('#name');
+  const resultInput = document.querySelector<HTMLTextAreaElement>('#result');
+
+  if (selectedTemplate && nameInput && resultInput) {
+    nameInput.value = selectedTemplate.description;
+    resultInput.value = selectedTemplate.result;
+
+    // Начало — завтра; длительность берётся из шаблона.
+    const startDate = new Date();
+    startDate.setHours(0, 0, 0, 0);
+    startDate.setDate(startDate.getDate() + 1);
+
+    const endDate = new Date(startDate);
+    endDate.setDate(endDate.getDate() + selectedTemplate.durationDays - 1);
+
+    datePicker?.setDate([startDate, endDate], false);
+  }
+
+  sessionStorage.removeItem(templateStorageKey);
+}

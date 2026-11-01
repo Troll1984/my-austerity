@@ -19,12 +19,11 @@
             @media(max-width: 600px) {
                 padding: 7px;
                 top: -5px;
-                font-size: 10px;
-               
+                font-size: 10px;               
             }
         }
          @media(max-width: 1400px){
-            height: 550px;
+           height: 650px;
         }       
         @media(max-width: 1200px){
             height: 700px;
@@ -43,6 +42,9 @@
             padding: 5px;            
         }
     }
+}
+body {
+    scrollbar-width:none;
 }
 
      

@@ -1,23 +1,31 @@
 @use './variables' as vars;
-.section-two {
+.section-two { 
     display: flex;
     flex-direction: column;
     align-items: center;
     .card-ascetic {       
-        position: relative;
         width: 100%;
         height: auto;
-        background:hsla(22, 15%, 54%, 0.148);
-        min-height: 500px;
+        background:hsla(21, 14%, 76%, 0.148);        
         display: none;
         margin-top: 20px;
         position: relative;
-        padding: 10px;
+        padding: 20px;
+        border-radius: 10px;
+        .btn {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            @media(max-width: 600px) {
+                padding: 7px;
+                top: -5px;
+            }
+        }
          @media(max-width: 1400px){
             height: 550px;
         }       
         @media(max-width: 1200px){
-            height: 900px;
+            height: 700px;
             width: 90%;
             margin-top: 30px;
            
@@ -28,98 +36,13 @@
             
         }
         @media(max-width: 600px){
-            height: 600px;
+            height: 500px;
             width: 100%;
             margin-top: 30px;
+            padding: 5px;
             
         }
     }
 }
-.card-ascetic {
-  .template-heading {
-    margin-top: 20px;    
-    text-align: center;
-    h2 {
-      margin: 0;
-      font-size: clamp(1.5rem, 3vw, 2.2rem);
-      color: vars.$color-text;
-    }
-    p {
-      margin-top: 10px;      
-       color: vars.$color-text;
-      padding-left: 70px;
-    }   
-  }
-  .template-grid {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 16px;
-    max-width: 1050px;
-    margin: 10px auto;
-    h3, p {
-        color: #000;
-    }
-  }
-  .template-card {
-    display: flex;
-    flex-direction: column;
-    padding: 20px;
-    border: 1px solid rgba(92, 57, 5, 0.2);
-    border-radius: 18px;
-    background: vars.$bg-card;
-    box-shadow: 0 8px 24px rgba(49, 36, 20, 0.12);
-    transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
 
-    &:hover {
-      transform: translateY(-4px);
-    }
-
-    &.selected {
-      border-color: #79552f;
-      box-shadow: 0 0 0 3px rgba(121, 85, 47, 0.2);
-    }
-
-    h3 {
-      margin: 12px 0 8px;
-    }
-
-    p {
-      line-height: 1.5;
-    }
-
-    .template-icon {
-      font-size: 2rem;
-    }
-
-    .template-duration {
-      margin-top: 10px;
-      color: #000;
-      font-size: 0.85rem;
-      font-weight: 700;
-    }
-
-    .template-result {
-      margin-top: auto;
-      padding-top: 12px;
-    }
-
-    .template-use {
-      padding: 11px 16px;
-      border: 0;
-      border-radius: 10px;
-      background: vars.$bg-color-button1;
-      color: white;
-      cursor: pointer;
-
-      &:hover {
-        background: #5c3905;
-      }
-    }
-  }
-
-  @media (max-width: 800px) {
-    .template-grid {
-      grid-template-columns: 1fr;
-    }
-  }
-}
+     

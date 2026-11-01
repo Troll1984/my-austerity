@@ -15,9 +15,11 @@ authContainer.innerHTML = `
       <label for="auth-password" data-translate='passAuth'>Password</label>
       <input id="auth-password" type="password" placeholder="Мінімум 8 символів" autocomplete="current-password" minlength="8" required/>
       <button id="auth-submit" type="submit" data-translate='btnAuth'>Sign in</button>
+     
     </form>
-    <button id="language-button-auth" data-translate="language">EN</button>
-    <button id="auth-toggle" type="button">Sign in</button>
+     <button id="language-button-auth" data-translate="language">EN</button>
+     <button id="auth-toggle" type="button">Sign in</button>
+    
     <p id="auth-message" role="status"></p>
     <span id="close"><i class="fa-solid fa-xmark"></i></span>
   </div>`;
@@ -172,9 +174,19 @@ async function updateRegButton() {
   if (!reg) return; 
   const { data: { session } } = await supabase.auth.getSession(); 
   const language = sessionStorage.getItem('language') === 'uk' ? 'uk' : 'en'; 
-  const t = translations[language]; const key = session ? 'MyAccount' : 'RegOpen'; 
-  reg.dataset.translate = key; reg.textContent = t[key]; 
+  const t = translations[language]; 
+  const key = session ? 'MyAccount' : 'RegOpen'; 
+  reg.dataset.translate = key; 
+ if (key === 'MyAccount') {
+  reg.innerHTML = `
+   <i class="fa-solid fa-user-check"></i> 
+    <span>${t[key]}</span>
+  `;
+} else {
+  reg.textContent = t[key];
 }
+}
+
 
 
 

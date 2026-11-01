@@ -5,12 +5,18 @@ const templateGrid = document.querySelector<HTMLElement>('#template-grid');
 if (templateGrid) {
   templateGrid.innerHTML = asceticTemplates.map((template) => `
     <article class="template-card">
-      <span class="template-icon">${template.icon}</span>
-      <span class="template-duration">${template.durationDays} днів</span>
+      <div class="image"> <img src="${template.img}" alt="logo"></div>
       <h3>${template.title}</h3>
-      <p>${template.description}</p>
+      <div class="title-icon">
+        <span class="template-icon"><i class="fa-regular fa-calendar"></i></span>
+        <span class="template-duration">${template.durationDays} днів</span>
+      </div>
+      
+      <p>${template.description}</p>  
+      <hr>
       <p><strong>Мета:</strong> ${template.result}</p>
-      <button class="template-use" type="button" data-template-id="${template.id}">Обрати</button>
+
+      <div class="btnTemp"><button class="template-use" type="button" data-template-id="${template.id}">Обрати</button></div>
     </article>
   `).join('');
 

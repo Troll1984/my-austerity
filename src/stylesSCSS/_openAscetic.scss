@@ -101,12 +101,12 @@
   box-sizing: border-box;
   width: 100%;
   height: auto;
-  min-height: 650px;
+  min-height: 850px;
   gap: 10px;
   display: flex;
   flex-wrap: nowrap;
   scrollbar-width: thin;
-  scrollbar-color: rgba(92, 57, 5, 0.75) rgba(255, 255, 255, 0.25);
+  scrollbar-color: vars.$scrollbar-color;
   overflow-x: auto;
   overflow-y: hidden;
   scroll-snap-type: x mandatory;
@@ -115,19 +115,16 @@
     
    @media(max-width: 1200px) {
     min-height: 750px;
-    margin-top: 70px;
-     
-        
-        
+    margin-top: 70px;       
    }
     @media(max-width: 600px) {
+        min-height: 600px;
         margin-top: 10px;
         overflow-x: auto;
         overflow-y: hidden;
         scroll-snap-type: x mandatory;
-        scrollbar-width: auto;
+        scrollbar-width: none;
         -webkit-overflow-scrolling: touch;
-
         > * {
             flex: 0 0 100%;
             scroll-snap-align: start;
@@ -150,13 +147,14 @@
     margin-top: 50px;   
     overflow: hidden;
     scroll-snap-type: x mandatory;
+    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
      @media(max-width: 1400px) {         
          margin-top: 20px;
      }
-    @media(max-width: 670px) {
+    @media(max-width: 600px) {
          margin-top: 20px;
         flex: 0 0 100%;
-        height: 650px;
+        height: 550px;
         scroll-snap-align: start;
         scroll-snap-stop: always;        
     }      

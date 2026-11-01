@@ -1,0 +1,138 @@
+@use './variables' as vars;
+.card-ascetic {    
+    @media(max-width:1200px) {
+            height: 600px;            
+        }
+    .template-heading {
+        margin-top: 10px;    
+        text-align: center;
+        margin-bottom: 20px;
+        @media(max-width:1200px) {
+            margin-top: 30px;            
+        }
+        h2 {            
+            font-size: clamp(1.5rem, 3vw, 2.2rem);
+            color: vars.$color-text;
+        }        
+    }
+}
+.slider-wrapper {       
+  width: 100%;
+  height: auto;
+  min-height: 600px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  box-sizing: border-box;
+  scrollbar-width: thin;   
+  scrollbar-color:  vars.$scrollbar-color;
+  
+  
+        .template-grid {
+    display: flex;
+    flex-wrap: nowrap;
+    width: max-content;
+    gap: 10px;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+        .template-card {
+            flex: 0 0 300px;  
+            width: 300px;  
+            height:500px;
+            scroll-snap-align: start;
+            background: vars.$bg-template;
+            border: 1px solid #422b0d;
+            border-radius: 10px;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;            
+            box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+            }
+        }
+    }
+.template-card {   
+    .image {
+        width: 100%;
+        height: auto;
+        margin: 0 auto;
+        img {
+            width: 100%;
+            height: 175px;
+            border-radius: 10px;
+            border: 1px solid #422b0d;
+        }
+    }
+    .title-icon {
+        display: flex;
+        align-items: center;
+        gap: 5px; 
+        .template-icon {
+            font-size: 1.5rem;
+        }      
+        .template-duration {
+            font-size: 0.8rem;
+        }        
+    }
+    h3 {
+    font-size: 1.5rem;
+
+    }
+    p {
+        font-size: 1rem;
+    }
+    .btnTemp {
+        display: flex;
+        justify-content: center;
+        margin-top: auto;
+        .template-use {
+        width: 40%;
+        height: 35px;
+        border-radius: 8px;
+        margin-top: auto;
+        background: #5f4012;
+        color: vars.$color-text;
+        
+        &:hover {
+             background:  #7c551a;
+            }
+        }
+
+    }
+}
+hr {
+    width: 95%;
+    margin: 10px auto;
+    background: #46413a;
+}
+
+.buttons-arrow {
+    position: absolute;
+    top: 35px;
+    left: 27%;
+    display: flex;
+    justify-content: space-between;
+    width: 46%;   
+     @media(max-width:1200px) {
+            width: 60%;   
+            left: 20%; 
+             top: 30px;       
+        }
+     @media(max-width:600px) {
+        display: none;
+     }
+    #left,
+    #right {
+        padding: 15px;
+        background: hsla(33, 18%, 90%, 0.225);
+        color: vars.$color-text;
+        border: none;
+        &:hover {
+            background: #422b0d;
+        }
+    } 
+    
+}
+
+
+
+  
+  

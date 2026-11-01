@@ -3,6 +3,7 @@ import './example.scss';
 import './auth';
 import './components/exampleCards';
 import './components/exempleSaveCards';
+import './components/sliderExample';
 
 
 

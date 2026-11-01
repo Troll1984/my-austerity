@@ -44,7 +44,8 @@ header {
     }
 }
 .menu {    
-    display: flex;   
+    display: flex; 
+      
    
     > button:first-of-type,
     > button:last-of-type {    
@@ -74,11 +75,16 @@ header {
 .menu {
     > button:first-of-type {
     border-top-left-radius: 8px;
-    border-bottom-left-radius: 8px;
+    border-bottom-left-radius: 8px;   
     }
      > button:last-of-type {
     border-top-right-radius: 8px;
     border-bottom-right-radius: 8px;
     }
    
+}
+#reg {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
 }

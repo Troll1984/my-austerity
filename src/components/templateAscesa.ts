@@ -1,5 +1,9 @@
 
-
+import image1 from '../assets/img/image1.png';
+import image2 from '../assets/img/image2.png';
+import image3 from '../assets/img/image3.png';
+import image4 from '../assets/img/image4.png';
+import image5 from '../assets/img/image5.png';
 // Создание шаблонов 
 export interface AsceticTemplate {
   id: string;
@@ -15,7 +19,7 @@ export const templateStorageKey = 'my-ascetic:selected-template';
 export const asceticTemplates: AsceticTemplate[] = [
   {
     id: 'no-sweets',
-    img: './src/assets/img/image3.png',
+    img: image1,
     title: 'Без солодкого',   
     description: 'Не їсти цукерки, печиво та інші солодощі.',
     result: "Покращити здоров'я та самопочуття",
@@ -23,7 +27,7 @@ export const asceticTemplates: AsceticTemplate[] = [
   },
   {
     id: 'less-social-media',
-    img: './src/assets/img/image1.png',
+    img: image2,
     title: 'Менше соцмереж',   
     description: 'Не користуватися соцмережами після 21:00.',
     result: 'Звільнити час для відпочинку та покращити сон.',
@@ -31,7 +35,7 @@ export const asceticTemplates: AsceticTemplate[] = [
   },
   {
     id: 'daily-reading',
-    img: './src/assets/img/image2.png',
+    img: image3,
     title: 'Читати щодня',    
     description: 'Читати щонайменше 20 хвилин щодня.',
     result: 'Сформувати звичку читати регулярно.',
@@ -39,7 +43,7 @@ export const asceticTemplates: AsceticTemplate[] = [
   },   
   {
     id: 'daily-english',
-    img: './src/assets/img/image4.png',
+    img: image4,
     title: 'Англійська щодня ',   
     description: 'Англійська щодня по 30 хвилин на день',
     result: 'Знання мови на рівні A2',
@@ -47,7 +51,7 @@ export const asceticTemplates: AsceticTemplate[] = [
   },   
   {
     id: 'daily-programming',
-    img: './src/assets/img/image5.png',
+    img: image5,
     title: 'Програмування ',   
     description: 'Займатися програмуванням по 90 хвилин щодня.',
     result: 'Отримати роботу із зарплатою 3000$',

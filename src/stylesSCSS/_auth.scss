@@ -30,28 +30,23 @@
     text-align: center;
     color: vars.$color-text;
   }
-
   > p {
     margin: 0 0 28px;
     color: vars.$color-text;
     text-align: center;
     line-height: 1.5;
   }
-
   form {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 10px;
-  }
-
-  label {
-    margin-top: 8px;
-    font-size: 14px;
-    color: vars.$color-text;
-  }
-
-  input {
+    label {
+      margin-top: 8px;
+      font-size: 14px;
+      color: vars.$color-text;
+    }
+    input {
     font-size: 1rem;
     width: 100%;
     padding: 13px 14px;
@@ -60,17 +55,11 @@
     background: #fff;   
     color: #000;
     &:focus {
-      border-color: #92765d;
-      box-shadow: 0 0 0 3px rgba(146, 118, 93, 0.12);
+        border-color: #92765d;
+        box-shadow: 0 0 0 3px rgba(146, 118, 93, 0.12);
+      }    
     }
-    
-  }
-   i {
-      position: absolute;
-      top: 15px;
-      right: 15px;
-    }
-
+  } 
   button {    
     width: 100%;
     min-height: 46px;
@@ -82,27 +71,28 @@
     background: vars.$bg-color-button-other;
     cursor: pointer;
     transition: opacity 0.2s, transform 0.2s;
-
     &:hover {
       opacity: 0.9;
     }
-
     &:active {
       transform: scale(0.99);
     }
-
     &:disabled {
       opacity: 0.6;
       cursor: wait;
     }
+  } 
+  i {
+    position: absolute;
+    top: 15px;
+    right: 15px;
   }
-
   #auth-submit {
-    background: vars.$bg-color-button;
-    color: #fff;
+    background: vars.$bg-color-button; 
+    color: vars.$color-text;
   }
-
   #auth-toggle  {
+   
     margin-top: 12px;
     background: transparent;
     color: vars.$color-text;
@@ -112,16 +102,17 @@
     width: 75%;
     margin-top: 12px;
     font-size: 0.8rem;  
-   }
-
+    @media(max-width: 600px) {
+      width: 100%;
+    }
+  }
   #auth-message {
     margin: 14px 0 0;
     font-size: 14px;
     overflow-wrap: anywhere;
   }
 }
-
-@media (max-width: 480px) {
+@media (max-width: 600px) {
   .auth-card {
     padding: 28px 22px;
   }

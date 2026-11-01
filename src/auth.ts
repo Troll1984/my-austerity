@@ -61,24 +61,16 @@ updateAuthTexts();
   window.dispatchEvent(new Event('languageChanged')); 
 });
 
-
-
-
-
-
-
 authToggle.addEventListener('click', () => { 
   isSignUp = !isSignUp; updateAuthTexts(); 
   passwordInput.autocomplete = isSignUp ? 'current-password' : 'new-password'; 
   authMessage.textContent = ''; 
 });
 
-
 authForm.addEventListener('submit', async (event) => {
   event.preventDefault();
   const email = emailInput.value.trim();
   const password = passwordInput.value;
-
   authSubmit.disabled = true;
   authMessage.textContent = 'Wait...';
   try {
@@ -182,13 +174,10 @@ async function updateRegButton() {
    <i class="fa-solid fa-user-check"></i> 
     <span>${t[key]}</span>
   `;
-} else {
-  reg.textContent = t[key];
+  } else {
+    reg.textContent = t[key];
+  }
 }
-}
-
-
-
 
 reg?.addEventListener('click', async () => {  
    const { data, error } = await supabase.auth.getSession();

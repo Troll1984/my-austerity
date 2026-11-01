@@ -3,7 +3,6 @@
 @use './mainExample.scss';
 @use './templateAscesa.scss';
 @use './exampleSlider.scss';
-
    
 .img-background {      
         width: 70%;           
@@ -16,10 +15,11 @@
         @media(max-width: 1200px) {
         width: 80%; 
         margin-top: 100px;
+        }
         @media(max-width: 600px) {
                 width: 95%;
         }
-        }     
+}     
         img {
         padding: 10px;
         display: block;
@@ -29,4 +29,3 @@
         object-fit: cover;  
         box-shadow: 0px 0px 32px 9px rgba(206, 144, 52, 0.79);        
       }
-}

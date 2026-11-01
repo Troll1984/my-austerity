@@ -32,8 +32,7 @@
             height: 500px;
             width: 100%;
             margin: 40px auto;
-        }
-     
+        }     
     }
         h3, h2 {
         text-align: center;
@@ -76,9 +75,19 @@
     .section-one {
         position: relative;
         .btn1 {
+            @media(max-width: 1200px) {
+                top: 5px;
+                right: 80px;
+                position: absolute;
+            }
+            @media(max-width: 800px) {
+                right: 65px;
+                position: absolute;
+            }
             @media(max-width: 600px) {
-                position: absolute;;
+                position: absolute;
                 top: 0px;
+                right: 15px;
             }
         }
     }

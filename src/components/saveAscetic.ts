@@ -54,11 +54,11 @@ formAscetic.addEventListener('submit', async (event) => {
     }
     // Создаём аскезу только после успешных проверок
    const { data: userData, error: userError } = await supabase.auth.getUser();
-if (userError || !userData.user) {
-    alert('Спочатку увійдіть у свій акаунт!');
-    formAscetic.reset();    
-    return;
-}
+    if (userError || !userData.user) {
+        alert('Спочатку увійдіть у свій акаунт!');
+        formAscetic.reset();    
+        return;
+    }
 const { error: insertError } = await supabase
     .from('ascetics')
     .insert({

@@ -10,7 +10,7 @@
         scrollbar-color: #3b2308 transparent;
         background: vars.$bg-input;
         border-radius: 10px;
-        margin-top: 30px;
+        margin-top: 30px;        
         @media(max-width: 1400px){
             height: 450px;
         }
@@ -72,5 +72,14 @@
     }
     .logo1 {
         display: none;
+    }
+    .section-one {
+        position: relative;
+        .btn1 {
+            @media(max-width: 600px) {
+                position: absolute;;
+                top: 0px;
+            }
+        }
     }
     

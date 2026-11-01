@@ -1,15 +1,17 @@
 @use './variables' as vars;
-.card-ascetic {    
+.card-ascetic { 
+     height: auto;
     @media(max-width:1200px) {
-            height: 600px;            
+            height: 600px;                  
         }
     .template-heading {
         margin-top: 10px;    
         text-align: center;
         margin-bottom: 20px;
         @media(max-width:1200px) {
-            margin-top: 30px;            
+            margin-top: 20px;            
         }
+         
         h2 {            
             font-size: clamp(1.5rem, 3vw, 2.2rem);
             color: vars.$color-text;
@@ -24,8 +26,10 @@
   overflow-y: hidden;
   box-sizing: border-box;
   scrollbar-width: thin;   
-  scrollbar-color:  vars.$scrollbar-color;
-  
+  scrollbar-color:  vars.$scrollbar-color; 
+  @media(max-width: 600px) {
+       overflow: hidden;
+    }
   
         .template-grid {
     display: flex;
@@ -34,6 +38,18 @@
     gap: 10px;
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
+    @media(max-width: 600px) {
+         width: 100%;
+        overflow-x: auto;
+        overflow-y: hidden;
+        scroll-snap-type: x mandatory;
+        scroll-behavior: smooth;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        &::-webkit-scrollbar {
+        display: none;
+        }
+    }
         .template-card {
             flex: 0 0 300px;  
             width: 300px;  
@@ -46,6 +62,13 @@
             display: flex;
             flex-direction: column;            
             box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+            @media(max-width: 600px) {
+                box-sizing: border-box;
+                flex: 0 0 100%;
+                width: 100%;
+                scroll-snap-align: start;
+                scroll-snap-stop: always;
+                }      
             }
         }
     }

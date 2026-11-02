@@ -163,8 +163,9 @@
     @media(max-width: 600px) {
         margin-top: 5px;
         flex: 0 0 95%;
-        height: 600px;        
-        scroll-snap-align: center;       
+        height: 650px;        
+        scroll-snap-align: center;  
+         scroll-snap-stop: always;     
     }      
     .card-buttons {
         display: flex;
@@ -256,7 +257,7 @@
     width: 100%;
     box-sizing: border-box;
     display: grid;
-    grid-template-columns: repeat(7, minmax(0, 1fr));
+    grid-template-columns: repeat(9, minmax(0, 1fr));
     align-content: start;
     gap: clamp(2px, 0.5vw, 6px);
     padding: 2px;

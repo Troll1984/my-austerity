@@ -1,5 +1,6 @@
-import { asceticTemplates, templateStorageKey } from './templateAscesa';
+import { asceticTemplates } from './templateAscesa';
 import { currentLanguage, translations } from './lang';
+import { supabase } from '../supabase';
  
  
 
@@ -30,7 +31,7 @@ if (templateGrid) {
   renderTemplates();
   window.addEventListener('languageChanged', renderTemplates);
 
-  templateGrid.addEventListener('click', (event) => {
+  templateGrid.addEventListener('click', async (event) => {
     if (!(event.target instanceof Element)) return;
 
      const imageBlock = event.target.closest<HTMLElement>('.image');
@@ -43,9 +44,63 @@ if (templateGrid) {
     const templateId = button?.dataset.templateId;
 
     if (!templateId) return;
+    const selectedTemplate = asceticTemplates.find((template) => template.id === templateId);
+    if (!selectedTemplate || !button) return;
 
-    sessionStorage.setItem(templateStorageKey, templateId);
-    window.location.href = './index.html';
+    button.disabled = true;
+    const originalText = button.textContent;
+    button.textContent = currentLanguage === 'uk' ? 'Створюємо…' : currentLanguage === 'nl' ? 'Aanmaken…' : 'Creating…';
+
+    try {
+      const { data: userData, error: userError } = await supabase.auth.getUser();
+      if (userError || !userData.user) {
+        alert(currentLanguage === 'uk'
+          ? 'Увійдіть в акаунт, щоб створити аскезу.'
+          : currentLanguage === 'nl'
+            ? 'Log in om een askesis aan te maken.'
+            : 'Sign in to create an austerity.');
+        return;
+      }
+
+      const startDate = new Date();
+      startDate.setHours(0, 0, 0, 0);
+      startDate.setDate(startDate.getDate() + 1);
+      const endDate = new Date(startDate);
+      endDate.setDate(endDate.getDate() + selectedTemplate.durationDays - 1);
+      const formatDate = (date: Date) =>
+        `${String(date.getDate()).padStart(2, '0')}.${String(date.getMonth() + 1).padStart(2, '0')}.${date.getFullYear()}`;
+
+      const name = currentLanguage === 'uk' ? selectedTemplate.description
+        : currentLanguage === 'nl' ? selectedTemplate.descriptionNl
+          : selectedTemplate.descriptionEn;
+      const result = currentLanguage === 'uk' ? selectedTemplate.result
+        : currentLanguage === 'nl' ? selectedTemplate.resultNl
+          : selectedTemplate.resultEn;
+
+      const { error: insertError } = await supabase.from('ascetics').insert({
+        user_id: userData.user.id,
+        name,
+        duration: `${formatDate(startDate)} to ${formatDate(endDate)}`,
+        expected_result: result,
+        completed_days: [],
+        status: 'active',
+      });
+
+      if (insertError) throw insertError;
+      window.location.href = './ascetic.html';
+    } catch (error) {
+      console.error('Failed to create austerity from template:', error);
+      alert(currentLanguage === 'uk'
+        ? 'Не вдалося створити аскезу. Спробуйте ще раз.'
+        : currentLanguage === 'nl'
+          ? 'Askesis aanmaken is mislukt. Probeer het opnieuw.'
+          : 'Could not create the austerity. Please try again.');
+    } finally {
+      if (button.isConnected) {
+        button.disabled = false;
+        button.textContent = originalText ?? translations[currentLanguage].templateChoose;
+      }
+    }
   });
 }
 

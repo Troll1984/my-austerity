@@ -46,34 +46,47 @@ async function loadAscetics() {
     
     renderAscetics();
 }
-// Создаём карточки
-function renderAscetics() {
-    saveAscetic.innerHTML = '';
-    let count: number = 0;  
-    ascetics.forEach((element: Ascetic , index: number) => {
-        if (!Array.isArray(element.completedDays)) {   
-            element.completedDays = [];
-        }            
-        let card = document.createElement('div');       
+    // Создаём карточки
+    function renderAscetics() {   
+        saveAscetic.innerHTML = '';
+
+    const total = ascetics.length;
+    const heading = document.querySelector<HTMLElement>('#title');
+
+    if (heading) {
+    heading.textContent = `${translations[currentLanguage].saveAusterity} - ${total}`;
+    } 
+   ascetics.forEach((element: Ascetic, index: number) => {
+        if (!Array.isArray(element.completedDays)) {
+                element.completedDays = [];
+            }
+
+        const number = total - index;
+
+        const card = document.createElement('div');
         card.classList.add('ascetic-card');
-        count++;
-        card.dataset.id = String(count);                
-        let titleCard = document.createElement('h5');       
-        let gotName = document.createElement('h2');
+        card.dataset.id = String(number);
+
+        const titleCard = document.createElement('h5');
+        titleCard.textContent =
+        currentLanguage === 'uk' ? `Аскеза №${number}` : currentLanguage === 'nl' ? `Askesis nr. ${number}` : `Austerity №${number}`;
+
+        const gotName = document.createElement('h2');
         gotName.setAttribute('data-translate', 'gotName');
-        let gotRes  = document.createElement('h2');
+
+        const gotRes = document.createElement('h2');
         gotRes.setAttribute('data-translate', 'gotRes');
-        let duren  = document.createElement('h2');
+
+        const duren = document.createElement('h2');
         duren.setAttribute('data-translate', 'duren');
-        let name = document.createElement('h1');
-        let time = document.createElement('h1');
-        let result = document.createElement('h1');
-        let status = document.createElement('h4');
-        let btnLang = document.createElement('button');
-        let resizeHandle = document.createElement('div'); 
+
+        const name = document.createElement('h1');
+        const time = document.createElement('h1');
+        const result = document.createElement('h1');
+        const status = document.createElement('h4');
+        const btnLang = document.createElement('button');
+        const resizeHandle = document.createElement('div');
         resizeHandle.classList.add('resize-handle');
-        btnLang.textContent = currentLanguage.toUpperCase();
-        titleCard.textContent = currentLanguage === 'uk' ? `Аскеза №${count}` : currentLanguage === 'nl' ? `Askesis nr. ${count}` : `Austerity №${count}`;
         gotName.textContent = translations[currentLanguage].gotName;
         name.textContent = ` ${element.nameAscetic}`;
         duren.textContent = translations[currentLanguage].duren;

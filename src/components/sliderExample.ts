@@ -22,3 +22,6 @@ right?.addEventListener('click', () => scrollByCard(1));
 
 
 
+
+
+

@@ -38,6 +38,9 @@ export const translations = {
    statusCompleted: '✅ Аскезу виконано.',
    statusPlanned: '⏳ Аскеза ще не розпочалася',
    statusActive: '🟢 Аскеза триває.',  
+   templateHeading: 'Оберіть шаблон аскези',
+   saveAusterity: 'Збережені аскези',
+   templateDays: 'днів', templateGoal: 'Мета:', templateChoose: 'Обрати',
   },
   en: {
     MyAccount: 'MyAccount',
@@ -77,13 +80,20 @@ export const translations = {
     statusCompleted: '✅ Austerity completed.',
     statusPlanned: '⏳ The austerity has not started yet',
     statusActive: '🟢 Austerity in progress.'   
+    ,templateHeading: 'Choose an austerity template',
+    saveAusterity: 'Saved Austerities',
+    templateDays: 'days', templateGoal: 'Goal:', templateChoose: 'Choose',
+  },
+  nl: {
+    MyAccount: 'Mijn account', titleAscetic: 'Mijn Askesis', Description: 'Beschrijving', Duration: 'Duur', Result: 'Verwacht resultaat', BeginBtn: 'Begin met askesis', RegOpen: 'Inloggen', Main: 'Home', Example: 'Voorbeeld', Sesiy: 'Mijn askesis', Sesiy1: 'Sjablonen', info: 'Over askesis', language: 'NL', titleAuth: 'Mijn Askesis', messAuth: 'Log in op je account of maak een nieuw account aan', emailAuth: 'E-mail', passAuth: 'Wachtwoord', btnAuth: 'Inloggen', signUpTitle: 'Account aanmaken', signUpSubtitle: 'Registreer om je askesis op te slaan', signUpButton: 'Registreren', signUpToggle: 'Nog geen account? Registreren', signInTitle: 'Mijn Askesis', signInSubtitle: 'Log in op je account', signInButton: 'Inloggen', signInToggle: 'Al een account? Inloggen', gotName: 'Beschrijving van askesis', duren: 'Duur van askesis', gotRes: 'Verwacht resultaat', progressTitle: 'Voortgang', btnLang: 'NL', calendarTitle: 'Markeer voltooide dagen', deleteButton: 'Verwijderen', statusFailed: '❌ Askesis niet voltooid.', statusCompleted: '✅ Askesis voltooid.', statusPlanned: '⏳ Askesis is nog niet begonnen', statusActive: '🟢 Askesis is bezig.', templateHeading: 'Kies een askesis-sjabloon', saveAusterity: 'Opgeslagen askesis', templateDays: 'dagen', templateGoal: 'Doel:', templateChoose: 'Kiezen',
   },
 };
 
-type Language = 'uk' | 'en'; 
-export let currentLanguage: Language = sessionStorage.getItem('language') === 'uk' ? 'uk' : 'en';
+type Language = 'uk' | 'en' | 'nl';
+const savedLanguage = sessionStorage.getItem('language');
+export let currentLanguage: Language = savedLanguage === 'uk' || savedLanguage === 'nl' ? savedLanguage : 'en';
 export function toggleLanguage(): void { 
-  currentLanguage = currentLanguage === 'en' ? 'uk' : 'en'; sessionStorage.setItem('language', currentLanguage); 
+  currentLanguage = currentLanguage === 'uk' ? 'en' : currentLanguage === 'en' ? 'nl' : 'uk'; sessionStorage.setItem('language', currentLanguage); 
   updateLanguage(); 
 } 
 
@@ -92,9 +102,10 @@ export function updateLanguage(): void {
     const key = element.dataset.translate as keyof typeof translations.en; 
     const translation = translations[currentLanguage][key]; 
     if (translation !== undefined) {
-       element.textContent = translation;
+       element.textContent = translation; 
       } 
   }); 
+  document.documentElement.lang = currentLanguage;
 }
 export const languageButton = document.querySelector<HTMLButtonElement>('#language-button');
 // Кнопка смены языка на главной стрпнице

@@ -43,7 +43,7 @@ let isSignUp = false;
 function updateAuthTexts(): void {
   updateLanguage();
 
-  const language = sessionStorage.getItem('language') === 'uk' ? 'uk' : 'en';
+  const language = currentLanguage;
   const t = translations[language];
 
   authTitle.textContent = isSignUp ? t.signUpTitle : t.signInTitle;
@@ -53,11 +53,11 @@ function updateAuthTexts(): void {
 }
 updateAuthTexts();
 
- languageBtn.textContent = currentLanguage === 'uk' ? 'UK' : 'EN'; 
+ languageBtn.textContent = currentLanguage.toUpperCase(); 
  languageBtn.addEventListener('click', () => { 
   toggleLanguage();
   updateAuthTexts(); 
-  languageBtn.textContent = currentLanguage === 'uk' ? 'UK' : 'EN'; 
+  languageBtn.textContent = currentLanguage.toUpperCase(); 
   window.dispatchEvent(new Event('languageChanged')); 
 });
 
@@ -165,7 +165,7 @@ mainLanguageButton?.addEventListener('click', () => {
 async function updateRegButton() { 
   if (!reg) return; 
   const { data: { session } } = await supabase.auth.getSession(); 
-  const language = sessionStorage.getItem('language') === 'uk' ? 'uk' : 'en'; 
+  const language = currentLanguage; 
   const t = translations[language]; 
   const key = session ? 'MyAccount' : 'RegOpen'; 
   reg.dataset.translate = key; 

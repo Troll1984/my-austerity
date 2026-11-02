@@ -2,8 +2,10 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 import './style.scss'
 import { datePicker } from './components/calendar';
 import { asceticTemplates, templateStorageKey } from './components/templateAscesa';
+import { currentLanguage } from './components/lang';
 import './components/saveAscetic';
 import './auth'; 
+import './components/shodowToggle'; 
 
 // Вставка шаблонов в форму и клендарь
 
@@ -18,8 +20,8 @@ if (selectedTemplateId) {
   const resultInput = document.querySelector<HTMLTextAreaElement>('#result');
 
   if (selectedTemplate && nameInput && resultInput) {
-    nameInput.value = selectedTemplate.description;
-    resultInput.value = selectedTemplate.result;
+    nameInput.value = currentLanguage === 'uk' ? selectedTemplate.description : currentLanguage === 'nl' ? selectedTemplate.descriptionNl : selectedTemplate.descriptionEn;
+    resultInput.value = currentLanguage === 'uk' ? selectedTemplate.result : currentLanguage === 'nl' ? selectedTemplate.resultNl : selectedTemplate.resultEn;
 
     // Начало — завтра; длительность берётся из шаблона.
     const startDate = new Date();
@@ -34,3 +36,4 @@ if (selectedTemplateId) {
 
   sessionStorage.removeItem(templateStorageKey);
 }
+

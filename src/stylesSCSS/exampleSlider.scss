@@ -1,9 +1,13 @@
 @use './variables' as vars;
+
 .card-ascetic { 
-     height: auto;
+    height: auto;
     @media(max-width:1200px) {
             height: 600px;                  
         }
+    @media(max-width:600px) {
+        height: auto;
+    }
     .template-heading {
         margin-top: 10px;    
         text-align: center;
@@ -33,13 +37,14 @@
   
         .template-grid {
     display: flex;
-    flex-wrap: nowrap;
+    flex-wrap: nowrap;    
     width: max-content;
     gap: 10px;
     scroll-snap-type: x mandatory;
-    scroll-behavior: smooth;
+    scroll-behavior: smooth; 
     @media(max-width: 600px) {
-         width: 100%;
+        width: 100%;        
+        padding: 5px;
         overflow-x: auto;
         overflow-y: hidden;
         scroll-snap-type: x mandatory;
@@ -56,50 +61,68 @@
             height:500px;
             scroll-snap-align: start;
             background: vars.$bg-template;
-            border: 1px solid #422b0d;
+            border: 1px solid #473014;
             border-radius: 10px;
             padding: 15px;
             display: flex;
-            flex-direction: column;            
+            flex-direction: column;                 
             box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
             @media(max-width: 600px) {
                 box-sizing: border-box;
                 flex: 0 0 100%;
                 width: 100%;
-                scroll-snap-align: start;
-                scroll-snap-stop: always;
+                scroll-snap-align: center;
                 }      
             }
         }
     }
+
+
+    .template-card .image.light {
+        box-shadow: none;
+        }
 .template-card {   
     .image {
         width: 100%;
         height: auto;
         margin: 0 auto;
+        overflow: hidden;
+        border-radius: 10px;
+        box-shadow: -2px 3px 19px 1px rgba(156, 103, 34, 0.75); 
         img {
             width: 100%;
             height: 175px;
-            border-radius: 10px;
+            border-radius: 15px;
             border: 1px solid #422b0d;
+            transition: transform 500ms ease;                     
+            &:hover {
+                transform: scale(1.05);
+            }
         }
     }
+   
     .title-icon {
         display: flex;
         align-items: center;
         gap: 5px; 
+        margin-bottom: 10px;
         .template-icon {
             font-size: 1.5rem;
+            @media(max-width: 600px) {
+                font-size: 1.2rem;
+            }
         }      
         .template-duration {
             font-size: 0.8rem;
         }        
     }
     h3 {
+        margin-top: 5px;
     font-size: 1.5rem;
 
     }
     p {
+        margin: 0;
         font-size: 1rem;
     }
     .btnTemp {
@@ -111,19 +134,24 @@
         height: 35px;
         border-radius: 8px;
         margin-top: auto;
-        background: #5f4012;
+        background: #4b3310;
         color: vars.$color-text;
-        
+        border: none;
+        box-shadow: 7px 3px 11px -2px rgba(0,0,0,0.75);        
         &:hover {
              background:  #7c551a;
             }
+        &:active {
+            
+             box-shadow: none;
+            }    
         }
 
     }
 }
 hr {
     width: 95%;
-    margin: 10px auto;
+    margin: 15px auto;
     background: #46413a;
 }
 
@@ -148,8 +176,11 @@ hr {
         background: hsla(33, 18%, 90%, 0.225);
         color: vars.$color-text;
         border: none;
+        color: vars.$bg-template;
         &:hover {
             background: #422b0d;
+            color: vars.$color-text;
+            border-radius: 10px;
         }
     } 
     

@@ -72,8 +72,8 @@ function renderAscetics() {
         let btnLang = document.createElement('button');
         let resizeHandle = document.createElement('div'); 
         resizeHandle.classList.add('resize-handle');
-        btnLang.textContent = currentLanguage === 'uk' ? 'UK': 'EN' ;
-        titleCard.textContent = currentLanguage === 'uk' ? `Аскеза №${count}` : `Austerity №${count}`;
+        btnLang.textContent = currentLanguage.toUpperCase();
+        titleCard.textContent = currentLanguage === 'uk' ? `Аскеза №${count}` : currentLanguage === 'nl' ? `Askesis nr. ${count}` : `Austerity №${count}`;
         gotName.textContent = translations[currentLanguage].gotName;
         name.textContent = ` ${element.nameAscetic}`;
         duren.textContent = translations[currentLanguage].duren;

@@ -21,10 +21,11 @@ header {
     @media(max-width: 1400px) {
         margin-top: 10px;
     }
-    img {
+    img#img {
         width: 200px;
         height: auto;
         border-radius: 50%;
+        box-shadow: -2px 3px 19px 1px rgba(156, 103, 34, 0.75);
         @media(max-width: 1400px) {
              width: 130px;
         }
@@ -46,7 +47,7 @@ header {
     > button:first-of-type,
     > button:last-of-type {    
         font-size: 1.0rem;
-        background: vars.$bg-color-button1;                       
+        background: vars.$bg-template;                       
         color: vars.$color-text;
         padding: 10px 15px;      
         border: none;        
@@ -81,4 +82,11 @@ header {
   display: inline-flex;
   align-items: center;
   gap: 5px;
+}
+.logo img#img.light-toggle,
+.logo1 img#img.light-toggle {
+  box-shadow: none;
+}
+.logo1 img#img.light-toggle {
+    z-index: 4000;
 }

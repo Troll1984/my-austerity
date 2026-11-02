@@ -8,10 +8,11 @@
         margin-top: 70px;
     }
     @media(max-width: 800px) {
-        margin-top: 0;
+        margin-top: 10px;
     }
-    @media(max-width: 670px) {
-        display: none;            
+    @media(max-width: 600px) {
+        display: none;    
+               
     }   
     img {
         width: 300px;
@@ -28,8 +29,9 @@
     margin-left: 20px;
     font-size: 3.5rem;
     color: vars.$color-text;
-       @media(max-width: 470px) {
+       @media(max-width: 600px) {
             font-size: 2.5rem;
+           
         }
     }
 }
@@ -69,8 +71,9 @@
         padding: 20px 20px;
         border: none;
         @media(max-width: 600px) {
-             padding: 10px 10px;
-             margin-top: 10px;
+             padding: 5px 5px;
+             top: 5px;
+            right: 5px; 
         }
     }
 }
@@ -88,6 +91,9 @@
         background: hsla(22, 15%, 54%, 0.448);
         border: none;
         border-radius: 8px;
+    }
+    @media(max-width: 800px) {
+        width: 70%;
     }
     @media(max-width: 600px) {
         display: none;
@@ -148,10 +154,16 @@
     @media(max-width: 1400px) {         
          margin-top: 20px;
     }
+    @media(max-width: 1200px) {
+        height: 750px; 
+    }
+    @media(max-width: 800px) {
+        height: 650px; 
+    }
     @media(max-width: 600px) {
-         margin-top: 10px;
+        margin-top: 5px;
         flex: 0 0 95%;
-        height: 650px;        
+        height: 600px;        
         scroll-snap-align: center;       
     }      
     .card-buttons {
@@ -171,7 +183,8 @@
         padding: 10px; 
         border-radius: 5px;      
         @media(max-width: 800px) {
-            font-size: 1.0rem;            
+            font-size: 1.0rem; 
+                     
         }   
     }
     h3 {
@@ -312,7 +325,7 @@ button {
                     margin-top: 20px;
             }
             @media(max-width: 600px){
-                    margin-top: 20px;
+                    margin-top: 30px;
                     font-size: 2.0rem;
             }      
         }

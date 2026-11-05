@@ -63,7 +63,7 @@
         top: 10px;
         right: 10px;       
         cursor: pointer;       
-        background: vars.$bg-color-button;
+        background:  vars.$bg-template;;
         color:vars.$color-text;;
         box-shadow: 0px 0px 12px -1px rgba(49, 48, 48, 0.75);
         border-radius: 8px;
@@ -91,10 +91,16 @@
         background: hsla(22, 15%, 54%, 0.448);
         border: none;
         border-radius: 8px;
+        color:  vars.$bg-template;
+        &:hover {
+            background:  vars.$bg-template;
+            color: #fff;
+        }
     }
-    @media(max-width: 800px) {
-        width: 70%;
+    @media(max-width: 14000px) {
+        width: 80%;
     }
+   
     @media(max-width: 600px) {
         display: none;
     }    
@@ -141,7 +147,7 @@
     flex-direction: column;
     gap: 5px;        
     box-sizing: border-box;   
-    height: 650px;        
+    height: 750px;        
     padding: 10px;
     border-radius: 16px;
     border: 1px solid hsla(23, 21%, 12%, 0.148);;
@@ -152,13 +158,14 @@
     scroll-snap-align: start;     
     box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
     @media(max-width: 1400px) {         
-         margin-top: 20px;
+         margin-top: 10px;
+         height: 750px;
     }
     @media(max-width: 1200px) {
         height: 750px; 
     }
     @media(max-width: 800px) {
-        height: 650px; 
+        height: 750px; 
     }
     @media(max-width: 600px) {
         margin-top: 5px;
@@ -169,13 +176,18 @@
     }      
     .card-buttons {
         display: flex;
-        justify-content: space-between;   
+        justify-content: center;   
         width: 100%;
-        margin-top: auto;     
+            
     }
     @media(max-width: 670px) {
         width: 100%;        
     }        
+    button {
+        background:vars.$bg-color-button1;
+        color: vars.$color-text;  
+        margin-top: auto; 
+    }
     h1 {       
         width: 100%;
         font-size: 1.5rem;  
@@ -183,6 +195,9 @@
         border: 1px solid #fff; 
         padding: 10px; 
         border-radius: 5px;      
+        @media(max-width: 1400px) {
+             font-size: 1.2rem; 
+        }
         @media(max-width: 800px) {
             font-size: 1.0rem; 
                      
@@ -191,6 +206,9 @@
     h3 {
         font-size: 1.3rem;
         color: #1e831e;
+        @media(max-width: 1400px) {
+             font-size: 1.2rem; 
+        }
         @media(max-width: 800px) {
             font-size: 1rem;
         }   
@@ -248,7 +266,7 @@
         width: 150px;    
         font-size: 1.2rem;
         text-align: center;
-        background: vars.$bg-color-button;
+        background: vars.$bg-template;;
         padding: 10px 10px;
         margin: 0 auto;
         border-radius: 10px;
@@ -288,11 +306,12 @@
     border-radius: 8px;
     cursor: pointer;
 }
-button {
-        background:vars.$bg-color-button1;
-        color: vars.$color-text;  
-        margin-top: auto; 
-    }
+.ascetic-card .card-buttons .delete-button {
+    width: 30%;
+    max-width: 300px;
+    background:  vars.$bg-template;;
+}
+
     .resize-handle {
         width: 100px;
         height: 30px;
@@ -314,9 +333,7 @@ button {
             border-radius: 5px;
             background: #fff;
         }
-        #btnLang {
-            background: vars.$bg-color-button;            
-        }
+       
         h1#title {
             font-size: 2.5rem;
             text-align: center;

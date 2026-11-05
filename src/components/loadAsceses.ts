@@ -1,7 +1,7 @@
 import { getElement } from './dom';
 import { supabase } from '../supabase';
 import { getToday, parseDate, formatDate, checkAscetic, } from './verificationAsceses';
-import { translations, currentLanguage, updateLanguage, toggleLanguage } from './lang';
+import { translations, currentLanguage, updateLanguage } from './lang';
 import './slider';
 
 // Кнопка назад
@@ -84,7 +84,6 @@ async function loadAscetics() {
         const time = document.createElement('h1');
         const result = document.createElement('h1');
         const status = document.createElement('h4');
-        const btnLang = document.createElement('button');
         const resizeHandle = document.createElement('div');
         resizeHandle.classList.add('resize-handle');
         gotName.textContent = translations[currentLanguage].gotName;
@@ -93,11 +92,6 @@ async function loadAscetics() {
         time.textContent = element.timeAscetic;
         gotRes.textContent = translations[currentLanguage].gotRes;
         result.textContent = ` ${element.resultAscetic}`;
-        // Кнопка смены языка в сохраненных аскезах
-         btnLang?.addEventListener('click', () => {
-            toggleLanguage();
-            window.dispatchEvent(new Event('languageChanged'));
-        });      
         // Разбираем диапазон Flatpickr
         let dates = element.timeAscetic.split(' to ');
         let startDate = parseDate(dates[0]);
@@ -225,6 +219,7 @@ async function loadAscetics() {
         // Удаление карточки
         let deleteButton = document.createElement('button');    
         deleteButton.type = 'button';
+        deleteButton.classList.add('delete-button');
         deleteButton.textContent = translations[language].deleteButton;        
 
         deleteButton.addEventListener('click', async () => {
@@ -245,8 +240,8 @@ async function loadAscetics() {
     renderAscetics();
 });        
 const cardButtons = document.createElement('div');
-cardButtons.classList.add('.card-buttons');
-cardButtons.append(deleteButton, btnLang);
+cardButtons.classList.add('card-buttons');
+cardButtons.append(deleteButton);
        updateStatus();
 card.append(    
 titleCard,

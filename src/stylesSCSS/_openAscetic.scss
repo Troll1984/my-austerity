@@ -176,8 +176,11 @@
     }      
     .card-buttons {
         display: flex;
-        justify-content: center;   
-        width: 100%;
+    justify-content: center;
+    width: 100%;
+    margin-top: auto;
+      margin-bottom: 25px;
+    flex-shrink: 0;
             
     }
     @media(max-width: 670px) {
@@ -186,7 +189,7 @@
     button {
         background:vars.$bg-color-button1;
         color: vars.$color-text;  
-        margin-top: auto; 
+        margin-top: 0; 
     }
     h1 {       
         width: 100%;
@@ -275,7 +278,7 @@
     width: 100%;
     box-sizing: border-box;
     display: grid;
-    grid-template-columns: repeat(9, minmax(0, 1fr));
+    grid-template-columns: repeat(7, minmax(0, 1fr));
     align-content: start;
     gap: clamp(2px, 0.5vw, 6px);
     padding: 2px;
@@ -312,27 +315,36 @@
     background:  vars.$bg-template;;
 }
 
-    .resize-handle {
-        width: 100px;
-        height: 30px;
-        margin: 10px auto;
-        border-radius: 10px;
-        background: #888;
-        cursor: ns-resize;
-        touch-action: none;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        position: relative;
-        z-index: 1000;
-        }
-        .resize-handle::after {
-            content: '';
-            width: 40px;
-            height: 5px;
-            border-radius: 5px;
-            background: #fff;
-        }
+  .resize-handle {
+    position: absolute;
+    bottom: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: 80px;
+    height: 12px;
+
+    margin: 0;
+    border-radius: 10px;
+    background: #888;
+
+    cursor: ns-resize;
+    touch-action: none;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    z-index: 1000;
+}
+
+.resize-handle::after {
+    content: '';
+    width: 40px;
+    height: 5px;
+    border-radius: 5px;
+    background: #fff;
+}
        
         h1#title {
             font-size: 2.5rem;

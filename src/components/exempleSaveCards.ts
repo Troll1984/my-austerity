@@ -77,16 +77,33 @@ if (templateGrid) {
         : currentLanguage === 'nl' ? selectedTemplate.resultNl
           : selectedTemplate.resultEn;
 
-      const { error: insertError } = await supabase.from('ascetics').insert({
-        user_id: userData.user.id,
+     // Шифруем данные выбранного шаблона
+const { data: encryptionData, error: encryptionError } =
+  await supabase.functions.invoke('smooth-worker', {
+    body: {
+      action: 'encrypt',
+      data: {
         name,
         duration: `${formatDate(startDate)} to ${formatDate(endDate)}`,
         expected_result: result,
         completed_days: [],
-        status: 'active',
-      });
+        status: 'active'
+      }
+    }
+  });
 
-      if (insertError) throw insertError;
+if (encryptionError) throw encryptionError;
+
+// Сохраняем зашифрованные данные
+const { error: insertError } = await supabase
+  .from('ascetics')
+  .insert({
+    user_id: userData.user.id,
+    encrypted_data: encryptionData.encrypted_data,
+    encryption_version: 1
+  });
+
+if (insertError) throw insertError;
       window.location.href = './ascetic.html';
     } catch (error) {
       console.error('Failed to create austerity from template:', error);

@@ -55,26 +55,49 @@ formAscetic.addEventListener('submit', async (event) => {
         return;
     }
     // Создаём аскезу только после успешных проверок
-   const { data: userData, error: userError } = await supabase.auth.getUser();
+ try {
+    const { data: userData, error: userError } = await supabase.auth.getUser();
+
     if (userError || !userData.user) {
         alert('Спочатку увійдіть у свій акаунт!');
-        formAscetic.reset();    
+        formAscetic.reset();
         return;
     }
-const { error: insertError } = await supabase
-    .from('ascetics')
-    .insert({
-        user_id: userData.user.id,
-        name: nameAscetic,
-        duration: timeAscetic,
-        expected_result: resultAscetic,
-        completed_days: [],
-        status: 'active'
-    });
-if (insertError) {
-    console.error('Помилка збереження аскези.:', insertError);
+
+    // Шифруем данные аскезы
+    const { data: encryptionData, error: encryptionError } =
+        await supabase.functions.invoke('smooth-worker', {
+            body: {
+                action: 'encrypt',
+                data: {
+                    name: nameAscetic,
+                    duration: timeAscetic,
+                    expected_result: resultAscetic,
+                    completed_days: [],
+                    status: 'active'
+                }
+            }
+        });
+        console.log('Результат шифрования:', encryptionData);
+console.log('Ошибка шифрования:', encryptionError);
+
+    if (encryptionError) throw encryptionError;
+
+    // Сохраняем зашифрованные данные в Supabase
+    const { error: insertError } = await supabase
+        .from('ascetics')
+        .insert({
+            user_id: userData.user.id,
+            encrypted_data: encryptionData.encrypted_data,
+            encryption_version: 1
+        });
+
+    if (insertError) throw insertError;
+
+    window.location.href = './ascetic.html';
+
+} catch (error) {
+    console.error('Помилка збереження аскези:', error);
     alert('Не вдалося зберегти аскезу. Спробуй ще раз.');
-    return;
 }
-window.location.href = './ascetic.html';
 });

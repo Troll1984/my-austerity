@@ -27,24 +27,60 @@ async function loadAscetics() {
         .from('ascetics')
         .select('*')
         .order('created_at', { ascending: false });
+
     if (error) {
-        console.error('Помилка завантаження аскез.', error);
+        console.error('Помилка завантаження аскез:', error);
         alert('Не вдалося завантажити аскези. Спробуй оновити сторінку.');
         return;
     }
-     console.log('Аскезы из Supabase:', data);
-        console.log('Ошибка загрузки:', error);
-        ascetics = (data ?? []).map((row) => ({
-       
-        id: row.id,
-        nameAscetic: row.name,
-        timeAscetic: row.duration,
-        resultAscetic: row.expected_result,
-        completedDays: row.completed_days ?? [],
-        status: row.status        
-    }));
-    
-    renderAscetics();
+
+    try {
+        const loadedAscetics: Ascetic[] = [];
+
+        for (const row of data ?? []) {
+            let asceticData;
+
+            if (row.encrypted_data) {
+                const { data: decryptedData, error: decryptError } =
+                    await supabase.functions.invoke('smooth-worker', {
+                        body: {
+                            action: 'decrypt',
+                            id: row.id
+                        }
+                    });
+
+                if (decryptError) throw decryptError;
+
+                asceticData = decryptedData.data;
+            } else {
+                // Поддержка старых, ещё не зашифрованных записей
+                asceticData = {
+                    name: row.name,
+                    duration: row.duration,
+                    expected_result: row.expected_result,
+                    completed_days: row.completed_days ?? [],
+                    status: row.status
+                };
+            }
+
+            loadedAscetics.push({
+                id: row.id,
+                nameAscetic: asceticData.name,
+                timeAscetic: asceticData.duration,
+                resultAscetic: asceticData.expected_result,
+                completedDays: asceticData.completed_days ?? [],
+                status: asceticData.status
+            });
+        }
+
+        ascetics = loadedAscetics;
+        renderAscetics();
+
+    } catch (error) {
+        console.error('Помилка розшифрування аскез:', error);
+        alert('Не вдалося розшифрувати дані аскез.');
+    }
+
 }
     // Создаём карточки
     function renderAscetics() {   
@@ -197,22 +233,46 @@ async function loadAscetics() {
                     // Сегодняшнюю отметку можно снять до полуночи
                     element.completedDays.splice(dayIndex, 1);
                 }
-                const { error } = await supabase
-                    .from('ascetics')
-                    .update({completed_days: element.completedDays})
-                    .eq('id', element.id);
-                if (error) {
-                    console.error('Помилка збереження позначки:', error);
-                    alert('Не вдалося зберегти позначку. Спробуй ще раз..');
-                    // Возвращаем предыдущий список отметок при ошибке
-                    if (dayIndex === -1) {
-                        element.completedDays.pop();
-                    } else {
-                        element.completedDays.splice(dayIndex, 0, dateString);
-                    }
-                    return;
+              try {
+    const { data: encryptionData, error: encryptionError } =
+        await supabase.functions.invoke('smooth-worker', {
+            body: {
+                action: 'encrypt',
+                data: {
+                    name: element.nameAscetic,
+                    duration: element.timeAscetic,
+                    expected_result: element.resultAscetic,
+                    completed_days: element.completedDays,
+                    status: element.status
                 }
-                renderAscetics();
+            }
+        });
+
+    if (encryptionError) throw encryptionError;
+
+    const { error } = await supabase
+        .from('ascetics')
+        .update({
+            encrypted_data: encryptionData.encrypted_data
+        })
+        .eq('id', element.id);
+
+    if (error) throw error;
+
+} catch (error) {
+    console.error('Помилка збереження позначки:', error);
+    alert('Не вдалося зберегти позначку. Спробуй ще раз.');
+
+    if (dayIndex === -1) {
+        element.completedDays.pop();
+    } else {
+        element.completedDays.splice(dayIndex, 0, dateString);
+    }
+
+    return;
+}
+  renderAscetics();
+
             });
             calendar.append(dayButton);
         }

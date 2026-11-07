@@ -63,7 +63,7 @@
         top: 10px;
         right: 10px;       
         cursor: pointer;       
-        background:  vars.$bg-template;;
+        background:  none;
         color:vars.$color-text;;
         box-shadow: 0px 0px 12px -1px rgba(49, 48, 48, 0.75);
         border-radius: 8px;
@@ -91,11 +91,7 @@
         background: hsla(22, 15%, 54%, 0.448);
         border: none;
         border-radius: 8px;
-        color:  vars.$bg-template;
-        &:hover {
-            background:  vars.$bg-template;
-            color: #fff;
-        }
+        color:  #fff;        
     }
     @media(max-width: 14000px) {
         width: 80%;
@@ -310,7 +306,7 @@
     cursor: pointer;
 }
 .ascetic-card .card-buttons .delete-button {
-    width: 30%;
+    width: 40%;
     max-width: 300px;
     background:  vars.$bg-template;;
 }
@@ -320,21 +316,16 @@
     bottom: 8px;
     left: 50%;
     transform: translateX(-50%);
-
     width: 80px;
     height: 12px;
-
     margin: 0;
     border-radius: 10px;
     background: #888;
-
     cursor: ns-resize;
     touch-action: none;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     z-index: 1000;
 }
 

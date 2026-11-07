@@ -56,6 +56,10 @@ form {
             font-size: 1.2rem;
             padding: 20px;
              color: #0a8529;
+             @media(max-width: 1400px) {
+                max-height: 80px;
+                 width: 85%
+            }
             @media(max-width: 600px) {
                 width: 85%;
             }

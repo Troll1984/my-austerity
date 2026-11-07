@@ -64,7 +64,7 @@
             background: vars.$bg-template;
             border: 1px solid #473014;
             border-radius: 10px;
-            padding: 15px;
+            padding: 20px;
             display: flex;
             flex-direction: column;                 
             box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
@@ -164,9 +164,14 @@ hr {
     display: flex;
     justify-content: space-between;
     width: 46%;   
-     @media(max-width:1200px) {
-            width: 65%;   
-            left: 17.5%; 
+     @media(max-width:1400px) {
+            width: 70%;   
+            left: 15.0%; 
+             top: 30px;       
+        }
+    @media(max-width:900px) {
+            width: 75%;   
+            left: 13.0%; 
              top: 30px;       
         }
      @media(max-width:600px) {
@@ -176,14 +181,9 @@ hr {
     #right {
         padding: 15px;
         background: hsla(33, 18%, 90%, 0.225);
-        color: vars.$color-text;
+        color: #fff;
         border: none;
-        color: vars.$bg-template;
-        &:hover {
-            background: #422b0d;
-            color: vars.$color-text;
-            border-radius: 10px;
-        }
+                
     } 
     
 }

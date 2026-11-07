@@ -119,9 +119,7 @@ async function loadAscetics() {
         const name = document.createElement('h1');
         const time = document.createElement('h1');
         const result = document.createElement('h1');
-        const status = document.createElement('h4');
-        const resizeHandle = document.createElement('div');
-        resizeHandle.classList.add('resize-handle');
+        const status = document.createElement('h4');      
         gotName.textContent = translations[currentLanguage].gotName;
         name.textContent = ` ${element.nameAscetic}`;
         duren.textContent = translations[currentLanguage].duren;
@@ -318,32 +316,8 @@ progressBar,
 calendarTitle,
 calendar,
 cardButtons,
-resizeHandle
 );
-    resizeHandle.addEventListener('pointerdown', (event: PointerEvent) => {
-    event.preventDefault();
-    const card = resizeHandle.closest<HTMLElement>('.ascetic-card');
-    if (!card) return;
-    const calendar = card.querySelector<HTMLElement>('.ascetic-calendar');
-    const startY = event.clientY;
-    const initialHeight = card.getBoundingClientRect().height;
-    const calendarHeight = calendar ? parseFloat(getComputedStyle(calendar).maxHeight) : 0;
-    const onMove = (moveEvent: PointerEvent) => {
-                const delta = moveEvent.clientY - startY;
-                 card.style.height = `${initialHeight + delta}px`;
-        if (calendar) {
-            calendar.style.maxHeight = `${calendarHeight + delta}px`;
-        }
-    };
-    const onUp = () => {
-        window.removeEventListener('pointermove', onMove);
-        window.removeEventListener('pointerup', onUp);
-        window.removeEventListener('pointercancel', onUp);
-        };
-        window.addEventListener('pointermove', onMove);
-        window.addEventListener('pointerup', onUp);
-        window.addEventListener('pointercancel', onUp);
-    });       
+   
       saveAscetic.append(card);
         updateProgress();
     });

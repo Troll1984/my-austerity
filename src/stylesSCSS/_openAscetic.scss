@@ -116,10 +116,14 @@
   overflow-y: hidden;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth; 
-  -webkit-overflow-scrolling: touch;    
+  -webkit-overflow-scrolling: touch;  
+  @media(max-width: 1400px) {
+    min-height: 750px;
+    margin-top: 20px;       
+   }  
    @media(max-width: 1200px) {
     min-height: 750px;
-    margin-top: 70px;       
+    margin-top: 40px;       
    }
     @media(max-width: 600px) {        
         min-height: 600px;
@@ -143,39 +147,36 @@
     flex-direction: column;
     gap: 5px;        
     box-sizing: border-box;   
-    height: 750px;        
+    height: 800px;        
     padding: 10px;
     border-radius: 16px;
     border: 1px solid hsla(23, 21%, 12%, 0.148);;
     background:vars.$bg-input1;   
-    margin-top: 50px;   
+    margin-top: 20px;   
     overflow: hidden;
     scroll-snap-type: x mandatory;
     scroll-snap-align: start;     
     box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
     @media(max-width: 1400px) {         
          margin-top: 10px;
-         height: 750px;
-    }
-    @media(max-width: 1200px) {
-        height: 750px; 
-    }
+         
+    }   
     @media(max-width: 800px) {
         height: 750px; 
     }
     @media(max-width: 600px) {
         margin-top: 5px;
         flex: 0 0 95%;
-        height: 620px;        
+        height: 650px;        
         scroll-snap-align: center;  
          scroll-snap-stop: always;     
     }      
     .card-buttons {
-        display: flex;
+    display: flex;
     justify-content: center;
     width: 100%;
     margin-top: auto;
-      margin-bottom: 25px;
+
     flex-shrink: 0;
             
     }
@@ -280,6 +281,7 @@
     padding: 2px;
     max-height: 250px;
     overflow-y: auto;
+    margin-bottom: 10px;
     .calendar-day {
         aspect-ratio: 1;
         min-width: 0;
@@ -311,31 +313,7 @@
     background:  vars.$bg-template;;
 }
 
-  .resize-handle {
-    position: absolute;
-    bottom: 8px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 80px;
-    height: 12px;
-    margin: 0;
-    border-radius: 10px;
-    background: #888;
-    cursor: ns-resize;
-    touch-action: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1000;
-}
-
-.resize-handle::after {
-    content: '';
-    width: 40px;
-    height: 5px;
-    border-radius: 5px;
-    background: #fff;
-}
+  
        
         h1#title {
             font-size: 2.5rem;

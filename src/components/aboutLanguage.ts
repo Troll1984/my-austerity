@@ -70,6 +70,7 @@ const politic = document.querySelector<HTMLElement>('.politic');
 if (politic) {
      const ukrainianHtml = politic.innerHTML;
       const englishHtml = `<div>
+      <div class="button"><button class="button-arrow-right"><i class="fa-solid fa-right-long"></i></button></div>  
     <h1>Privacy Policy</h1>
     <h3>My Ascesa</h3>
     <p>Last updated: 08.11.2026</p>
@@ -130,6 +131,7 @@ if (politic) {
     </ul>
           </div>`;
       const dutchHtml =  `<div>
+      <div class="button"><button class="button-arrow-right"><i class="fa-solid fa-right-long"></i></button></div>  
       <h1>Privacybeleid</h1>
 <h3>My Askesa</h3>
 <p>Laatst bijgewerkt: 08.11.2026</p>
@@ -197,3 +199,89 @@ if (politic) {
         applyAboutLanguage();
         window.addEventListener('languageChanged', applyAboutLanguage);
       }
+
+
+const condit = document.querySelector<HTMLElement>('.condit');
+if ( condit) {
+     const ukrainianHtml =  condit.innerHTML;
+
+      const englishHtml = `<div>
+       <div class="button"><button class="button-arrow-left"><i class="fa-solid fa-left-long"></i></button></div> 
+      <h1>Terms of Use</h1>
+<ul>
+  <li><h3>Purpose of the Application</h3>
+    <p>My Askesis is designed for personal use to develop self-discipline, build healthy habits, maintain personal commitments, and track individual progress.</p>
+  </li>
+  <li><h3>Registration and Account</h3>
+    <p>Registration may be required to use certain features of the application.
+    Users agree to provide accurate information and take responsibility for the security of their accounts.</p>
+  </li>
+  <li><h3>User Responsibility</h3>
+    <p>Users independently define their goals, create askesis, and make decisions regarding their completion.
+    My Askesis is a personal organization and self-discipline tool and does not guarantee specific results.</p>
+  </li>
+  <li><h3>Rules of Use</h3>
+    <p>When using the application, users are prohibited from:
+    using the service in violation of applicable laws;
+    attempting to gain unauthorized access to other users' data;
+    interfering with the operation of the application's backend or infrastructure;
+    using the application for harmful or illegal activities.</p>
+  </li>
+  <li><h3>Service Availability</h3>
+    <p>We strive to ensure the stable operation of My Askesis but do not guarantee uninterrupted service availability.
+    The application may be temporarily unavailable due to maintenance, updates, or technical circumstances beyond our control.</p>
+  </li>
+  <li><h3>Intellectual Property</h3>
+    <p>The name, design, interface, source code, and other elements of My Askesis are the intellectual property of their respective rights holders.
+    Copying, distributing, or using the application's materials without proper authorization is prohibited, except where permitted by law.</p>
+  </li>
+  <li><h3>Acceptance of Terms</h3>
+    <p>By using My Askesis, users confirm that they have read and agree to this Privacy Policy and the Terms of Use.</p>
+  </li>
+</ul>
+      </div>`;
+
+      const dutchHtml =  `<div>
+     <div class="button"><button class="button-arrow-left"><i class="fa-solid fa-left-long"></i></button></div>
+        <h1>Gebruiksvoorwaarden</h1>
+<ul>
+  <li><h3>Doel van de applicatie</h3>
+    <p>My Askesis is bedoeld voor persoonlijk gebruik om zelfdiscipline te ontwikkelen, goede gewoonten op te bouwen, persoonlijke verplichtingen na te komen en de eigen voortgang bij te houden.</p>
+  </li>
+  <li><h3>Registratie en account</h3>
+    <p>Voor het gebruik van bepaalde functies van de applicatie kan registratie vereist zijn.
+    De gebruiker verplicht zich om juiste informatie te verstrekken en zorgvuldig om te gaan met de beveiliging van zijn of haar account.</p>
+  </li>
+  <li><h3>Verantwoordelijkheid van de gebruiker</h3>
+    <p>De gebruiker bepaalt zelfstandig zijn of haar doelen, stelt askeses op en neemt beslissingen over de uitvoering ervan.
+    My Askesis is een hulpmiddel voor persoonlijke organisatie en zelfdiscipline en garandeert geen specifieke resultaten.</p>
+  </li>
+  <li><h3>Gebruiksregels</h3>
+    <p>Bij het gebruik van de applicatie is het verboden om:
+    de dienst te gebruiken in strijd met de geldende wetgeving;
+    te proberen ongeoorloofde toegang te krijgen tot gegevens van andere gebruikers;
+    de werking van de serveromgeving of infrastructuur van de applicatie te verstoren;
+    de applicatie te gebruiken voor schadelijke of illegale activiteiten.</p>
+  </li>
+  <li><h3>Beschikbaarheid van de dienst</h3>
+    <p>We streven ernaar My Askesis stabiel te laten functioneren, maar garanderen geen ononderbroken beschikbaarheid van de dienst.
+    De werking van de applicatie kan tijdelijk worden beperkt door onderhoud, updates of technische omstandigheden buiten onze controle.</p>
+  </li>
+  <li><h3>Intellectueel eigendom</h3>
+    <p>De naam, het ontwerp, de interface, de broncode en andere onderdelen van My Askesis zijn intellectueel eigendom van hun respectieve rechthebbenden.
+    Het kopiëren, verspreiden of gebruiken van materiaal uit de applicatie zonder de juiste toestemming is verboden, behalve wanneer dit wettelijk is toegestaan.</p>
+  </li>
+  <li><h3>Acceptatie van de voorwaarden</h3>
+    <p>Door My Askesis te gebruiken, bevestigt de gebruiker dat hij of zij dit privacybeleid en deze gebruiksvoorwaarden heeft gelezen en ermee akkoord gaat.</p>
+  </li>
+</ul>
+      </div>`
+
+       function applyAboutLanguage(): void {
+          condit!.innerHTML = currentLanguage === 'uk' ? ukrainianHtml : currentLanguage === 'nl' ? dutchHtml : englishHtml;
+        }
+      
+        applyAboutLanguage();
+        window.addEventListener('languageChanged', applyAboutLanguage)
+
+     }

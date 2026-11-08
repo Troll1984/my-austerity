@@ -1,4 +1,4 @@
-import { currentLanguage } from './lang';
+import { currentLanguage } from './lang';  
 
 const about = document.querySelector<HTMLElement>('.info');
 if (about) {
@@ -63,3 +63,137 @@ if (about) {
   applyAboutLanguage();
   window.addEventListener('languageChanged', applyAboutLanguage);
 }
+
+
+
+const politic = document.querySelector<HTMLElement>('.politic');
+if (politic) {
+     const ukrainianHtml = politic.innerHTML;
+      const englishHtml = `<div>
+    <h1>Privacy Policy</h1>
+    <h3>My Ascesa</h3>
+    <p>Last updated: 08.11.2026</p>
+
+    <ul class="listGen">
+      <li>General Provisions
+        <p>"My Askesa" - is an application for creating, planning, and tracking personal askesis, habits, and goals.
+          We respect users' privacy and strive to ensure the proper protection of their personal data.
+          By using My Askesis, you agree to the terms of this Privacy Policy.</p>
+      </li>
+
+      <li>What Data We Collect
+        <p>The following data may be used to operate the application:</p>
+        <ul class="listUsualy">
+          <li>email address required for registration and authentication;</li>
+          <li>information about created askesis;</li>
+          <li>duration of askesis and expected results;</li>
+          <li>records of completed days and user progress;</li>
+          <li>technical information required for the application to function.</li>
+        </ul>
+      </li>
+
+      <li>Data Storage and Protection
+        <p>The Supabase platform is used to store data and provide authentication.
+          AES-256-GCM encryption is used to provide additional protection for askesis data.
+          Encryption and decryption are performed automatically when the relevant data is saved and retrieved.
+          We take technical measures to protect information against unauthorized access, loss, or disclosure.</p>
+      </li>
+
+      <li>Use of Data
+        <p>The collected information is used exclusively for:</p>
+        <ul class="listUsualy">
+          <li>providing the application's core features;</li>
+          <li>storing and displaying personal askesis;</li>
+          <li>user authentication;</li>
+          <li>ensuring the security and stability of the service.</li>
+        </ul>
+      </li>
+
+      <li>Sharing Data with Third Parties
+        <p>Data may be processed by third-party technical services that support the operation of the application, including Supabase and Vercel.
+          We do not sell users' personal data.</p>
+      </li>
+
+      <li>User Rights
+        <p>Users have the right to:</p>
+        <ul class="listUsualy">
+          <li>request information about their data;</li>
+          <li>request correction of inaccurate information;</li>
+          <li>request the deletion of their data;</li>
+          <li>stop using the application.</li>
+        </ul>
+      </li>
+
+      <li>Changes to This Policy
+        <p>We reserve the right to update this Privacy Policy. The current version is always available on this page.</p>
+      </li>
+    </ul>
+          </div>`;
+      const dutchHtml =  `<div>
+      <h1>Privacybeleid</h1>
+<h3>My Askesa</h3>
+<p>Laatst bijgewerkt: 08.11.2026</p>
+
+<ul class="listGen">
+  <li>Algemene bepalingen
+    <p>"My Askesa" - is een applicatie voor het creëren, plannen en bijhouden van persoonlijke askese, gewoonten en doelen.
+      Wij respecteren de privacy van onze gebruikers en streven ernaar hun persoonsgegevens goed te beschermen.
+      Door My Askesis te gebruiken, gaat u akkoord met de bepalingen van dit privacybeleid.</p>
+  </li>
+
+  <li>Welke gegevens verzamelen wij?
+    <p>Voor het functioneren van de applicatie kunnen de volgende gegevens worden gebruikt:</p>
+    <ul class="listUsualy">
+      <li>e-mailadres dat nodig is voor registratie en authenticatie;</li>
+      <li>informatie over aangemaakte askese;</li>
+      <li>de duur van askese en de verwachte resultaten;</li>
+      <li>registraties van voltooide dagen en de voortgang van de gebruiker;</li>
+      <li>technische informatie die nodig is voor het functioneren van de applicatie.</li>
+    </ul>
+  </li>
+
+  <li>Gegevensopslag en -beveiliging
+    <p>Het Supabase-platform wordt gebruikt voor gegevensopslag en gebruikersauthenticatie.
+      Voor extra bescherming van askesegegevens wordt AES-256-GCM-versleuteling toegepast.
+      Het versleutelen en ontsleutelen gebeurt automatisch bij het opslaan en ophalen van de betreffende gegevens.
+      Wij nemen technische maatregelen om informatie te beschermen tegen ongeoorloofde toegang, verlies of openbaarmaking.</p>
+  </li>
+
+  <li>Gebruik van gegevens
+    <p>De verzamelde informatie wordt uitsluitend gebruikt voor:</p>
+    <ul class="listUsualy">
+      <li>het aanbieden van de belangrijkste functies van de applicatie;</li>
+      <li>het opslaan en weergeven van persoonlijke askese;</li>
+      <li>gebruikersauthenticatie;</li>
+      <li>het waarborgen van de veiligheid en stabiliteit van de dienst.</li>
+    </ul>
+  </li>
+
+  <li>Gegevens delen met derden
+    <p>Gegevens kunnen worden verwerkt door externe technische diensten die nodig zijn voor het functioneren van de applicatie, waaronder Supabase en Vercel.
+      Wij verkopen geen persoonsgegevens van gebruikers.</p>
+  </li>
+
+  <li>Rechten van gebruikers
+    <p>Gebruikers hebben het recht om:</p>
+    <ul class="listUsualy">
+      <li>informatie over hun gegevens op te vragen;</li>
+      <li>correctie van onjuiste informatie te verzoeken;</li>
+      <li>verwijdering van hun gegevens te verzoeken;</li>
+      <li>te stoppen met het gebruik van de applicatie.</li>
+    </ul>
+  </li>
+
+  <li>Wijzigingen in dit privacybeleid
+    <p>Wij behouden ons het recht voor om dit privacybeleid bij te werken. De actuele versie is altijd beschikbaar op deze pagina.</p>
+  </li>
+</ul>
+      </div>`;
+
+      function applyAboutLanguage(): void {
+          politic!.innerHTML = currentLanguage === 'uk' ? ukrainianHtml : currentLanguage === 'nl' ? dutchHtml : englishHtml;
+        }
+      
+        applyAboutLanguage();
+        window.addEventListener('languageChanged', applyAboutLanguage);
+      }

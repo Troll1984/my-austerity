@@ -11,6 +11,7 @@ export default defineConfig({
     main: resolve(rootDir, 'index.html'),
     ascetic: resolve(rootDir, 'ascetic.html'),
     example: resolve(rootDir, 'example.html'),
+    privacy: resolve(rootDir, 'privacy.html'),
             },
         },
     },

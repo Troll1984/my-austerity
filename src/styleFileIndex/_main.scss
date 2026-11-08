@@ -1,4 +1,4 @@
-@use './variables' as vars;
+@use '../styleFileOur/variables' as vars;
 .blockForm {
     margin-top: 10px;
     @media(max-width: 1200px) {
@@ -92,9 +92,12 @@ form {
             background: vars.$bg-template;
             color: vars.$color-text;
             border: none;
-            font-size: 1.0rem;
+            font-size: 1.2rem;
             font-weight: bold;   
             box-shadow: 7px 3px 14px 1px rgba(0,0,0,0.75); 
+             @media(max-width: 600px) {
+                font-size: 1rem;
+            }  
             &:hover { 
             background: vars.$bg-color-button-hover;
             }        

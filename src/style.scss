@@ -3,10 +3,12 @@
 @use '@fortawesome/fontawesome-free/scss/brands';
 @use '@fortawesome/fontawesome-free/scss/regular';
 
-@use './stylesSCSS/reset';
-@use './stylesSCSS/base';
-@use './stylesSCSS/header';
-@use './stylesSCSS/main';
+@use './styleFileIndex/auth';
+@use './styleFileIndex/base';
+@use './styleFileIndex/header';
+@use './styleFileIndex/main';
+@use './styleFileIndex/reset';
+@use './styleFileIndex/nav';
+@use './styleFileOur/variables';
 @use "flatpickr/dist/flatpickr.css";
-@use './stylesSCSS/auth';
-@use './stylesSCSS/nav.scss';
+

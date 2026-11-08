@@ -22,7 +22,9 @@ export interface Ascetic {
 }
 let ascetics: Ascetic[] = [];
 // Загрузка данных пользователей из сервера Supabase  (Таблица данніх ascetics)
+// Загрузка аскез из Supabase
 async function loadAscetics() {
+
     const { data, error } = await supabase
         .from('ascetics')
         .select('*')
@@ -35,52 +37,62 @@ async function loadAscetics() {
     }
 
     try {
-        const loadedAscetics: Ascetic[] = [];
 
-        for (const row of data ?? []) {
-            let asceticData;
+        // Расшифровываем все аскезы параллельно
+        const loadedAscetics: Ascetic[] = await Promise.all(
+            (data ?? []).map(async (row): Promise<Ascetic> => {
 
-            if (row.encrypted_data) {
-                const { data: decryptedData, error: decryptError } =
-                    await supabase.functions.invoke('smooth-worker', {
-                        body: {
-                            action: 'decrypt',
-                            id: row.id
-                        }
-                    });
+                let asceticData;
 
-                if (decryptError) throw decryptError;
+                if (row.encrypted_data) {
 
-                asceticData = decryptedData.data;
-            } else {
-                // Поддержка старых, ещё не зашифрованных записей
-                asceticData = {
-                    name: row.name,
-                    duration: row.duration,
-                    expected_result: row.expected_result,
-                    completed_days: row.completed_days ?? [],
-                    status: row.status
+                    const { data: decryptedData, error: decryptError } =
+                        await supabase.functions.invoke('smooth-worker', {
+                            body: {
+                                action: 'decrypt',
+                                id: row.id
+                            }
+                        });
+
+                    if (decryptError) throw decryptError;
+
+                    asceticData = decryptedData.data;
+
+                } else {
+
+                    // Поддержка старых незашифрованных записей
+                    asceticData = {
+                        name: row.name,
+                        duration: row.duration,
+                        expected_result: row.expected_result,
+                        completed_days: row.completed_days ?? [],
+                        status: row.status
+                    };
+                }
+
+                return {
+                    id: row.id,
+                    nameAscetic: asceticData.name,
+                    timeAscetic: asceticData.duration,
+                    resultAscetic: asceticData.expected_result,
+                    completedDays: asceticData.completed_days ?? [],
+                    status: asceticData.status
                 };
-            }
 
-            loadedAscetics.push({
-                id: row.id,
-                nameAscetic: asceticData.name,
-                timeAscetic: asceticData.duration,
-                resultAscetic: asceticData.expected_result,
-                completedDays: asceticData.completed_days ?? [],
-                status: asceticData.status
-            });
-        }
+            })
+        );
 
         ascetics = loadedAscetics;
+
+        // Отрисовываем карточки после расшифровки
         renderAscetics();
 
     } catch (error) {
+
         console.error('Помилка розшифрування аскез:', error);
         alert('Не вдалося розшифрувати дані аскез.');
-    }
 
+    }
 }
     // Создаём карточки
     function renderAscetics() {   
@@ -184,13 +196,16 @@ async function loadAscetics() {
         calendarTitle.textContent = translations[language].calendarTitle;
         let calendar = document.createElement('div');
         calendar.classList.add('ascetic-calendar');
+        let calendarFragment = document.createDocumentFragment();
         let offset = (startDate.getDay() + 6) % 7;
         for (let i = 0; i < offset; i++) {
             let emptyDay = document.createElement('span');
             emptyDay.classList.add('empty-day');
-            calendar.append(emptyDay);
+           calendarFragment.append(emptyDay);
         }
         let today = getToday();
+        let completedDaysSet = new Set(element.completedDays);
+
         for (let i = 0; i < totalDays; i++) {
             let currentDate = new Date(startDate);
             currentDate.setDate(startDate.getDate() + i);
@@ -201,10 +216,8 @@ async function loadAscetics() {
             dayButton.classList.add('calendar-day');
             dayButton.title = dateString;
 
-            let isCompleted =
-                element.completedDays.includes(dateString);
-            let isToday =
-                currentDate.getTime() === today.getTime();
+            let isCompleted = completedDaysSet.has(dateString);
+            let isToday = currentDate.getTime() === today.getTime();
             if (isCompleted) {
                 dayButton.classList.add('completed');
             }
@@ -272,8 +285,10 @@ async function loadAscetics() {
   renderAscetics();
 
             });
-            calendar.append(dayButton);
+          calendarFragment.append(dayButton);
         }
+
+        calendar.append(calendarFragment);
         // Удаление карточки
         let deleteButton = document.createElement('button');    
         deleteButton.type = 'button';
@@ -323,8 +338,17 @@ cardButtons,
     });
 }
 // Перерисовываем карточки и проверяем пропущенные дни
+let renderTimer: ReturnType<typeof setTimeout> | undefined;
+
 function checkAllAscetics() {
-    renderAscetics();
+    if (renderTimer) {
+        clearTimeout(renderTimer);
+    }
+
+    renderTimer = setTimeout(() => {
+        renderAscetics();
+        renderTimer = undefined;
+    }, 150);
 }
 
 void loadAscetics();

@@ -37,5 +37,11 @@ if (selectedTemplateId) {
   sessionStorage.removeItem(templateStorageKey);
 }
 
+// Переход на политики коефедициальности
+
+const politics = document.querySelector<HTMLTextAreaElement>('#politics');
+politics?.addEventListener('click', () => {
+    window.location.href = './privacy.html';
+})
 
  

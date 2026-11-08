@@ -1,6 +1,8 @@
 
 export const translations = {
   uk: {
+   aboutApp: 'Про додаток',
+   politics: 'Політика та правила',
    MyAccount: 'Мій акаунт',
    titleAscetic: 'Моя Аскеза',
    Description: 'Опис аскези',
@@ -43,6 +45,8 @@ export const translations = {
    templateDays: 'днів', templateGoal: 'Мета:', templateChoose: 'Обрати',
   },
   en: {
+    aboutApp: 'About App',
+    politics: 'Privacy & Terms',
     MyAccount: 'MyAccount',
     titleAscetic: 'My Austerity',
     Description: 'Austerity Description',
@@ -85,13 +89,15 @@ export const translations = {
     templateDays: 'days', templateGoal: 'Goal:', templateChoose: 'Choose',
   },
   nl: {
-    MyAccount: 'Mijn account', titleAscetic: 'Mijn Askesis', Description: 'Beschrijving', Duration: 'Duur', Result: 'Verwacht resultaat', BeginBtn: 'Begin met askesis', RegOpen: 'Inloggen', Main: 'Home', Example: 'Voorbeeld', Sesiy: 'Mijn askesis', Sesiy1: 'Sjablonen', info: 'Over askesis', language: 'NL', titleAuth: 'Mijn Askesis', messAuth: 'Log in op je account of maak een nieuw account aan', emailAuth: 'E-mail', passAuth: 'Wachtwoord', btnAuth: 'Inloggen', signUpTitle: 'Account aanmaken', signUpSubtitle: 'Registreer om je askesis op te slaan', signUpButton: 'Registreren', signUpToggle: 'Nog geen account? Registreren', signInTitle: 'Mijn Askesis', signInSubtitle: 'Log in op je account', signInButton: 'Inloggen', signInToggle: 'Al een account? Inloggen', gotName: 'Beschrijving van askesis', duren: 'Duur van askesis', gotRes: 'Verwacht resultaat', progressTitle: 'Voortgang', btnLang: 'NL', calendarTitle: 'Markeer voltooide dagen', deleteButton: 'Verwijderen', statusFailed: '❌ Askesis niet voltooid.', statusCompleted: '✅ Askesis voltooid.', statusPlanned: '⏳ Askesis is nog niet begonnen', statusActive: '🟢 Askesis is bezig.', templateHeading: 'Kies een askesis-sjabloon', saveAusterity: 'Opgeslagen askesis', templateDays: 'dagen', templateGoal: 'Doel:', templateChoose: 'Kiezen',
+   aboutApp: 'Over de app',  politics: 'Privacy & Voorwaarden', MyAccount:  'Mijn account', titleAscetic: 'Mijn Askesis', Description: 'Beschrijving', Duration: 'Duur', Result: 'Verwacht resultaat', BeginBtn: 'Begin met askesis', RegOpen: 'Inloggen', Main: 'Home', Example: 'Voorbeeld', Sesiy: 'Mijn askesis', Sesiy1: 'Sjablonen', info: 'Over askesis', language: 'NL', titleAuth: 'Mijn Askesis', messAuth: 'Log in op je account of maak een nieuw account aan', emailAuth: 'E-mail', passAuth: 'Wachtwoord', btnAuth: 'Inloggen', signUpTitle: 'Account aanmaken', signUpSubtitle: 'Registreer om je askesis op te slaan', signUpButton: 'Registreren', signUpToggle: 'Nog geen account? Registreren', signInTitle: 'Mijn Askesis', signInSubtitle: 'Log in op je account', signInButton: 'Inloggen', signInToggle: 'Al een account? Inloggen', gotName: 'Beschrijving van askesis', duren: 'Duur van askesis', gotRes: 'Verwacht resultaat', progressTitle: 'Voortgang', btnLang: 'NL', calendarTitle: 'Markeer voltooide dagen', deleteButton: 'Verwijderen', statusFailed: '❌ Askesis niet voltooid.', statusCompleted: '✅ Askesis voltooid.', statusPlanned: '⏳ Askesis is nog niet begonnen', statusActive: '🟢 Askesis is bezig.', templateHeading: 'Kies een askesis-sjabloon', saveAusterity: 'Opgeslagen askesis', templateDays: 'dagen', templateGoal: 'Doel:', templateChoose: 'Kiezen',
   },
 };
-
+   
 type Language = 'uk' | 'en' | 'nl';
 const savedLanguage = sessionStorage.getItem('language');
+
 export let currentLanguage: Language = savedLanguage === 'uk' || savedLanguage === 'nl' ? savedLanguage : 'en';
+
 export function toggleLanguage(): void { 
   currentLanguage = currentLanguage === 'uk' ? 'en' : currentLanguage === 'en' ? 'nl' : 'uk'; sessionStorage.setItem('language', currentLanguage); 
   updateLanguage(); 

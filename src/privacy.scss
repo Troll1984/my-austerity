@@ -1,0 +1,166 @@
+@use '@fortawesome/fontawesome-free/scss/fontawesome';
+@use '@fortawesome/fontawesome-free/scss/solid';
+@use '@fortawesome/fontawesome-free/scss/brands';
+@use '@fortawesome/fontawesome-free/scss/regular';
+@use './styleFileIndex/base';
+@use './styleFileOur/variables';
+@use './styleFileOur/variables' as vars;
+
+.container {
+    position: relative;
+    overflow: hidden;
+    
+}
+.politic {        
+        display: block;     
+        width: 100%;
+        height: 900px;
+        overflow-y: auto;
+        overflow-x: hidden;
+        box-sizing: border-box;
+        padding: 40px;        
+        scrollbar-width: thin;
+        scrollbar-color: #3b2308 transparent;
+        background: vars.$bg-input;
+        border-radius: 10px;
+        margin-top: 30px;
+        transition: transform 0.5s ease;
+        transform: translateX(0);
+        z-index: 2;
+        @media(max-width: 1400px) {
+            height: 700px;
+        }
+        @media(max-width: 1200px) {
+            height: auto;
+        }
+        @media(max-width: 600px) {
+            padding: 0;
+            margin: 0;
+        }
+        h1 {
+            text-align: center; 
+        }     
+        ul {
+            margin-bottom: 15px;
+        }
+         h2, 
+        p {
+            @media(max-width: 600px) {
+            padding-left: 10px;
+        }
+        }
+}
+.listGen {
+    > li {
+        list-style: decimal;
+    }
+}
+.listUsualy {
+    > li {
+        list-style:disc;
+    }
+}
+
+.button {
+    width: 100%;
+    display: flex;
+    justify-content:flex-end;
+    .button-arrow-right,
+    .button-arrow-left {
+        padding: 20px 30px;
+        margin-top: 20px;
+        background: hsla(0, 8%, 75%, 0.179);
+        border: none;
+        color: #fff;
+        font-size: 2rem;
+        box-shadow: 6px 3px 9px 0px rgba(0,0,0,0.75);
+        @media(max-width: 600px) {
+            font-size: 1rem;
+            padding: 10px 20px;
+            margin-right: 10px;
+            margin-top: 10px;
+        }
+        &:active {
+            box-shadow: none;
+        }        
+    }  
+}
+.condit {    
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;     
+        width: 100%;
+        height: 900px;
+        overflow-y: auto;
+        overflow-x: hidden;
+        box-sizing: border-box;
+        padding: 40px;
+        scrollbar-width: thin;
+        scrollbar-color: #3b2308 transparent;
+        background: vars.$bg-input;
+        border-radius: 10px;
+        margin-top: 30px;
+        transition: transform 0.5s ease;
+        transform: translateX(-100%);
+        z-index: 3;
+        @media(max-width: 1400px) {
+            height: 700px;
+        }
+        @media(max-width: 1200px) {
+            height: auto;
+        }
+        @media(max-width: 600px) {
+            padding: 0;
+            margin: 0;
+            
+        }
+        h1 {
+            text-align: center;
+        }
+        ul {
+            li {
+                list-style: decimal;
+            }
+        }
+        h2, 
+        p {
+            @media(max-width: 600px) {
+            padding-left: 10px;
+        }
+        }
+}
+
+.condit.slide {
+    transform: translateX(0);
+}
+.politic.slide {
+    transform: translateX(100%);
+     
+}
+
+.back {    
+    position: absolute;
+    top: 40px;
+    left: 10px;
+    background: hsla(0, 8%, 75%, 0.179);
+    cursor: pointer;  
+    padding: 5px;
+    border-radius: 10px;
+    z-index: 5;
+    @media(max-width: 600px) {
+        top: 10px;
+    }
+
+}
+
+.no-animation {
+    .politic,
+    .condit {
+        transition: none !important;
+    }
+}
+
+
+
+

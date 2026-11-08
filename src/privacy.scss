@@ -39,16 +39,34 @@
         }
         h1 {
             text-align: center; 
+             @media(max-width: 600px) {
+                font-size: 1.5rem;
+             }
         }     
         ul {
             margin-bottom: 15px;
+            @media(max-width: 600px) {
+                font-size: 0.9rem;
+             }
         }
-         h2, 
+        h2 {
+            @media(max-width: 600px) {
+            padding-left: 10px;  
+            font-size: 1.0rem;          
+        }
+        }
         p {
             @media(max-width: 600px) {
             padding-left: 10px;
+            font-size: 0.9rem;
         }
         }
+        h3 {
+            @media(max-width: 600px) {
+            padding-left: 10px;  
+            font-size: 1.0rem;    
+        }
+    }
 }
 .listGen {
     > li {
@@ -56,9 +74,20 @@
     }
 }
 .listUsualy {
-    > li {
+    ul {
+        @media(max-width: 600px) {
+           margin: 0;
+           padding: 0;
+        }
+              
+        > li {
         list-style:disc;
+        @media(max-width: 600px) {            
+            font-size: 0.8rem;          
+        }
     }
+    }
+    
 }
 
 .button {
@@ -116,18 +145,31 @@
         }
         h1 {
             text-align: center;
+            @media(max-width: 600px) {
+                font-size: 1.5rem;
+             }
         }
         ul {
+             @media(max-width: 600px) {
+                font-size: 0.9rem;
+             }
             li {
                 list-style: decimal;
             }
         }
-        h2, 
+        h2 {
+             @media(max-width: 600px) {
+            padding-left: 10px;  
+            font-size: 1.0rem;          
+        }
+        } 
         p {
-            @media(max-width: 600px) {
+             @media(max-width: 600px) {
             padding-left: 10px;
+            font-size: 0.9rem;
         }
         }
+        
 }
 
 .condit.slide {

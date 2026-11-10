@@ -1,6 +1,6 @@
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import './privacy.scss';
-import './components/aboutLanguage';
+import './componetsOur/aboutLanguage';
 
 console.log('hello');
 

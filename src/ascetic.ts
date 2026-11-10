@@ -1,6 +1,6 @@
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import './ascetic.scss';
-import './components/loadAsceses';
-import './components/shodowToggle'; 
+import './componetsAscetic/loadAsceses';
+import './componetsIndex/shodowToggle'; 
 
 

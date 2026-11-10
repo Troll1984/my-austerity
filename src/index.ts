@@ -1,12 +1,12 @@
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import './style.scss'
-import { datePicker } from './components/calendar';
-import { asceticTemplates, templateStorageKey } from './components/templateAscesa';
-import { currentLanguage } from './components/lang';
-import './components/saveAscetic';
-import './auth'; 
-import './components/shodowToggle'; 
-
+import { datePicker } from './componetsIndex/calendar';
+import { asceticTemplates, templateStorageKey } from './componetsIndex/templateAscesa';
+import { currentLanguage } from './componetsOur/lang';
+import './componetsIndex/saveAscetic';
+import './componetsIndex/auth'; 
+import './componetsIndex/shodowToggle'; 
+ 
 // Вставка шаблонов в форму и клендарь
 
 const selectedTemplateId = sessionStorage.getItem(templateStorageKey);

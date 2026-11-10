@@ -1,6 +1,6 @@
-import {  getForm } from '../components/dom';
+import {  getForm } from '../componetsOur/dom';
 import { supabase } from '../supabase';
-import './lang';
+import '../componetsOur/lang';
 //Выключатель света
 
 

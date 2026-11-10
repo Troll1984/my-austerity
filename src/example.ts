@@ -1,12 +1,12 @@
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import './example.scss';
 
-import './auth';
-import './components/exampleCards';
-import './components/aboutLanguage';
-import './components/exempleSaveCards';
-import './components/sliderExample';
-import './components/shodowToggle'; 
+import './componetsIndex/auth';
+import './componetsExample/exampleCards';
+import './componetsOur/aboutLanguage';
+import './componetsExample/exempleSaveCards';
+import './componetsExample/sliderExample';
+import './componetsIndex/shodowToggle'; 
 
 
 

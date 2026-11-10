@@ -1,5 +1,5 @@
-import { supabase } from './supabase';
-import { translations, toggleLanguage, updateLanguage, currentLanguage } from './components/lang';
+import { supabase } from '../supabase';
+import { translations, toggleLanguage, updateLanguage, currentLanguage } from '../componetsOur/lang';
 
 const authContainer = document.createElement('div');
 authContainer.id = 'auth-container';

@@ -7,6 +7,7 @@
         }
     @media(max-width:600px) {
         height: auto;
+        
     }
     .template-heading {
         margin-top: 10px;    
@@ -17,8 +18,10 @@
         }         
         h2 {            
         font-size: clamp(1.5rem, 3vw, 2.2rem);
-        color: vars.$color-text;
-        margin-bottom: 5px;        }        
+        color: vars.$color-text;         
+        @media(max-width: 600px) {
+        padding-top: 15px;
+        }        }        
         }
 }
 .slider-wrapper {       
@@ -49,6 +52,7 @@
         scroll-behavior: smooth;
         -webkit-overflow-scrolling: touch;
         scrollbar-width: none;
+       
         &::-webkit-scrollbar {
         display: none;
         }
@@ -71,6 +75,7 @@
                 width: 100%;
                 scroll-snap-align: center;
                  scroll-snap-stop: always;
+                 
                 }      
             }
         }
@@ -114,7 +119,7 @@
         }        
     }
     h3 {
-        margin-top: 5px;
+    margin-top: 5px;
     font-size: 1.5rem;
 
     }

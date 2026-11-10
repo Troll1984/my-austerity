@@ -1,7 +1,7 @@
-import { getElement } from './dom';
+import { getElement } from '../componetsOur/dom';
 import { supabase } from '../supabase';
 import { getToday, parseDate, formatDate, checkAscetic, } from './verificationAsceses';
-import { translations, currentLanguage, updateLanguage } from './lang';
+import { translations, currentLanguage, updateLanguage } from '../componetsOur/lang';
 import './slider';
 
 // Кнопка назад

@@ -14,11 +14,12 @@
         border-radius: 10px;
         .btn {
             position: absolute;
+            width: 40px;
             top: 5px;
             right: 5px;
-            @media(max-width: 600px) {
-                padding: 7px;
-                top: -7px;
+            @media(max-width: 600px) {                
+                top: -3px;
+                right: 7px;
                 font-size: 12px;               
             }
         }

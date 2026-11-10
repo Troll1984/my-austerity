@@ -1,5 +1,5 @@
-import { asceticTemplates } from './templateAscesa';
-import { currentLanguage, translations } from './lang';
+import { asceticTemplates } from '../componetsIndex/templateAscesa';
+import { currentLanguage, translations } from '../componetsOur/lang';
 import { supabase } from '../supabase';
  
  

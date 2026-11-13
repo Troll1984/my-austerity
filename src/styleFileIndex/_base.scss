@@ -19,6 +19,8 @@ a {
 }
 
 .container {
+  display: flex;
+  flex-direction: column;
   width: min(100% - 32px, vars.$container-width);
   margin-inline: auto;
 }

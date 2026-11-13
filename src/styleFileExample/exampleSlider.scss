@@ -20,7 +20,7 @@
         font-size: clamp(1.5rem, 3vw, 2.2rem);
         color: vars.$color-text;         
         @media(max-width: 600px) {
-        padding-top: 15px;
+        padding-top: 25px;
         }        }        
         }
 }
@@ -132,9 +132,9 @@
         justify-content: center;
         margin-top: auto;
         .template-use {
-        width: 40%;
-        height: 35px;
-        border-radius: 8px;
+        width: 120px;
+        height: 45px;
+        border-radius: 10px;
         margin-top: auto;
         background: #4b3310;
         color: vars.$color-text;
@@ -164,13 +164,13 @@ hr {
     justify-content: space-between;
     width: 60%;   
      @media(max-width:1400px) {
-            width: 70%;   
-            left: 15.0%; 
+            width: 80%;   
+            left: 11.0%; 
              top: 30px;       
         }
     @media(max-width:900px) {
-            width: 75%;   
-            left: 13.0%; 
+            width: 80%;   
+            left: 10.0%; 
              top: 30px;       
         }
      @media(max-width:600px) {
@@ -181,7 +181,8 @@ hr {
         padding: 15px;
         background: hsla(33, 18%, 90%, 0.225);
         color: #fff;
-        border: none;                
+        border: none; 
+        border-radius: 10px;               
     }     
 }
 

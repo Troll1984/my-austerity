@@ -1,0 +1,71 @@
+@use '../styleFileOur/variables' as vars;
+
+#form-comments {    
+    width: min(100%, 720px);
+         
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+#form-comments input,
+#form-comments textarea {
+    width: 100%;
+    min-height: 44px;
+    box-sizing: border-box;
+    border-radius: 7px;    
+    padding: 10px;
+    background: vars.$bg-input2;   
+    color: #ece7e7;    
+    border: none;
+    @media(max-width: 600px) {
+               width: 90%;
+        } 
+    
+}
+#form-comments textarea {
+    resize: none;
+    height: 100px;
+    color: #f0ebeb;
+}
+#form-comments button {   
+   width: 100px;
+   height: 40px;
+    border-radius: 10px;     
+    color: #fff;
+    background: vars.$bg-template;
+    border: none;
+    font-weight: bolder;   
+    transition: all 500ms ease; 
+    cursor: pointer;
+}
+.show-comments {
+    width: 90%;
+    height: auto;
+    min-height: 300px;
+    border-radius: 7px;   
+    color: black;
+    box-sizing: border-box;
+    margin-top: 10px;
+}
+#form-comments h3 {
+    color: #fff;
+}
+.comment {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 100px;
+    border-radius: 7px;
+    color: #000;
+    background: #fff;
+    padding: 15px;
+    margin-bottom: 10px;
+}
+.comment .info h1 {
+    margin-bottom: 10px;
+}
+.comment-info { min-width: 0; overflow-wrap: anywhere; }
+.comment-info h3 { margin: 0 0 8px; }
+.comment-info p { margin: 0; white-space: pre-wrap; }
+.comment > button { flex: 0 0 auto; }
+

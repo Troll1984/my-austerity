@@ -37,6 +37,11 @@ template?.addEventListener('click', () => {
    
     
 });
+
+if (new URLSearchParams(window.location.search).has('showTemplates')) {
+  template?.click();
+}
+
 btnClose?.addEventListener('click', () => {
     if(!template || !sectionOne || !cardAscetic || !header || !img || !logo || !logo1) return;
     sectionOne.style.display = 'none';

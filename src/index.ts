@@ -43,5 +43,9 @@ const politics = document.querySelector<HTMLTextAreaElement>('#politics');
 politics?.addEventListener('click', () => {
     window.location.href = './privacy.html';
 })
+const aboutApp = document.querySelector<HTMLTextAreaElement>('#about-app');
+aboutApp?.addEventListener('click', () => {
+    window.location.href = './about.html';
+})
 
  

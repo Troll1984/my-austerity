@@ -1,0 +1,127 @@
+@use '../styleFileOur/variables' as vars;
+.back {    
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: hsla(0, 8%, 75%, 0.179);
+    cursor: pointer;  
+    padding: 10px;
+     border-radius: vars.$radius-button;
+    z-index: 5;     
+    @media(max-width: 600px) {
+        padding: 10px;
+        top: 7px;
+        left: 7px;
+    }
+}
+       
+        .info-block {    
+                display: none;
+        flex-direction: column;
+        position: relative;
+        overflow: hidden;   
+        overflow-y: auto;    
+        overflow-x: hidden;
+        box-sizing: border-box;
+        height: 800px;
+        margin-top: 100px;
+        background: vars.$bg-input;
+        border-radius: vars.$radius-button;
+        scrollbar-width: thin;
+        scrollbar-color: #3b2308 transparent;
+        font-size: vars.$font-size-style;
+        font-weight: 500;
+        padding: 10px;
+        h1 {
+            text-align: center;  
+            @media(max-width: 600px) {
+                margin-top: 35px;
+             }                      
+        }                
+        h3 {
+            text-align: center;    
+        }
+        p {
+            line-height: 1.5;
+            width: 75%;
+            margin: 0 auto;
+             @media(max-width: 600px) {
+                width: 100%;
+             }
+        }
+        @media(max-width: 1400px) {
+                height:  650px;
+        } 
+        @media(max-width: 1200px) {
+                height:  950px;
+        }
+        @media(max-width: 600px) {                 
+                 padding: 10px;
+                 height:  750px; 
+                margin-top: 20px;       } 
+               
+        }
+
+
+.comments {
+        display: none;
+        flex-direction: column;
+        position: relative;
+        overflow: hidden;   
+        overflow-y: auto;    
+        overflow-x: hidden;
+        box-sizing: border-box;
+        height: 800px;
+        margin-top: 100px;
+        background: vars.$bg-input;
+         border-radius: vars.$radius-button;
+        scrollbar-width: thin;
+        scrollbar-color: #3b2308 transparent;
+        font-size: vars.$font-size-style;
+        font-weight: 500;
+        padding: 10px;
+        h2 {
+            margin-top: 50px;
+            text-align: center;
+        }
+        p {
+            width: 75%;
+            margin: 0 auto;
+            line-height: 1.5;
+            @media(max-width: 600px) {
+                width: 100%;
+            }
+        }
+        #form-comments {
+            width: 75%;
+            margin: 0 auto;
+            @media(max-width: 600px) {
+                width: 100%;
+                
+            }
+        }
+        @media(max-width: 1400px) {
+                height:  650px;
+        } 
+        @media(max-width: 1200px) {
+                height:  950px;
+        }
+        @media(max-width: 600px) {
+                 margin-top: 20px;
+                 padding: 10px;
+                 height:  750px;
+        }          
+}    
+
+#form-comments {
+    button {
+            width: 140px;
+            height: 50px;
+             border-radius: vars.$radius-button;
+            background: vars.$bg-template;
+            color: vars.$color-text;
+            border: none;            
+            font-weight: bold;   
+            box-shadow: 7px 3px 14px 1px rgba(0,0,0,0.75); 
+    }
+}

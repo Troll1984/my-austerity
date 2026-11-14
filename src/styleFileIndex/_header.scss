@@ -24,8 +24,7 @@ header {
     img#img {
         width: 200px;
         height: auto;
-        border-radius: 50%;
-        box-shadow: -2px 3px 19px 1px rgba(156, 103, 34, 0.75);
+        border-radius: 50%;       
         @media(max-width: 1400px) {
              width: 130px;
         }

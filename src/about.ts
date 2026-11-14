@@ -3,6 +3,7 @@ import './about.scss';
 import './componetsOur/aboutLanguage';
 import './commentsAbout/comments';
 import './commentsAbout/buttons';
+import './commentsAbout/contact';
 
 
 

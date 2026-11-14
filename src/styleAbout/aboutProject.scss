@@ -1,5 +1,5 @@
 @use '../styleFileOur/variables' as vars;
-.back {    
+.back {     
     position: absolute;
     top: 10px;
     left: 10px;
@@ -38,11 +38,11 @@
                 margin-top: 35px;
              }                      
         }                
-        h3 {
+        h2 {
             text-align: center;    
         }
         p {
-            line-height: 1.5;
+            line-height: 1.7;
             width: 75%;
             margin: 0 auto;
              @media(max-width: 600px) {
@@ -74,7 +74,7 @@
         height: 800px;
         margin-top: 100px;
         background: vars.$bg-input;
-         border-radius: vars.$radius-button;
+        border-radius: vars.$radius-button;
         scrollbar-width: thin;
         scrollbar-color: #3b2308 transparent;
         font-size: vars.$font-size-style;
@@ -117,7 +117,7 @@
     button {
             width: 140px;
             height: 50px;
-             border-radius: vars.$radius-button;
+            border-radius: vars.$radius-button;
             background: vars.$bg-template;
             color: vars.$color-text;
             border: none;            

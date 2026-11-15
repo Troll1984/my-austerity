@@ -5,8 +5,7 @@ const header = document.querySelector<HTMLElement>('.header');
 const btnClose = document.querySelector<HTMLElement>('.btn');
 const btnClose1 = document.querySelector<HTMLElement>('.btn1');
 const img = document.querySelector<HTMLElement>('#img');
-const logo = document.querySelector<HTMLElement>('.logo');
-const logo1 = document.querySelector<HTMLElement>('.logo1');
+
 const infoButton = document.querySelector<HTMLElement>('#info');
 const infoSection = document.querySelector<HTMLElement>('.info');
 const imgBackground = document.querySelector<HTMLElement>('.img-background');
@@ -15,7 +14,7 @@ const imgBackground = document.querySelector<HTMLElement>('.img-background');
 
 
 infoButton?.addEventListener('click', () => {
-  if (!infoSection || !imgBackground || !btnClose1 || !sectionOne || !cardAscetic || !logo1) {
+  if (!infoSection || !imgBackground || !btnClose1 || !sectionOne || !cardAscetic ) {
     console.log({ infoSection, imgBackground });
     return;
   }
@@ -24,16 +23,16 @@ infoButton?.addEventListener('click', () => {
   infoSection.style.display = 'block';
   imgBackground.style.display = 'none';
   btnClose1.style.display = 'block';
-  logo1.style.display = 'none';
+ 
 });
 
 template?.addEventListener('click', () => {
-    if(!template || !sectionOne || !cardAscetic || !header || !btnClose || !logo1 ) return;
+    if(!template || !sectionOne || !cardAscetic || !header || !btnClose ) return;
     sectionOne.style.display = 'none';
     cardAscetic.style.display = 'block';
     header.style.display = 'none';
     btnClose.style.display = 'block';
-    logo1.style.display = 'flex';
+   
    
     
 });
@@ -43,23 +42,22 @@ if (new URLSearchParams(window.location.search).has('showTemplates')) {
 }
 
 btnClose?.addEventListener('click', () => {
-    if(!template || !sectionOne || !cardAscetic || !header || !img || !logo || !logo1) return;
+    if(!template || !sectionOne || !cardAscetic || !header || !img ) return;
     sectionOne.style.display = 'none';
     cardAscetic.style.display = 'none';
     header.style.display = 'flex';
     img.style.display = 'block';
-    logo.style.display = 'flex';
-    logo1.style.display = 'none';
+   
 })
 btnClose1?.addEventListener('click', () => {
-    if(!template || !sectionOne || !cardAscetic || !header || !img || !logo  || !imgBackground || !logo1) return;
+    if(!template || !sectionOne || !cardAscetic || !header || !img || !imgBackground ) return;
     sectionOne.style.display = 'none';
     cardAscetic.style.display = 'none';
     header.style.display = 'flex';
     imgBackground.style.display = 'block';
-    logo.style.display = 'flex';
+  
     img.style.display = 'block';
-    logo1.style.display = 'none';
+   
 })
 
 // Отправляет шаблоны в форму при нажатии на кнопки

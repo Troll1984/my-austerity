@@ -7,6 +7,7 @@ body {
   font-family: vars.$font-family; 
   color: vars.$color-text;
   font-size: 16px;
+   overflow: hidden;
 }
 
 button {

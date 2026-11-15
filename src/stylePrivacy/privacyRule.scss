@@ -3,7 +3,7 @@
  body {
      overflow: hidden;
      display: flex;
-     align-items: center;
+     
    } 
 .wrapper-politic {
         display: flex;      
@@ -16,7 +16,7 @@
         margin-top: 100px;
         background: vars.$bg-input;
         border-radius: 10px;
-        scrollbar-width: thin;
+        scrollbar-width: none;
         scrollbar-color: #3b2308 transparent;
         font-size: vars.$font-size-style ;
         font-weight: 500;
@@ -35,7 +35,7 @@
         }
         @media(max-width: 600px) {
             height: 700px;
-           margin-top: 5px;
+           margin-top: 10px;
         }
         .politic {    
            display: flex;

@@ -1,7 +1,14 @@
 
 export const translations = {
   uk: {
-   aboutApp: 'Про додаток',
+   Develop: 'Розробник My Askesa',  
+   return: 'Назад', 
+   contacts: 'Контакти', 
+   templetes: 'Шаблони Аскез', 
+   Subscrip: 'Підписки та додаткові можливості', 
+   comment: 'Коментарі',
+   aboutapp: 'Про додаток',
+   menu: 'Меню',
    politics: 'Політика та правила',
    MyAccount: 'Мій акаунт',
    titleAscetic: 'Моя Аскеза',
@@ -47,7 +54,14 @@ export const translations = {
    templateDays: 'днів', templateGoal: 'Мета:', templateChoose: 'Обрати',
   },
   en: {
-    aboutApp: 'About App',
+    Develop: 'Developer My Askesa',  
+    return: 'Back',
+    contacts: 'Contact', 
+    templetes: 'Asceticism Templates', 
+    Subscrip: 'Subscriptions & Additional Features',
+    comment: 'Comments',
+    aboutapp: 'About App',
+    menu: 'Menu',
     politics: 'Privacy & Terms',
     MyAccount: 'MyAccount',
     titleAscetic: 'My Austerity',
@@ -93,7 +107,7 @@ export const translations = {
     templateDays: 'days', templateGoal: 'Goal:', templateChoose: 'Choose',
   },
   nl: {
-   aboutApp: 'Over de app',  politics: 'Privacy & Regels', MyAccount:  'Mijn account', titleAscetic: 'Mijn Askesis', Description: 'Beschrijving', Duration: 'Duur', Result: 'Verwacht resultaat', BeginBtn: 'Begin met askesis', RegOpen: 'Inloggen', Main: 'Home', Example: 'Voorbeeld', Sesiy: 'Mijn askesis', Sesiy1: 'Sjablonen', info: 'Over askesis', language: 'NL', titleAuth: 'Mijn Askesis', messAuth: 'Log in op je account of maak een nieuw account aan', nicknameAuth: 'Bijnaam', nicknamePlaceholder: 'Je bijnaam', emailAuth: 'E-mail', passAuth: 'Wachtwoord', btnAuth: 'Inloggen', signUpTitle: 'Account aanmaken', signUpSubtitle: 'Registreer om je askesis op te slaan', signUpButton: 'Registreren', signUpToggle: 'Nog geen account? Registreren', signInTitle: 'Mijn Askesis', signInSubtitle: 'Log in op je account', signInButton: 'Inloggen', signInToggle: 'Al een account? Inloggen', gotName: 'Beschrijving van askesis', duren: 'Duur van askesis', gotRes: 'Verwacht resultaat', progressTitle: 'Voortgang', btnLang: 'NL', calendarTitle: 'Markeer voltooide dagen', deleteButton: 'Verwijderen', statusFailed: '❌ Askesis niet voltooid.', statusCompleted: '✅ Askesis voltooid.', statusPlanned: '⏳ Askesis is nog niet begonnen', statusActive: '🟢 Askesis is bezig.', templateHeading: 'Kies een askesis-sjabloon', saveAusterity: 'Opgeslagen askesis', templateDays: 'dagen', templateGoal: 'Doel:', templateChoose: 'Kiezen',
+   Develop: 'Ontwikkelaar My Askesa', return: 'Terug', contacts: 'Contact',  templetes: 'Ascese-sjablonen',  Subscrip: 'Abonnementen & Extra functies', comment: 'Reacties', aboutapp: 'Over app', menu: 'Menu',  politics: 'Privacy & Regels', MyAccount:  'Mijn account', titleAscetic: 'Mijn Askesis', Description: 'Beschrijving', Duration: 'Duur', Result: 'Verwacht resultaat', BeginBtn: 'Begin met askesis', RegOpen: 'Inloggen', Main: 'Home', Example: 'Voorbeeld', Sesiy: 'Mijn askesis', Sesiy1: 'Sjablonen', info: 'Over askesis', language: 'NL', titleAuth: 'Mijn Askesis', messAuth: 'Log in op je account of maak een nieuw account aan', nicknameAuth: 'Bijnaam', nicknamePlaceholder: 'Je bijnaam', emailAuth: 'E-mail', passAuth: 'Wachtwoord', btnAuth: 'Inloggen', signUpTitle: 'Account aanmaken', signUpSubtitle: 'Registreer om je askesis op te slaan', signUpButton: 'Registreren', signUpToggle: 'Nog geen account? Registreren', signInTitle: 'Mijn Askesis', signInSubtitle: 'Log in op je account', signInButton: 'Inloggen', signInToggle: 'Al een account? Inloggen', gotName: 'Beschrijving van askesis', duren: 'Duur van askesis', gotRes: 'Verwacht resultaat', progressTitle: 'Voortgang', btnLang: 'NL', calendarTitle: 'Markeer voltooide dagen', deleteButton: 'Verwijderen', statusFailed: '❌ Askesis niet voltooid.', statusCompleted: '✅ Askesis voltooid.', statusPlanned: '⏳ Askesis is nog niet begonnen', statusActive: '🟢 Askesis is bezig.', templateHeading: 'Kies een askesis-sjabloon', saveAusterity: 'Opgeslagen askesis', templateDays: 'dagen', templateGoal: 'Doel:', templateChoose: 'Kiezen',
   },
 };
    

@@ -285,3 +285,101 @@ if ( condit) {
         window.addEventListener('languageChanged', applyAboutLanguage)
 
      }
+
+
+const infoBlock = document.querySelector<HTMLElement>('.info-block');
+if(infoBlock) {
+  const ukrainianHtml = infoBlock.innerHTML;
+
+  const englishHtml = `<div>
+  <div class="back"><i class="fa-solid fa-arrow-rotate-right"></i></div>
+    <h1>About My Askesa</h1>
+    <p>My Askesis is an independent project created by one person with the desire to make something useful for others.
+    This app is the result of personal effort, learning, ideas, and a strong desire to develop a product that helps people 
+    improve themselves, build healthy habits, and achieve their goals.
+    The project is constantly evolving, with many new features and improvements still to come.</p>
+    <h2>Support the Project</h2>
+    <p>If you enjoy using My Askesis and would like to help it grow, you can support the project with a voluntary contribution.
+    Every contribution is motivation to keep working, introduce new features, and make the app even better.
+    Thank you for being part of My Askesis! ❤️</p>
+        <div class="donat">
+          <a href="https://send.monobank.ua/jar/ABHtdrHpUN" target="_blank" rel="noopener noreferrer" class="support-btn"><i class="fa-solid fa-mug-saucer"></i>Support via Monobank ❤️</a>
+          <a href="https://donatello.to/Developer-Apps"target="_blank"rel="noopener noreferrer"class="support-btn"><i class="fa-solid fa-mug-hot"></i>Support via Donatello ❤️</a>  
+        </div>         
+  </div>`;
+
+  const dutchHtml = `<div>
+  <div class="back"><i class="fa-solid fa-arrow-rotate-right"></i></div>
+    <h1>Over My Askesa</h1>
+    <p>My Askesis is een onafhankelijk project dat door één persoon is opgezet met de wens om iets nuttigs voor anderen te creëren.
+    Deze app is het resultaat van eigen inspanningen, leerervaringen, ideeën en een grote motivatie om een product te ontwikkelen dat 
+    mensen helpt zichzelf te verbeteren, goede gewoontes aan te leren en hun doelen te bereiken.
+    Het project blijft zich ontwikkelen en er staan nog veel nieuwe functies en verbeteringen op de planning.</p>
+    <h2>Steun het project</h2>
+    <p>Als je My Askesis leuk vindt en wilt helpen bij de verdere ontwikkeling, kun je het project steunen met een vrijwillige bijdrage.
+    Elke bijdrage is een motivatie om door te gaan, nieuwe functies toe te voegen en de app nog beter te maken.
+    Bedankt dat je deel uitmaakt van My Askesis! ❤️</p>
+        <div class="donat">
+            <a href="https://send.monobank.ua/jar/ABHtdrHpUN" target="_blank" rel="noopener noreferrer" class="support-btn"><i class="fa-solid fa-mug-saucer"></i>Steun via Monobank ❤️</a>
+            <a href="https://donatello.to/Developer-Apps"target="_blank"rel="noopener noreferrer"class="support-btn"><i class="fa-solid fa-mug-hot"></i>Steun via Donatello ❤️</a>  
+        </div>         
+  </div>`;
+
+  function applyAboutLanguage(): void {
+          infoBlock!.innerHTML = currentLanguage === 'uk' ? ukrainianHtml : currentLanguage === 'nl' ? dutchHtml : englishHtml;
+        }
+      
+        applyAboutLanguage();
+        window.addEventListener('languageChanged', applyAboutLanguage)
+}
+
+
+const comments = document.querySelector<HTMLElement>('.comments');
+if(comments) {
+   const ukrainianHtml = comments.innerHTML;
+
+   const englishHtml = `<div>
+    <div class="back"><i class="fa-solid fa-arrow-rotate-right"></i></div>
+    <h2>Your Opinion Matters!</h2>
+      <p>My Askesis is constantly evolving, and your feedback is very important to me.
+      I would be happy to hear your reviews, suggestions, recommendations, and ideas for improving the app in the comments.
+      Perhaps your suggestion will become the next useful feature of My Askesis!
+      Thank you for helping make this project better! ❤️</p>
+
+      <form id="form-comments">
+          <h3>Comments (<span id="counter">0</span>)</h3>
+          <label for="comment-author">Your name</label>
+          <input id="comment-author" type="text" name="user.name" maxlength="60" autocomplete="name" required>
+          <label for="comment-text">Your comment</label>
+          <textarea id="comment-text" name="comment" maxlength="1000" rows="4" required></textarea>
+          <button type="submit">Submit</button>
+      </form>
+       <div class="show-comments"> </div> 
+   </div>`
+
+   const dutchHtml = `<div>
+    <div class="back"><i class="fa-solid fa-arrow-rotate-right"></i></div>   
+    <h2>Jouw mening is belangrijk!</h2>
+      <p>My Askesis blijft zich voortdurend ontwikkelen en jouw mening is voor mij erg belangrijk.
+      Ik ontvang graag je feedback, wensen, aanbevelingen en ideeën om de app te verbeteren.
+      Misschien wordt jouw suggestie wel de volgende handige functie van My Askesis!
+      Bedankt dat je helpt om dit project beter te maken! ❤️</p>
+
+    <form id="form-comments">
+        <h3>Reacties (<span id="counter">0</span>)</h3>
+        <label for="comment-author">Je naam</label>
+        <input id="comment-author" type="text" name="user.name" maxlength="60" autocomplete="name" required>
+        <label for="comment-text">Je reactie</label>
+        <textarea id="comment-text" name="comment" maxlength="1000" rows="4" required></textarea>
+        <button type="submit">Verzenden</button>
+    </form>
+    <div class="show-comments"></div> 
+   </div>`
+
+    function applyAboutLanguage(): void {
+          comments!.innerHTML = currentLanguage === 'uk' ? ukrainianHtml : currentLanguage === 'nl' ? dutchHtml : englishHtml;
+        }
+      
+        applyAboutLanguage();
+        window.addEventListener('languageChanged', applyAboutLanguage)
+}

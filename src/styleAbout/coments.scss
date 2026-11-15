@@ -32,12 +32,13 @@
    height: 50px;
     border-radius: 10px;     
     color: #fff;
-    background: vars.$bg-template;
+    background: vars.$bg-template1;
     border: none;
     font-weight: bolder;   
     font-size: 1.0rem;
     transition: all 500ms ease; 
     cursor: pointer;
+    box-shadow: -1px 1px 15px 5px rgba(0,0,0,0.75);
 }
 .show-comments {
     width: 90%;

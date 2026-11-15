@@ -180,9 +180,7 @@
     justify-content: center;
     width: 100%;
     margin-top: auto;
-
-    flex-shrink: 0;
-            
+    flex-shrink: 0;            
     }
     @media(max-width: 670px) {
         width: 100%;        
@@ -191,6 +189,7 @@
         background:vars.$bg-color-button1;
         color: vars.$color-text;  
         margin-top: 0; 
+        box-shadow: 7px 3px 14px 1px rgba(0,0,0,0.75); 
     }
     h1 {       
        
@@ -271,10 +270,11 @@
         width: 150px;    
         font-size: 1.2rem;
         text-align: center;
-        background: vars.$bg-template;;
+        background: vars.$bg-template1;
         padding: 10px 10px;
         margin: 0 auto;
         border-radius: 10px;
+         box-shadow: 7px 3px 14px 1px rgba(0,0,0,0.75); 
     }
 .ascetic-calendar {
     width: 100%;
@@ -315,7 +315,8 @@
 .ascetic-card .card-buttons .delete-button {
     width: 40%;
     max-width: 300px;
-    background:  vars.$bg-template;;
+    background:  vars.$bg-template1;
+    box-shadow: 7px 3px 14px 1px rgba(0,0,0,0.75); 
 }
 
   
@@ -325,7 +326,7 @@
             text-align: center;
             margin-top: 20px;
             margin-bottom: 0;
-            padding: 0;
+            padding: 0;           
             @media(max-width: 1200px) {
                     margin-top: 20px;
             }

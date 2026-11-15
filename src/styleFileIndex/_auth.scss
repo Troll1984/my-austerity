@@ -61,7 +61,7 @@
     }
   } 
   button {    
-    width: 100%;
+    width: 75%;
     min-height: 46px;
     margin-top: 14px;
     padding: 12px;
@@ -71,6 +71,9 @@
     background: vars.$bg-color-button-other;
     cursor: pointer;
     transition: opacity 0.2s, transform 0.2s;
+     @media(max-width: 600px) {
+      width: 100%;
+     }
     &:hover {
       opacity: 0.9;
     }
@@ -88,6 +91,7 @@
     right: 15px;
   }
   #auth-submit {
+    width: 100%;
     background: vars.$bg-color-button; 
     color: vars.$color-text;
   }
@@ -117,7 +121,5 @@
     padding: 28px 22px;
   }
 }
-#auth-resend {
-  color: #000 !important;
-}
+
  

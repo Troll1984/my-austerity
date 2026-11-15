@@ -62,7 +62,7 @@
             width: 300px;  
             height:500px;
             scroll-snap-align: start;
-            background: vars.$bg-template;
+            background: vars.$bg-template1;
             border: 1px solid #473014;
             border-radius: 10px;
             padding: 20px;
@@ -136,13 +136,10 @@
         height: 45px;
         border-radius: 10px;
         margin-top: auto;
-        background: #4b3310;
+        background: vars.$bg-template1;
         color: vars.$color-text;
         border: none;
-        box-shadow: 7px 3px 11px -2px rgba(0,0,0,0.75);        
-        &:hover {
-             background:  #7c551a;
-            }
+        box-shadow: 7px 3px 11px -2px rgba(0,0,0,0.75);     
         &:active {
             
              box-shadow: none;

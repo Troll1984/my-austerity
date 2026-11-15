@@ -54,6 +54,9 @@ function updateAuthTexts(): void {
   authSubtitle.textContent = isSignUp ? t.signUpSubtitle : t.signInSubtitle;
   authSubmit.textContent = isSignUp ? t.signUpButton : t.signInButton;
   authToggle.textContent = isSignUp ? t.signInToggle : t.signUpToggle;
+  nicknameLabel.textContent = t.nicknameAuth;
+  nicknameInput.placeholder = t.nicknamePlaceholder;
+ 
 
   // Никнейм нужен только при регистрации
 nicknameInput.style.display = isSignUp ? 'block' : 'none';

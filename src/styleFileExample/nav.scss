@@ -13,7 +13,7 @@
     width: 100%;
     height: auto;     
     > li {
-        background: vars.$bg-template;
+        background: vars.$bg-template1;
         font-size: 1.0rem;
         font-weight: bold;
         width: 100%;      
@@ -22,10 +22,7 @@
         padding: 12px 10px;
         border: 1px solid vars.$border-nav;    
         box-shadow: -3px -9px 18px -5px rgba(0,0,0,0.66);  
-        cursor: pointer;
-        &:hover { 
-           background: vars.$bg-color-button-hover;
-        }  
+        cursor: pointer;       
         &:active {
             transform: scale(0.95);
             box-shadow: none;

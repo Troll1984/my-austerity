@@ -4,7 +4,7 @@
     width: min(100%, 720px);
          
     display: flex;
-    flex-direction: column;
+    flex-direction: column;   
     gap: 10px;
 }
 #form-comments input,
@@ -14,7 +14,8 @@
     box-sizing: border-box;
     border-radius: 7px;    
     padding: 10px;
-    background: #fff;   
+    background: #fff;  
+    margin: 0 auto; 
       
     border: none;
     @media(max-width: 600px) {
@@ -36,18 +37,25 @@
     border: none;
     font-weight: bolder;   
     font-size: 1.0rem;
-    transition: all 500ms ease; 
+    transition: all 500ms ease;    
+    margin-top: 10px;
     cursor: pointer;
     box-shadow: -1px 1px 15px 5px rgba(0,0,0,0.75);
+    @media(max-width: 600px) {
+             margin-left: 15px;
+        } 
 }
 .show-comments {
-    width: 90%;
+    width: 75%;
     height: auto;
     min-height: 300px;
-    border-radius: 7px;   
+    border-radius: 10px;   
     color: black;
     box-sizing: border-box;
-    margin-top: 10px;
+    margin: 20px auto;
+    @media(max-width: 600px) {
+               width: 90%;
+        } 
 }
 #form-comments h3 {
     color: #fff;

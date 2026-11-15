@@ -2,9 +2,11 @@
  
  body {
      overflow: hidden;
+     display: flex;
+     align-items: center;
    } 
 .wrapper-politic {
-        display: flex;
+        display: flex;      
         position: relative;
         overflow: hidden;
         overflow-y: auto;
@@ -32,8 +34,8 @@
             margin-top: 30px;
         }
         @media(max-width: 600px) {
-            height: 750px;
-            margin-top: 30px;
+            height: 700px;
+           margin-top: 5px;
         }
         .politic {    
            display: flex;
@@ -44,8 +46,9 @@
             transition: transform 0.5s ease;
             transform: translateX(0);
             z-index: 2;
+           
             .pol-info {
-                padding: 10px;
+                
             }
                   
             h1 {
@@ -53,6 +56,7 @@
             }       
         }
         .condit {    
+            padding: 10px;
             width: 100%;
             display: block;
             position: absolute;
@@ -102,16 +106,16 @@
     display: flex;
     justify-content:flex-end;
     .button-arrow-right     {
-       width: 50px;
-       height: 40px;          
+        width: 50px;
+        height: 40px;                
         background: hsla(0, 8%, 75%, 0.179);
         border: none;
         border-radius: 10px;
         color: #fff;              
         box-shadow: 6px 3px 9px 0px rgba(0,0,0,0.75);
         @media(max-width: 600px) {           
-            width: 50px;
-            height: 40px;          
+               
+                   
         }
         &:active {
             box-shadow: none;
@@ -120,9 +124,7 @@
 }
 .button-arrow-left {
         width: 50px;
-        height: 40px; 
-        margin-top: 10px;  
-        margin-right: 10px;       
+        height: 40px;             
         background: hsla(0, 8%, 75%, 0.179);
         border: none;
         border-radius: 10px;
@@ -131,7 +133,8 @@
         @media(max-width: 600px) {           
             width: 50px;
             height: 40px;  
-            margin-top: 10px;        
+            
+                    
         }
         &:active {
             box-shadow: none;
@@ -157,8 +160,7 @@
     border-radius: 10px;
     z-index: 5;
     @media(max-width: 600px) {       
-        top: 20px;
-
+        
     }
 
 }

@@ -14,6 +14,10 @@
         left: 7px;
     }
 }
+.body {
+    display: flex;
+    align-items: center;
+}
        
         .info-block {    
                 display: none;
@@ -27,7 +31,7 @@
         margin-top: 100px;
         background: vars.$bg-input;
         border-radius: vars.$radius-button;
-        scrollbar-width: thin;
+        scrollbar-width: none;
         scrollbar-color: #3b2308 transparent;
         font-size: vars.$font-size-style;
         font-weight: 500;
@@ -57,8 +61,9 @@
         }
         @media(max-width: 600px) {                 
                  padding: 10px;
-                 height:  750px; 
-                margin-top: 20px;       } 
+                 height:  720px; 
+                margin-top: 25px;       
+            } 
                
         }
 

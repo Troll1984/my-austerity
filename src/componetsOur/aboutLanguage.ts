@@ -347,9 +347,7 @@ if(comments) {
       Thank you for helping make this project better! ❤️</p>
 
       <form id="form-comments">
-          <h3>Comments (<span id="counter">0</span>)</h3>
-          <label for="comment-author">Your name</label>
-          <input id="comment-author" type="text" name="user.name" maxlength="60" autocomplete="name" required>
+          <h3>Comments (<span id="counter">0</span>)</h3>        
           <label for="comment-text">Your comment</label>
           <textarea id="comment-text" name="comment" maxlength="1000" rows="4" required></textarea>
           <button type="submit">Submit</button>
@@ -366,9 +364,7 @@ if(comments) {
       Bedankt dat je helpt om dit project beter te maken! ❤️</p>
 
     <form id="form-comments">
-        <h3>Reacties (<span id="counter">0</span>)</h3>
-        <label for="comment-author">Je naam</label>
-        <input id="comment-author" type="text" name="user.name" maxlength="60" autocomplete="name" required>
+        <h3>Reacties (<span id="counter">0</span>)</h3>       
         <label for="comment-text">Je reactie</label>
         <textarea id="comment-text" name="comment" maxlength="1000" rows="4" required></textarea>
         <button type="submit">Verzenden</button>

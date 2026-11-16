@@ -46,12 +46,26 @@ if (new URLSearchParams(window.location.search).has('showTemplates')) {
 
 btnClose?.addEventListener('click', () => {
     backSound.currentTime = 0;
-    backSound.play();
-    if(!template || !sectionOne || !cardAscetic || !header ) return;
-    sectionOne.style.display = 'none';
-    cardAscetic.style.display = 'none';
-    header.style.display = 'flex';     
-})
+
+    const params = new URLSearchParams(window.location.search);
+    const from = params.get('from');
+
+    backSound.onended = () => {
+        if (from === 'buttons') {
+            window.location.href = './about.html';
+        } else {
+           window.location.href = './example.html';
+        }
+    };
+
+    backSound.play().catch(() => {
+        if (from === 'buttons') {
+            window.location.href = './about.html';
+        } else {
+            window.location.href = './example.html';
+        }
+    });
+});
 btnClose1?.addEventListener('click', () => {
     backSound.currentTime = 0;
     backSound.play();

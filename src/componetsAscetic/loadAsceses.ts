@@ -9,13 +9,28 @@ import './slider';
 const back = getElement('.btn');
 const backSound = new Audio(sound4);
 backSound.volume = 0.9; 
+
 back.addEventListener('click', () => {
     backSound.currentTime = 0;
-    backSound.play();
+
+    const params = new URLSearchParams(window.location.search);
+    const from = params.get('from');
+
     backSound.onended = () => {
-        window.location.href = './index.html';
-    }
-     
+        if (from === 'buttons') {
+            window.location.href = './about.html';
+        } else {
+            window.location.href = './index.html';
+        }
+    };
+
+    backSound.play().catch(() => {
+        if (from === 'buttons') {
+            window.location.href = './about.html';
+        } else {
+            window.location.href = './index.html';
+        }
+    });
 });
 
 //Обозначения типа для Ts

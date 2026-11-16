@@ -1,4 +1,4 @@
-
+import sound3 from '../assets/sound/sound-3.mp3';
 export const translations = {
   uk: {
    Develop: 'Розробник My Askesa',  
@@ -133,7 +133,11 @@ export function updateLanguage(): void {
 }
 export const languageButton = document.querySelector<HTMLButtonElement>('#language-button');
 // Кнопка смены языка на главной стрпнице
+const clickSound1 = new Audio(sound3);
+clickSound1.volume = 0.5;
 languageButton?.addEventListener('click', () => {
+  clickSound1.currentTime = 0;
+  clickSound1.play();
     toggleLanguage();
     window.dispatchEvent(new Event('languageChanged'));
 });

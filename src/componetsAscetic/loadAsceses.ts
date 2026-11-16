@@ -1,3 +1,4 @@
+import sound4 from '../assets/sound/sound-4.mp3';
 import { getElement } from '../componetsOur/dom';
 import { supabase } from '../supabase';
 import { getToday, parseDate, formatDate, checkAscetic, } from './verificationAsceses';
@@ -6,8 +7,15 @@ import './slider';
 
 // Кнопка назад
 const back = getElement('.btn');
+const backSound = new Audio(sound4);
+backSound.volume = 0.9; 
 back.addEventListener('click', () => {
-     window.location.href = './index.html';
+    backSound.currentTime = 0;
+    backSound.play();
+    backSound.onended = () => {
+        window.location.href = './index.html';
+    }
+     
 });
 
 //Обозначения типа для Ts

@@ -1,5 +1,5 @@
 
-
+import sound4 from '../assets/sound/sound-4.mp3';
 const btnApp = document.querySelector<HTMLButtonElement>('.btn-app');
 const btnComments = document.querySelector<HTMLButtonElement>('.btn-comments');
 const temple = document.querySelector<HTMLButtonElement>('.temple');
@@ -16,7 +16,11 @@ btnApp?.addEventListener('click', () => {
     blockMenu.style.display = 'none';
 })
 //Назад
+const backSound = new Audio(sound4);
+backSound.volume = 0.9;
 back?.forEach((btn) => {
+    backSound.currentTime = 0;
+    backSound.play();
     btn.addEventListener('click', () => {
         window.location.href = './about.html'; 
     })

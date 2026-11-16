@@ -1,6 +1,10 @@
+import sound3 from '../assets/sound/sound-3.mp3';
 const left = document.querySelector<HTMLButtonElement>('#left');
 const right = document.querySelector<HTMLButtonElement>('#right');
 const slider = document.querySelector<HTMLElement>('.slider-wrapper');
+const clickSound1 = new Audio(sound3);
+clickSound1.volume = 0.5;
+ 
 
 function scrollByCard(direction: -1 | 1): void {
   if (!slider) return;
@@ -17,8 +21,16 @@ function scrollByCard(direction: -1 | 1): void {
   });
 }
 
-left?.addEventListener('click', () => scrollByCard(-1));
-right?.addEventListener('click', () => scrollByCard(1));
+left?.addEventListener('click', () => {
+   clickSound1.currentTime = 0;
+   clickSound1.play();
+ scrollByCard(-1)
+});
+right?.addEventListener('click', () => {
+  clickSound1.currentTime = 0;
+  clickSound1.play();
+scrollByCard(1)
+});
 
 
 

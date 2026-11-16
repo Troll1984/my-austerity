@@ -5,7 +5,7 @@ const cardAscetic = document.querySelector<HTMLElement>('.card-ascetic');
 const header = document.querySelector<HTMLElement>('.header');
 const btnClose = document.querySelector<HTMLElement>('.btn');
 const btnClose1 = document.querySelector<HTMLElement>('.btn1');
-const img = document.querySelector<HTMLElement>('#img');
+
 
 const infoButton = document.querySelector<HTMLElement>('#info');
 const infoSection = document.querySelector<HTMLElement>('.info');

@@ -1,0 +1,37 @@
+
+
+.template-duration {
+    background: none;
+    padding: 7px;
+    border-radius: 7px;
+    box-shadow: -1px 0px 17px 1px rgba(0,0,0,0.75);
+}
+.template-calendar {
+    padding: 7px;
+    border-radius: 8px;
+    background: none;
+    box-shadow: -1px 0px 17px 1px rgba(0,0,0,0.75);
+    border: none;
+    color: #cec7c7;
+    margin-right: 3px;
+}
+.duration-popup {
+    width: 90%;    
+    width: auto;      
+    background: none;
+    box-shadow: -1px 0px 17px 1px rgba(0,0,0,0.75);
+    padding: 10px;
+    border-radius: 8px;
+    .duration-option  {
+        background: none;
+        box-shadow: -1px 0px 17px 1px rgba(0,0,0,0.75);
+        color: #fff;
+        width: 30px;
+        height: 30px;
+        border: none;
+        border-radius: 8px;
+        font-size: 0.9rem;
+        margin-right: 5px;
+         
+    }
+}

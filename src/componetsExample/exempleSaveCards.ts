@@ -1,7 +1,9 @@
 import { asceticTemplates } from '../componetsIndex/templateAscesa';
 import { currentLanguage, translations } from '../componetsOur/lang';
 import { supabase } from '../supabase';
- 
+
+const selectedDurations = new Map<string, number>();
+const durationOptions = [7, 14, 21, 30, 90];
  
 
 const templateGrid = document.querySelector<HTMLElement>('#template-grid');
@@ -13,9 +15,27 @@ function renderTemplates(): void {
     <article class="template-card">
       <div class="image"> <img  src="${template.img}" alt="logo"></div>
       <h3>${currentLanguage === 'uk' ? template.title : currentLanguage === 'nl' ? template.titleNl : template.titleEn}</h3>
-      <div class="title-icon">
-        <span class="template-icon"><i class="fa-regular fa-calendar"></i></span>
-        <span class="template-duration">${template.durationDays} ${t.templateDays}</span>
+     <div class="title-icon">
+  <button class="template-calendar" type="button"
+    data-template-id="${template.id}">
+    <i class="fa-regular fa-calendar"></i>
+  </button>
+
+      <span class="template-duration">
+        ${selectedDurations.get(template.id) ?? template.durationDays} ${t.templateDays}
+      </span>
+    </div>
+
+      <div class="duration-popup" data-popup-id="${template.id}" hidden>
+        ${durationOptions.map(days => `
+         <button
+          type="button"
+          class="duration-option ${(selectedDurations.get(template.id) ?? template.durationDays) === days ? 'active' : ''}"
+          data-days="${days}"
+          data-template-id="${template.id}">
+          ${days}
+        </button>
+        `).join('')}
       </div>
       
       <p>${currentLanguage === 'uk' ? template.description : currentLanguage === 'nl' ? template.descriptionNl : template.descriptionEn}</p>  
@@ -33,6 +53,53 @@ if (templateGrid) {
 
   templateGrid.addEventListener('click', async (event) => {
     if (!(event.target instanceof Element)) return;
+
+    // Открытие и закрытие выбора периода
+const calendar = event.target.closest<HTMLButtonElement>('.template-calendar');
+
+if (calendar) {
+  const templateId = calendar.dataset.templateId;
+  const popup = templateGrid.querySelector<HTMLElement>(
+    `.duration-popup[data-popup-id="${templateId}"]`
+  );
+
+  if (popup) {
+    popup.hidden = !popup.hidden;
+  }
+
+  return;
+}
+
+// Выбор продолжительности
+const durationButton = event.target.closest<HTMLButtonElement>('.duration-option');
+
+if (durationButton) {
+  const templateId = durationButton.dataset.templateId;
+  const days = Number(durationButton.dataset.days);
+
+  if (!templateId || !durationOptions.includes(days)) return;
+
+  selectedDurations.set(templateId, days);
+
+  const card = durationButton.closest('.template-card');
+  const durationLabel = card?.querySelector('.template-duration');
+  const popup = card?.querySelector('.duration-popup');
+
+  if (durationLabel) {
+    durationLabel.textContent = `${days} ${translations[currentLanguage].templateDays}`;
+  }
+
+  popup?.querySelectorAll('.duration-option').forEach(option => {
+    option.classList.toggle(
+      'active',
+      Number((option as HTMLButtonElement).dataset.days) === days
+    );
+  });
+
+  popup?.setAttribute('hidden', '');
+
+  return;
+}
 
      const imageBlock = event.target.closest<HTMLElement>('.image');
     if (imageBlock && templateGrid.contains(imageBlock)) {
@@ -65,8 +132,9 @@ if (templateGrid) {
       const startDate = new Date();
       startDate.setHours(0, 0, 0, 0);
       startDate.setDate(startDate.getDate() + 1);
+     const duration = selectedDurations.get(templateId)?? selectedTemplate.durationDays;
       const endDate = new Date(startDate);
-      endDate.setDate(endDate.getDate() + selectedTemplate.durationDays - 1);
+    endDate.setDate(endDate.getDate() + duration - 1);
       const formatDate = (date: Date) =>
         `${String(date.getDate()).padStart(2, '0')}.${String(date.getMonth() + 1).padStart(2, '0')}.${date.getFullYear()}`;
 

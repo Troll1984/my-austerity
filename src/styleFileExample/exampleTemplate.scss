@@ -1,19 +1,21 @@
 
 
-.template-duration {
-    background: none;
-    padding: 7px;
+.template-duration {   
+    background: none;   
+    padding: 8px;
     border-radius: 7px;
+    font-size: 1rem;
     box-shadow: -1px 0px 17px 1px rgba(0,0,0,0.75);
 }
 .template-calendar {
-    padding: 7px;
+    width: 35px;
+    height: 35px;
     border-radius: 8px;
     background: none;
     box-shadow: -1px 0px 17px 1px rgba(0,0,0,0.75);
     border: none;
-    color: #cec7c7;
-    margin-right: 3px;
+    color: #cec7c7;   
+    font-size: 1.2rem;
 }
 .duration-popup {
     width: 90%;    
@@ -33,5 +35,41 @@
         font-size: 0.9rem;
         margin-right: 5px;
          
+    }
+}
+
+.titler {
+    display: block;
+    width: 100%;
+    padding: 0;
+    color: inherit;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+}
+
+.duration-titler {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 8px 0;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: -1px 0 17px 1px rgba(0, 0, 0, 0.75);
+    &[hidden] {
+        display: none;
+    }
+    .titler-option {
+        padding: 6px 10px;
+        color: #fff;
+        background: transparent;
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        border-radius: 7px;
+        cursor: pointer;
+
+        &.active {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.7);
+        }
     }
 }

@@ -1,6 +1,7 @@
 import sound3 from '../assets/sound/sound-3.mp3';
 export const translations = {
   uk: {
+   Support: 'Підтримати проєкт',
    Develop: 'Розробник My Askesa',  
    return: 'Назад', 
    contacts: 'Контакти', 
@@ -54,6 +55,7 @@ export const translations = {
    templateDays: 'днів', templateGoal: 'Мета:', templateChoose: 'Обрати',
   },
   en: {
+    Support: 'Support Project',
     Develop: 'Developer My Askesa',  
     return: 'Back',
     contacts: 'Contact', 
@@ -107,7 +109,7 @@ export const translations = {
     templateDays: 'days', templateGoal: 'Goal:', templateChoose: 'Choose',
   },
   nl: {
-   Develop: 'Ontwikkelaar My Askesa', return: 'Terug', contacts: 'Contact',  templetes: 'Ascese-sjablonen',  Subscrip: 'Abonnementen & Extra functies', comment: 'Reacties', aboutapp: 'Over app', menu: 'Menu',  politics: 'Privacy & Regels', MyAccount:  'Mijn account', titleAscetic: 'Mijn Askesis', Description: 'Beschrijving', Duration: 'Duur', Result: 'Verwacht resultaat', BeginBtn: 'Begin met askesis', RegOpen: 'Inloggen', Main: 'Home', Example: 'Voorbeeld', Sesiy: 'Mijn askesis', Sesiy1: 'Sjablonen', info: 'Over askesis', language: 'NL', titleAuth: 'Mijn Askesis', messAuth: 'Log in op je account of maak een nieuw account aan', nicknameAuth: 'Bijnaam', nicknamePlaceholder: 'Je bijnaam', emailAuth: 'E-mail', passAuth: 'Wachtwoord', btnAuth: 'Inloggen', signUpTitle: 'Account aanmaken', signUpSubtitle: 'Registreer om je askesis op te slaan', signUpButton: 'Registreren', signUpToggle: 'Nog geen account? Registreren', signInTitle: 'Mijn Askesis', signInSubtitle: 'Log in op je account', signInButton: 'Inloggen', signInToggle: 'Al een account? Inloggen', gotName: 'Beschrijving van askesis', duren: 'Duur van askesis', gotRes: 'Verwacht resultaat', progressTitle: 'Voortgang', btnLang: 'NL', calendarTitle: 'Markeer voltooide dagen', deleteButton: 'Verwijderen', statusFailed: '❌ Askesis niet voltooid.', statusCompleted: '✅ Askesis voltooid.', statusPlanned: '⏳ Askesis is nog niet begonnen', statusActive: '🟢 Askesis is bezig.', templateHeading: 'Kies een askesis-sjabloon', saveAusterity: 'Opgeslagen askesis', templateDays: 'dagen', templateGoal: 'Doel:', templateChoose: 'Kiezen',
+  Support: 'Steun project', Develop: 'Ontwikkelaar My Askesa', return: 'Terug', contacts: 'Contact',  templetes: 'Ascese-sjablonen',  Subscrip: 'Abonnementen & Extra functies', comment: 'Reacties', aboutapp: 'Over app', menu: 'Menu',  politics: 'Privacy & Regels', MyAccount:  'Mijn account', titleAscetic: 'Mijn Askesis', Description: 'Beschrijving', Duration: 'Duur', Result: 'Verwacht resultaat', BeginBtn: 'Begin met askesis', RegOpen: 'Inloggen', Main: 'Home', Example: 'Voorbeeld', Sesiy: 'Mijn askesis', Sesiy1: 'Sjablonen', info: 'Over askesis', language: 'NL', titleAuth: 'Mijn Askesis', messAuth: 'Log in op je account of maak een nieuw account aan', nicknameAuth: 'Bijnaam', nicknamePlaceholder: 'Je bijnaam', emailAuth: 'E-mail', passAuth: 'Wachtwoord', btnAuth: 'Inloggen', signUpTitle: 'Account aanmaken', signUpSubtitle: 'Registreer om je askesis op te slaan', signUpButton: 'Registreren', signUpToggle: 'Nog geen account? Registreren', signInTitle: 'Mijn Askesis', signInSubtitle: 'Log in op je account', signInButton: 'Inloggen', signInToggle: 'Al een account? Inloggen', gotName: 'Beschrijving van askesis', duren: 'Duur van askesis', gotRes: 'Verwacht resultaat', progressTitle: 'Voortgang', btnLang: 'NL', calendarTitle: 'Markeer voltooide dagen', deleteButton: 'Verwijderen', statusFailed: '❌ Askesis niet voltooid.', statusCompleted: '✅ Askesis voltooid.', statusPlanned: '⏳ Askesis is nog niet begonnen', statusActive: '🟢 Askesis is bezig.', templateHeading: 'Kies een askesis-sjabloon', saveAusterity: 'Opgeslagen askesis', templateDays: 'dagen', templateGoal: 'Doel:', templateChoose: 'Kiezen',
   },
 };
    

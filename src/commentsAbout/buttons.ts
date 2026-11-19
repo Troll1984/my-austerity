@@ -9,6 +9,13 @@ const comments = document.querySelector<HTMLElement>('.comments');
 const back = document.querySelectorAll<HTMLElement>('.back');
 const blockMenu = document.querySelector<HTMLElement>('.block-menu');
 const Subscrip = document.querySelector<HTMLElement>('.Subscrip');
+const btnSupport = document.querySelector<HTMLButtonElement>('.btn-support');
+const donatBlock = document.querySelector<HTMLElement>('.donat-block');
+
+btnSupport?.addEventListener('click', () => {
+     if(!donatBlock) return;  
+    donatBlock.style.display = 'flex';
+})
 
 Subscrip?.addEventListener('click', () => {
     alert('Цей розділ перебуває в розробці.');
